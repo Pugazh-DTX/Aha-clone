@@ -1,0 +1,35 @@
+.button-container {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px; // Space between icon and text
+    padding: 10px 16px;
+    border: none;
+    border-radius: 6px;
+    cursor: pointer;
+    font-size: 14px;
+    font-weight: 500;
+    transition: all 0.2s ease-in-out;
+  
+    &.flex-center {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+  
+    &:hover {
+      opacity: 0.85;
+    }
+  
+    &:disabled {
+      cursor: not-allowed;
+      opacity: 0.6;
+    }
+  
+    .button-image {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+  }
+  
