@@ -5,7 +5,7 @@ export default function Home() {
     <div className="container">
 
       <div className="header">
-      <h1>Welcome To Aha Clone</h1>git 
+      <h1>Welcome To Aha Clone</h1>
       </div>
         
     </div>
