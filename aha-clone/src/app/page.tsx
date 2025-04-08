@@ -6,6 +6,7 @@ export default function Home() {
 
       <div className="header">
       <h1>Welcome To Aha Clone</h1>
+      <p>lerom10</p>
       </div>
         
     </div>
