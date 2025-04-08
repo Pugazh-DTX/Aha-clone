@@ -3,6 +3,8 @@ import { ButtonProps } from "../../../types/component";
 import { StaticImageData } from "next/image";
 import "./styles.scss";
 
+
+
 export const Button = ({
     onClick,
     children,
