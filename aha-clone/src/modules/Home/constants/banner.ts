@@ -23,7 +23,7 @@ export const heroMovies: IHeroMovie[] = [
     description: "Mr. Housekeeping is about a young graduate who takes a housekeeping job at a young woman's house to make a living. Their lives take a turn and become an unpredictable ride of fun, romance and comedy in the rest of the narration.",
     bgImage: 'https://image-resizer-cloud-api.akamaized.net/image/49B283E2-29FA-46A9-A2DA-8822C9EDBE22/0-16x9.jpg?width=1250&updatedTime=2025-03-25T06:18:28Z&dt=Web',
 
-    thumbnail: 'https://image-resizer-cloud-api.akamaized.net/image/49B283E2-29FA-46A9-A2DA-8822C9EDBE22/0-16x9.jpg?width=1250&updatedTime=2025-03-25T06:18:28Z&dt=Web',
+    thumbnail: 'https://image-resizer-cloud-api.akamaized.net/image/49B283E2-29FA-46A9-A2DA-8822C9EDBE22/0-16x9.jpg?width=160&updatedTime=2025-03-25T06:18:28Z&dt=Web',
   },
   {
     id: '3',
