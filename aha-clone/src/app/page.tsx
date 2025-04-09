@@ -1,14 +1,11 @@
-import  "./page.css";
+// src/app/page.tsx
+import HeroBanner from "@/components/organisms/HeroBanner/HeroBanner";
+import { heroMovies } from "@/modules/Home/constants/banner";
 
-export default function Home() {
+export default function HomePage() {
   return (
-    <div className="container">
-
-      <div className="header">
-      <h1>Welcome To Aha Clone</h1>
-      <p>lerom10</p>
-      </div>
-        
-    </div>
+    <main>
+      <HeroBanner movies={heroMovies} />
+    </main>
   );
 }
