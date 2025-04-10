@@ -7,5 +7,6 @@ export interface IHeroMovie {
     description: string;
     bgImage: string;
     thumbnail: string;
+    bgVideo?: string;
   }
   
