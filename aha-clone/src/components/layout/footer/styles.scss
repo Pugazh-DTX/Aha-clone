@@ -1,0 +1,132 @@
+.sec-footer-main {
+  padding: 34px 0 24px;
+}
+
+.footer-list-main {
+  display: flex;
+  justify-content: space-between;
+  padding: 0 2rem 24px;
+  border-bottom: 1px solid #8c8e8e;
+  flex-wrap: wrap;
+}
+
+.footer-list-img {
+  display: flex;
+  flex-direction: column;
+  margin: 73px 12px 0;
+}
+
+.aha-gray-logo {
+  width: 113px;
+  height: 60px;
+}
+
+.footer-list-img-header {
+  font-style: normal;
+  margin: 32px 0 8px;
+  font-weight: normal;
+  font-size: 14px;
+}
+
+.social-media-icon-size {
+  width: 32px;
+  height: 32px;
+}
+
+.social-align-main {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 15px;
+}
+.playstore-align-main {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 15px;
+}
+
+.play-store-logo-size {
+  width: 125px;
+  height: 36px;
+}
+
+.contact-us-main {
+  font-style: normal;
+  margin: 32px 0 8px;
+  font-size: 14px;
+}
+
+.contact-us-link {
+  color: #ff6d2e;
+  font-size: 14px;
+  text-decoration-line: underline;
+  cursor: pointer;
+  text-decoration: underline;
+  margin-left: 4px;
+}
+
+.footer-list-right-main {
+  width: 160px;
+  margin: 73px 12px 0;
+  display: flex;
+  flex-direction: column;
+}
+
+.footer-list-right-header {
+  font-style: normal;
+  font-size: 16px;
+  margin-bottom: 12px;
+  line-height: 16px;
+  -webkit-font-smoothing: antialiased;
+  // color-scheme: light;
+}
+
+.movie-list-title {
+  font-style: normal;
+  color: #96969d;
+  font-size: 14px;
+  text-decoration: none;
+  line-height: 16px;
+  padding: 8px 0;
+  -webkit-font-smoothing: antialiased;
+  cursor: pointer;
+  // color-scheme: light;
+}
+
+.copyright-align-main {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 24px 2rem 0;
+}
+
+.copyright-text {
+  display: flex;
+  align-items: center;
+  font-size: 14px;
+  line-height: 16px;
+}
+
+.copyright-powered-by {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 4px;
+  text-decoration: none;
+  cursor: pointer;
+}
+
+.powered-by-text {
+  font-style: normal;
+  color: #96969d;
+  font-size: 14px;
+  font-weight: 400;
+  text-decoration: none;
+  line-height: 28px;
+  margin-right: 10px;
+  cursor: pointer;
+}
+
+.quick-play-logo-size {
+  width: 100px;
+  height: 19px;
+}
