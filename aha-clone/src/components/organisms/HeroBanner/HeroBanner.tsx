@@ -76,7 +76,11 @@ const HeroBanner: React.FC<HeroBannerProps> = ({ movies }) => {
 
             {/* Thumbnail carousel for desktop */}
             <div className="thumbnailCarousel desktopOnly">
-              <button className="arrow-left" onClick={handlePrev}>❮</button>
+
+
+              <div className="thumbnailArrows-left">
+                <button className="arrow-left" onClick={handlePrev}>❮</button>
+              </div>
 
               <div className="carouselViewport">
                 <div
@@ -109,8 +113,10 @@ const HeroBanner: React.FC<HeroBannerProps> = ({ movies }) => {
                   />
                 </div>
               </div>
+              <div className="thumbnailArrows-right">
+                <button className="arrow-right" onClick={handleNext}>❯</button>
+              </div>
 
-              <button className="arrow-right" onClick={handleNext}>❯</button>
             </div>
           </div>
         </div>
