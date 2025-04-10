@@ -1,0 +1,254 @@
+.header {
+  height: 75px;
+  padding: 0.9rem 2vw;
+  color: #fff;
+  position: sticky;
+  top: 0;
+  z-index: 10;
+}
+.atTop {
+  background: linear-gradient(
+    rgba(0, 0, 0, 0.92) 6%,
+    rgba(0, 0, 0, 0.45) 63%,
+    rgba(0, 0, 0, 0)
+  );
+}
+.scrolled {
+  background: #0e0e0e;
+}
+.headerContainer {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.headerLeftContainer {
+  display: flex;
+  align-items: center;
+  gap: 48px;
+}
+
+.logo {
+  display: flex;
+  align-items: center;
+  text-decoration: none;
+  width: 58px;
+  height: 38px;
+
+  .logoImage {
+    width: 100%;
+    height: 100%;
+  }
+}
+
+.nav {
+  display: flex;
+  gap: 40px;
+
+  &.open {
+    display: flex;
+  }
+}
+
+.navItem {
+  color: #fff;
+  opacity: 0.7;
+  text-decoration: none;
+  font-weight: 500;
+  font-size: 14px;
+  &.activeNav {
+    color: #fff;
+    opacity: 1;
+  }
+}
+
+.menuBtn {
+  display: none;
+  background: none;
+  border: none;
+  color: #fff;
+
+  @media (max-width: 768px) {
+    display: none;
+  }
+}
+
+.headerRightContainer {
+  display: flex;
+  align-items: center;
+  gap: 1.25rem;
+}
+
+.icon {
+  color: #fff;
+  cursor: pointer;
+
+  &:hover {
+    color: #e50914;
+  }
+}
+
+.languageSelect {
+  background: #29292966;
+  border: none;
+  color: #fff;
+  padding: 0.4rem 0.75rem;
+  border-radius: 6px;
+  font-size: 14px;
+  appearance: none; // Chrome, Safari
+  -webkit-appearance: none; // Safari
+  -moz-appearance: none; // Firefox
+  background-image: url("/Assets/icons/Header/down-arrow.svg"); // your custom arrow
+  background-repeat: no-repeat;
+  background-position: right 0.5rem center;
+  background-size: 1.12rem; // <-- change this to control size
+  padding-right: 2rem; // give space for the arrow
+  &:focus {
+    outline: none;
+  }
+}
+.searchIcon {
+  display: block;
+}
+.subscribeBtn {
+  display: none !important;
+  background: linear-gradient(0deg, #b61a09 -86.4%, #ff6d2e);
+  color: #fff;
+  border: none;
+  padding: 12px 23px !important;
+  border-radius: 50px !important;
+  font-size: 14px !important;
+  font-weight: 500 !important;
+  transition: background 0.3s ease;
+  cursor: pointer;
+  &:hover {
+    background-color: #ff1f3d;
+  }
+  @media (min-width: 960px) {
+    display: inline-block !important; // shown only when width > 860px
+  }
+}
+
+.signIn {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 14px;
+  line-height: 22px;
+}
+.avatar {
+  width: 33px;
+  height: 33px;
+  border-radius: 50%;
+  overflow: hidden;
+  cursor: pointer;
+  background-color: #363940;
+  display: flex;
+  justify-content: center;
+  align-items: flex-end;
+}
+
+.mobileNav {
+  display: none;
+}
+@media screen and (max-width: 900px) {
+  .header {
+    height: fit-content;
+    padding: 0;
+  }
+  .atTop {
+    background: linear-gradient(
+      rgba(0, 0, 0, 0.92) 6%,
+      rgba(0, 0, 0, 0.45) 63%,
+      rgba(0, 0, 0, 0)
+    );
+  }
+  .scrolled {
+    background: linear-gradient(180deg, rgb(0, 0, 0) 20%, rgba(0, 0, 0, 0)),
+      rgb(29, 30, 32);
+  }
+  .headerContainer {
+    flex-direction: column-reverse;
+    align-items: flex-start;
+  }
+
+  .logo {
+    position: absolute;
+    top: 10px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 54px;
+    height: 35px;
+  }
+  .headerLeftContainer {
+    width: 100%;
+  }
+  .headerRightContainer {
+    padding: 18px 0 19px;
+    width: 100%;
+  }
+  .nav {
+    display: none;
+  }
+  .mobileNav {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+    align-items: center;
+    margin-bottom: 10px;
+    width: 100%;
+    height: 36px;
+  }
+  .navItem {
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    position: relative;
+    padding: 3px 16px;
+    height: 100%;
+    gap: 10px;
+    border-radius: 20px;
+    outline-style: none;
+    &.activeNav {
+      background: linear-gradient(180deg, #3b4046, #2d3037);
+      box-shadow: 0 4px 4px #00000040;
+    }
+  }
+  .searchIcon {
+    display: none;
+  }
+  .signIn {
+    display: none;
+  }
+  .languageSelect {
+    left: 4vw;
+    position: relative;
+    border-radius: 6px;
+    font-size: 0.7rem;
+    padding: 0.2rem;
+    appearance: none; // Chrome, Safari
+    -webkit-appearance: none; // Safari
+    -moz-appearance: none; // Firefox
+    background-image: url("/Assets/icons/Header/down-arrow.svg"); // your custom arrow
+    background-repeat: no-repeat;
+    background-position: right 0.5rem center;
+    background-size: 1.12rem; // <-- change this to control size
+    padding-right: 2rem; // give space for the arrow
+  }
+}
+
+@media screen and (max-width: 480px) {
+  .navItem {
+    font-size: 12px;
+    padding: 0px 16px;
+    white-space: nowrap;
+  }
+  .mobileNav {
+    overflow: auto;
+    scrollbar-width: none; /* Firefox */
+    -ms-overflow-style: none; /* Internet Explorer 10+ */
+  }
+  .mobileNav::-webkit-scrollbar {
+    display: none;
+  }
+}

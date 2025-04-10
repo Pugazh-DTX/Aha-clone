@@ -1,0 +1,21 @@
+<svg  width="18" height="18" viewBox="0 0 17 18" fill="none"
+     xmlns="http://www.w3.org/2000/svg" class="ng-tns-c64-0 ng-star-inserted">
+  <path 
+        d="M2.51961 0H13.5143C14.9058 0 16.0339 1.12807 16.0339 2.51961V11.6818C16.0339 13.0734 14.9058 14.2015 13.5143 14.2015H2.51961C1.12807 14.2015 0 13.0734 0 11.6818V2.51961C0 1.12807 1.12807 0 2.51961 0ZM2.51961 1.37433C1.88709 1.37433 1.37433 1.88709 1.37433 2.51961V11.6818C1.37433 12.3144 1.88709 12.8271 2.51961 12.8271H13.5143C14.1468 12.8271 14.6596 12.3144 14.6596 11.6818V2.51961C14.6596 1.88709 14.1468 1.37433 13.5143 1.37433H2.51961Z"
+        class="ng-tns-c64-0" fill="url(#paint0_linear)"></path>
+  <path 
+        d="M10.427 16.2126H5.19986C4.82035 16.2126 4.5127 16.5202 4.5127 16.8997C4.5127 17.2793 4.82035 17.5869 5.19986 17.5869H10.427C10.8066 17.5869 11.1142 17.2793 11.1142 16.8997C11.1142 16.5202 10.8066 16.2126 10.427 16.2126Z"
+        class="ng-tns-c64-0" fill="url(#paint1_linear)"></path>
+  <defs  class="ng-tns-c64-0">
+    <linearGradient  id="paint0_linear" x1="8.07076" y1="-12.2707" x2="8.07076" y2="14.2015"
+                    gradientUnits="userSpaceOnUse" class="ng-tns-c64-0">
+      <stop  stop-color="#B61A09" class="ng-tns-c64-0"></stop>
+      <stop  offset="1" stop-color="#FF6D2E" class="ng-tns-c64-0"></stop>
+    </linearGradient>
+    <linearGradient  id="paint1_linear" x1="-1.19131" y1="16.8951" x2="11.1142" y2="16.8951"
+                    gradientUnits="userSpaceOnUse" class="ng-tns-c64-0">
+      <stop  stop-color="#B61A09" class="ng-tns-c64-0"></stop>
+      <stop  offset="1" stop-color="#FF6D2E" class="ng-tns-c64-0"></stop>
+    </linearGradient>
+  </defs>
+</svg>
