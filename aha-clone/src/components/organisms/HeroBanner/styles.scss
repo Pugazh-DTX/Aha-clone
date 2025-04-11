@@ -1,7 +1,7 @@
 .heroContainer {
   position: relative;
   width: 100%;
-  height: 100vh;
+  height: 80vh;
   overflow: hidden;
   z-index: 0;
 }
@@ -98,7 +98,7 @@
   position: absolute;
   left: 6%;
   top: 70%;
-  width: 20%;
+  width:  21.4rem;;
   max-width: 400px;
   z-index: 4;
 
@@ -155,12 +155,6 @@
     align-items: center;
     justify-content: center;
 
-    &::before {
-      content: '';
-      position: absolute;
-      background: linear-gradient(to right, rgb(17, 18, 18) 0%, rgba(255, 255, 255, 0) 80%);
-      z-index: 1;
-    }
 
     &:hover {
       color: white;
@@ -174,15 +168,34 @@
   }
 
   .arrow-left {
-    margin-right: --6px;
+    margin-right: -9px;
   }
 
   .arrow-right {
-    margin-left: 3px;
+    margin-left: -12px;
   }
 }
 
+
+// @media screen and  (min-width: 300px) {
+//   .heroContainer {
+//     position: relative;
+//     width: 71%;
+//     height: 20vh;
+//     overflow: hidden;
+//     z-index: 0;
+//   }
+// }
+
 @media screen and (max-width: 900px) {
+
+  .heroContainer {
+    position: relative;
+    width: 100%;
+    height: 15rem;
+    overflow: hidden;
+    z-index: 0;
+  }
   .heroBackground {
     height: auto;
     aspect-ratio: 16 / 9;
@@ -217,11 +230,12 @@
     display: flex;
     justify-content: center;
     align-items: center;
+    padding-left: 12px;
     gap: 6px;
 
     .dot {
-      width: 7px;
-      height: 7px;
+      width: 5px;
+      height: 5px;
       border-radius: 50%;
       background-color: #fff;
       opacity: 0.4;
@@ -255,3 +269,115 @@
     left: 40%;
   }
 }
+
+// @media screen and (min-width: 950px) and (max-width: 1300px) {
+//   .thumbnailCarousel {
+//     left: 10%;
+//     top: 71%;
+//     width: 20%;
+//     max-width: 360px;
+//     z-index: 4;
+
+//     .carouselViewport {
+//       width: 100%;
+//       overflow: hidden;
+//       margin: 0 5px;
+//     }
+
+//     .carouseltrack {
+//       display: flex;
+//       gap: 0.6rem;
+//       padding: 0.8rem 0;
+//       transition: transform 0.5s ease;
+//     }
+
+//     .thumbnail {
+//       width: 90px;
+//       height: 54px;
+//       object-fit: cover;
+//       border-radius: 6px;
+//       cursor: pointer;
+//       flex-shrink: 0;
+//       transition: all 0.3s ease;
+
+//       &:not(.active) {
+//         opacity: 0.6;
+//         transform: scale(0.95);
+//       }
+
+//       &.active {
+//         border: 2px solid #fff;
+//         padding: 3px;
+//         opacity: 1;
+//         transform: scale(1.1);
+//         border-radius: 10px;
+//       }
+//     }
+
+
+
+//     .arrow-left,
+//     .arrow-right {
+//       font-size: 0.9rem;
+//       justify-content: center;
+//       height: 2.2rem;
+//       width:5px;
+//     }
+//   }
+// }
+
+// @media screen and (max-width: 1200px)  {
+//   .thumbnailCarousel {
+//     left: 10%;
+//     top: 71%;
+//     width: 17%;
+//     max-width: 360px;
+//     z-index: 4;
+
+//     .carouselViewport {
+//       width: 100%;
+//       overflow: hidden;
+//       margin: 0 5px;
+//     }
+
+//     .carouseltrack {
+//       display: flex;
+//       gap: 0.6rem;
+//       padding: 0.8rem 0;
+//       transition: transform 0.5s ease;
+//     }
+
+//     .thumbnail {
+//       width: 90px;
+//       height: 54px;
+//       object-fit: cover;
+//       border-radius: 6px;
+//       cursor: pointer;
+//       flex-shrink: 0;
+//       transition: all 0.3s ease;
+
+//       &:not(.active) {
+//         opacity: 0.6;
+//         transform: scale(0.95);
+//       }
+
+//       &.active {
+//         border: 2px solid #fff;
+//         padding: 3px;
+//         opacity: 1;
+//         transform: scale(1.1);
+//         border-radius: 10px;
+//       }
+//     }
+
+
+
+//     .arrow-left,
+//     .arrow-right {
+//       font-size: 0.9rem;
+//       justify-content: center;
+//       height: 2.2rem;
+//       width:5px;
+//     }
+//   }
+// }
