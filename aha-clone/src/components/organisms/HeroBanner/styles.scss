@@ -52,8 +52,14 @@
   z-index: 2;
   width: 125%;
   height: 100%;
-  background: linear-gradient(266.91deg, rgba(18, 18, 18, 0) 49.99%, rgba(18, 18, 18, 0.5) 57.43%, rgba(18, 18, 18, 0.8) 63.83%, #121212 75.07%),
-              linear-gradient(180deg, rgba(18, 18, 18, 0) 80.52%, #121212 96.26%);
+  background: linear-gradient(
+      266.91deg,
+      rgba(18, 18, 18, 0) 49.99%,
+      rgba(18, 18, 18, 0.5) 57.43%,
+      rgba(18, 18, 18, 0.8) 63.83%,
+      #121212 75.07%
+    ),
+    linear-gradient(180deg, rgba(18, 18, 18, 0) 80.52%, #121212 96.26%);
 }
 
 .heroOverlay {
@@ -67,7 +73,11 @@
 }
 
 .black {
-  background: linear-gradient(to right, rgb(17, 18, 18) 0%, rgba(255, 255, 255, 0) 80%);
+  background: linear-gradient(
+    to right,
+    rgb(17, 18, 18) 0%,
+    rgba(255, 255, 255, 0) 80%
+  );
   z-index: 2;
 }
 
@@ -98,7 +108,7 @@
   position: absolute;
   left: 6%;
   top: 70%;
-  width:  21.4rem;;
+  width: 21.4rem;
   max-width: 400px;
   z-index: 4;
 
@@ -155,7 +165,6 @@
     align-items: center;
     justify-content: center;
 
-
     &:hover {
       color: white;
       transform: scale(1.25);
@@ -176,7 +185,6 @@
   }
 }
 
-
 // @media screen and  (min-width: 300px) {
 //   .heroContainer {
 //     position: relative;
@@ -188,7 +196,6 @@
 // }
 
 @media screen and (max-width: 900px) {
-
   .heroContainer {
     position: relative;
     width: 100%;
@@ -265,7 +272,7 @@
   @media (max-width: 900px) {
     display: flex;
     position: absolute;
-    top:100%;
+    top: 100%;
     left: 40%;
   }
 }
@@ -313,8 +320,6 @@
 //         border-radius: 10px;
 //       }
 //     }
-
-
 
 //     .arrow-left,
 //     .arrow-right {
@@ -369,8 +374,6 @@
 //         border-radius: 10px;
 //       }
 //     }
-
-
 
 //     .arrow-left,
 //     .arrow-right {
