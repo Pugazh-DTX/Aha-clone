@@ -1,7 +1,8 @@
-'use client';
-import React, { useState } from 'react';
-import HeroBanner from '@/components/organisms/HeroBanner/HeroBanner';
-import { heroMovies } from './constants/banner';
+"use client";
+import React, { useState } from "react";
+import HeroBanner from "@/components/organisms/HeroBanner/HeroBanner";
+import { heroMovies } from "./constants/banner";
+import Card from "@/components/molecules/Card";
 
 const HomePage = () => {
   const [currentMovieIndex, setCurrentMovieIndex] = useState(0);

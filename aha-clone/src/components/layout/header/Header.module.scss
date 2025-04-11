@@ -2,8 +2,9 @@
   height: 75px;
   padding: 0.9rem 2vw;
   color: #fff;
-  position: sticky;
+  position: fixed;
   top: 0;
+  width: 100%;
   z-index: 10;
 }
 .atTop {
@@ -44,7 +45,7 @@
 .nav {
   display: flex;
   gap: 40px;
-
+  padding-right: 30px;
   &.open {
     display: flex;
   }
@@ -56,20 +57,10 @@
   text-decoration: none;
   font-weight: 500;
   font-size: 14px;
+  white-space: nowrap;
   &.activeNav {
     color: #fff;
     opacity: 1;
-  }
-}
-
-.menuBtn {
-  display: none;
-  background: none;
-  border: none;
-  color: #fff;
-
-  @media (max-width: 768px) {
-    display: none;
   }
 }
 
@@ -121,11 +112,12 @@
   font-weight: 500 !important;
   transition: background 0.3s ease;
   cursor: pointer;
+  white-space: nowrap;
   &:hover {
     background-color: #ff1f3d;
   }
   @media (min-width: 960px) {
-    display: inline-block !important; // shown only when width > 860px
+    display: inline-block !important; // shown only when width > 960px
   }
 }
 
@@ -135,6 +127,7 @@
   gap: 8px;
   font-size: 14px;
   line-height: 22px;
+  white-space: nowrap;
 }
 .avatar {
   width: 33px;
@@ -155,6 +148,7 @@
   .header {
     height: fit-content;
     padding: 0;
+    position: sticky;
   }
   .atTop {
     background: linear-gradient(
@@ -162,10 +156,10 @@
       rgba(0, 0, 0, 0.45) 63%,
       rgba(0, 0, 0, 0)
     );
+    background: rgb(29, 30, 32);
   }
   .scrolled {
-    background: linear-gradient(180deg, rgb(0, 0, 0) 20%, rgba(0, 0, 0, 0)),
-      rgb(29, 30, 32);
+    background: rgb(29, 30, 32);
   }
   .headerContainer {
     flex-direction: column-reverse;
