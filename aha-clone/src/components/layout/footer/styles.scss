@@ -5,9 +5,9 @@
 .footer-list-main {
   display: flex;
   justify-content: space-between;
+  flex-wrap: wrap;
   padding: 0 2rem 24px;
   border-bottom: 1px solid #8c8e8e;
-  flex-wrap: wrap;
 }
 
 .footer-list-img {
@@ -28,16 +28,19 @@
   font-size: 14px;
 }
 
-.social-media-icon-size {
-  width: 32px;
-  height: 32px;
-}
-
 .social-align-main {
   display: flex;
   flex-wrap: wrap;
   gap: 15px;
 }
+
+.social-media-icon-size {
+  width: 32px;
+  aspect-ratio: auto 32 / 32;
+  height: 32px;
+  aspect-ratio: auto 32 / 32;
+}
+
 .playstore-align-main {
   display: flex;
   flex-wrap: wrap;
@@ -46,7 +49,9 @@
 
 .play-store-logo-size {
   width: 125px;
+  aspect-ratio: auto 125 / 36;
   height: 36px;
+  aspect-ratio: auto 125 / 36;
 }
 
 .contact-us-main {
@@ -58,9 +63,8 @@
 .contact-us-link {
   color: #ff6d2e;
   font-size: 14px;
-  text-decoration-line: underline;
-  cursor: pointer;
   text-decoration: underline;
+  cursor: pointer;
   margin-left: 4px;
 }
 
@@ -69,6 +73,7 @@
   margin: 73px 12px 0;
   display: flex;
   flex-direction: column;
+  order: 1;
 }
 
 .footer-list-right-header {
@@ -76,8 +81,6 @@
   font-size: 16px;
   margin-bottom: 12px;
   line-height: 16px;
-  -webkit-font-smoothing: antialiased;
-  // color-scheme: light;
 }
 
 .movie-list-title {
@@ -87,9 +90,7 @@
   text-decoration: none;
   line-height: 16px;
   padding: 8px 0;
-  -webkit-font-smoothing: antialiased;
   cursor: pointer;
-  // color-scheme: light;
 }
 
 .copyright-align-main {
@@ -120,7 +121,6 @@
   color: #96969d;
   font-size: 14px;
   font-weight: 400;
-  text-decoration: none;
   line-height: 28px;
   margin-right: 10px;
   cursor: pointer;
@@ -128,5 +128,122 @@
 
 .quick-play-logo-size {
   width: 100px;
+  aspect-ratio: auto 100 / 19;
   height: 19px;
+  aspect-ratio: auto 100 / 19;
+}
+
+@media (min-width: 1273px) {
+  .footer-list-img {
+    order: 1;
+  }
+}
+
+@media (min-width: 901px) and (max-width: 1272px) {
+  .footer-list-img {
+    order: 5;
+  }
+}
+
+@media (max-width: 959px) {
+  .aha-gray-logo {
+    width: 87px;
+    height: 46px;
+  }
+}
+
+@media (max-width: 900px) {
+  .footer-list-img {
+    order: 5;
+  }
+  .footer-list-right-main {
+    width: 43%;
+    min-width: 160px;
+  }
+
+  .contact-us-main {
+    max-width: 70%;
+    font-size: 16px;
+  }
+  .contact-us-link {
+    display: inline-block;
+  }
+  .footer-list-right-header {
+    font-weight: 600;
+    margin-bottom: 16px;
+  }
+
+  .movie-list-title {
+    font-weight: 600;
+  }
+
+  .footer-list-img-header {
+    font-size: 16px;
+  }
+  .footer-list-main {
+    border-bottom: none;
+    padding: 0 16px 24px 21px;
+  }
+  .copyright-align-main {
+    display: flex;
+    flex-direction: column-reverse;
+    justify-content: center;
+    padding: 24px 16px 0;
+  }
+
+  .copyright-powered-by-main-div {
+    justify-content: center;
+    text-align: center;
+    margin-top: 14px;
+  }
+
+  .copyright-text {
+    width: 80%;
+    display: flex;
+  }
+  .copyright-text-main-div {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    margin-top: 34px;
+    width: 100%;
+    font-size: 14px;
+    line-height: 14px;
+  }
+
+  .sec-footer-main {
+    padding-bottom: 70px;
+    padding-top: 0;
+  }
+}
+
+@media (max-width: 480px) {
+  .footer-list-right-main {
+    margin: 30px 0 0;
+  }
+
+  .social-media-icon-size {
+    width: 24px;
+    height: 24px;
+  }
+
+  .playstore-align-main {
+    padding-top: 5px;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    -moz-column-gap: 5px;
+    gap: 5px;
+  }
+
+  .footer-list-main {
+    margin-top: 20px;
+  }
+
+  .footer-list-img {
+    margin: 73px 0 0;
+  }
 }
