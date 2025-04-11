@@ -26,6 +26,7 @@ export const Footer = () => {
       ))}
     </div>
   );
+
   return (
     <footer>
       <div className="sec-footer-main">
@@ -35,83 +36,80 @@ export const Footer = () => {
               <Image
                 src={ahaGrayLogo}
                 alt="Aha gray logo"
-                className="aha-gray-logo "
+                className="aha-gray-logo"
               />
             </Link>
             <h6 className="footer-list-img-header">Connect with us</h6>
             <div className="social-align-main">
               <Link
-                href={"https://www.instagram.com/ahavideoin/"}
+                href="https://www.instagram.com/ahavideoin/"
                 target="_blank"
               >
                 <Image
                   src={instagramFooter}
                   alt="Instagram logo"
-                  className="social-media-icon-size "
+                  className="social-media-icon-size"
                 />
               </Link>
-              <Link
-                href={"https://www.facebook.com/ahavideoIN"}
-                target="_blank"
-              >
+              <Link href="https://www.facebook.com/ahavideoIN" target="_blank">
                 <Image
                   src={facebookFooter}
                   alt="Facebook logo"
-                  className="social-media-icon-size "
+                  className="social-media-icon-size"
                 />
               </Link>
-              <Link href={"https://x.com/ahavideoIN"} target="_blank">
+              <Link href="https://x.com/ahavideoIN" target="_blank">
                 <Image
                   src={twitterFooter}
                   alt="Twitter logo"
-                  className="social-media-icon-size "
+                  className="social-media-icon-size"
                 />
               </Link>
             </div>
             <h6 className="footer-list-img-header">Download aha mobile app</h6>
             <div className="playstore-align-main">
               <Link
-                href={
-                  "https://play.google.com/store/apps/details?id=ahaflix.tv"
-                }
+                href="https://play.google.com/store/apps/details?id=ahaflix.tv"
                 target="_blank"
               >
                 <Image
                   src={googlePlayMobile}
                   alt="Google play logo"
-                  className="play-store-logo-size "
+                  className="play-store-logo-size"
                 />
               </Link>
               <Link
-                href={
-                  "https://apps.apple.com/in/app/aha-100-local-entertainment/id1488739001"
-                }
+                href="https://apps.apple.com/in/app/aha-100-local-entertainment/id1488739001"
                 target="_blank"
               >
                 <Image
                   src={appStoreMobile}
                   alt="App store logo"
-                  className="play-store-logo-size "
+                  className="play-store-logo-size"
                 />
               </Link>
             </div>
             <div className="contact-us-main">
               Contact us:
-              <Link href={"#"} className="contact-us-link">
+              <Link href="#" className="contact-us-link">
                 support@aha.video
               </Link>
             </div>
           </div>
+
           {footerList.map(renderFooterList)}
         </div>
+
         <div className="copyright-align-main">
-          <p className="copyright-text">
-            © Copyright 2025 Arha Media and Broadcasting Pvt Ltd. All rights
-            reserved.
-          </p>
-          <div>
+          <div className="copyright-text-main-div">
+            <p className="copyright-text">
+              © Copyright 2025 Arha Media and Broadcasting Pvt Ltd. All rights
+              reserved.
+            </p>
+          </div>
+          <div className="copyright-powered-by-main-div">
             <Link
-              href={"https://quickplay.com/"}
+              href="https://quickplay.com/"
               className="copyright-powered-by"
             >
               <p className="powered-by-text">Powered by</p>
