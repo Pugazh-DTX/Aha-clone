@@ -1,0 +1,96 @@
+.chat-with-expert-main {
+  position: fixed;
+  bottom: 0;
+  right: 12px;
+  height: 46px;
+  -webkit-font-smoothing: subpixel-antialiased;
+  transition: transform 1s ease;
+  z-index: 1000;
+}
+
+.chat-button-main {
+  background-color: #ff7f32de;
+  font-family: "Proxima Nova", sans-serif;
+  border-radius: 8px 8px 0 0;
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0 12px;
+  height: 46px;
+  box-shadow: 0 0 12px 0 rgba(0, 0, 0, 0.5);
+  line-height: 1;
+  font-size: 0.875em;
+  color: #fff;
+  font-weight: normal;
+  text-shadow: none;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-direction: row;
+  cursor: pointer;
+  position: relative;
+  min-width: 12em;
+  max-width: 14em;
+  text-decoration: none;
+  text-align: center;
+  border: 0;
+  -webkit-font-smoothing: subpixel-antialiased;
+}
+
+.chat-icon {
+  display: inline-block;
+  position: relative;
+  z-index: 1;
+  margin-right: 10px;
+  line-height: 1;
+  vertical-align: top;
+  font-family: "Proxima Nova", sans-serif;
+  font-size: 0.875em;
+  color: #fff;
+  font-weight: normal;
+  text-shadow: none;
+  cursor: pointer;
+  text-align: center;
+  -webkit-font-smoothing: subpixel-antialiased;
+}
+
+.chat-icon::before {
+  font-family: "embeddedserviceiconfont";
+  font-size: 1.25em;
+  content: attr(data-icon);
+  speak: none;
+  text-rendering: auto;
+  font-weight: normal;
+  font-variant: normal;
+  text-transform: none;
+  -webkit-font-smoothing: antialiased;
+  line-height: 1;
+}
+
+.chat-text {
+  position: relative;
+  z-index: 1;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-grow: 1;
+  align-self: stretch;
+  max-width: 100%;
+  line-height: normal;
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+  font-family: "Proxima Nova", sans-serif;
+  // font-size: 0.875em;
+  color: #fff;
+  font-weight: normal;
+  text-shadow: none;
+  cursor: pointer;
+  text-align: center;
+  -webkit-font-smoothing: subpixel-antialiased;
+}
+
+@media (max-width: 959px) {
+  .chat-with-expert-main {
+    display: none;
+  }
+}
