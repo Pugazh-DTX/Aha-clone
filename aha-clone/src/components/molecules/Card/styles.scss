@@ -1,0 +1,138 @@
+.card {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: fit-content;
+  transition: transform 0.3s ease-in-out;
+}
+.hover-card {
+  &:hover {
+    transform: translateY(-15px);
+  }
+}
+.image-wrapper {
+  position: relative;
+  border-radius: 8px;
+  overflow: hidden;
+}
+.card-footer {
+  display: flex;
+  gap: 5px;
+  width: 100%;
+  align-items: center;
+  padding: 5px 0;
+  .card-footer-title {
+    font-size: 16px;
+    font-weight: normal;
+    text-align: left;
+    color: #fff;
+    overflow: hidden;
+    overflow-wrap: break-word;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+  }
+  .card-footer-tag {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    white-space: nowrap;
+    background: linear-gradient(rgb(59, 64, 70) 9.38%, rgb(45, 48, 55));
+    color: #fff;
+    padding: 0 5px;
+    border-radius: 5px;
+    height: 18px;
+    min-width: 22px;
+    width: fit-content;
+    font-size: 10px;
+    font-weight: normal;
+  }
+}
+.premium-tag {
+  position: absolute;
+  top: 0;
+  right: 0;
+  width: fit-content;
+  height: auto;
+  z-index: 1;
+  display: flex;
+  gap: 5px;
+  align-items: center;
+  color: #fff;
+  max-width: 80%;
+  background: linear-gradient(180deg, #ff6d2e 28.63%, #dd461d);
+  border-radius: 0 0 0 10px;
+  padding: 5px 7px;
+  .premium-tag-text {
+    font-size: 8px;
+    font-weight: 500;
+    overflow: hidden;
+    text-overflow: ellipsis;
+  }
+}
+.play-icon-container {
+  position: absolute;
+  z-index: 1;
+  bottom: 5px;
+  right: 5px;
+  width: 35px;
+  height: 35px;
+  .play-icon {
+    width: 100%;
+    height: 100%;
+  }
+}
+.overlay-text-container {
+  position: absolute;
+  z-index: 1;
+  bottom: 0;
+  width: 100%;
+  .overlay-text-inner-container {
+    display: flex;
+    gap: 5px;
+    justify-content: space-between;
+    align-items: center;
+    .overlay-text {
+      width: 100%;
+      overflow: hidden;
+      overflow-wrap: break-word;
+      white-space: nowrap;
+      text-overflow: ellipsis;
+      color: rgba(255, 255, 255, 0.8);
+      font-size: 18px;
+      font-weight: bold;
+      text-align: left;
+      font-family: inherit;
+      padding: 0 10px;
+    }
+  }
+}
+.card-skeleton-container {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  z-index: 0;
+  top: 0;
+  background: linear-gradient(2.23deg, #000 20.39%, transparent 98.33%);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  .card-skeleton-img {
+    width: 75%;
+    height: 75%;
+    background-image: url("/assets/icons/card/aha-gray-card-skeleton-logo.svg");
+    background-repeat: no-repeat;
+    background-size: contain;
+    background-position: center;
+  }
+}
+.cast-card-footer {
+  display: flex;
+  align-items: center;
+  color: #fff;
+  font-style: normal;
+  font-size: 12px;
+  line-height: 16px;
+  padding: 11px 0px 10px;
+  white-space: nowrap;
+  align-self: self-start;
+}
