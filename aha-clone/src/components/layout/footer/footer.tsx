@@ -28,7 +28,7 @@ export const Footer = () => {
   );
 
   return (
-    <footer>
+    <footer className="footer-main">
       <div className="sec-footer-main">
         <div className="footer-list-main">
           <div className="footer-list-img">
