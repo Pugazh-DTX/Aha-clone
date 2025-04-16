@@ -1,5 +1,6 @@
 // src/app/page.tsx
-import { ChatWithExpert } from "@/components/atoms/chat-with-expert";
+
+import { ChatWithExpert } from "@/components/atoms/ChatWithExpert";
 import Card from "@/components/molecules/Card";
 import HeroBanner from "@/components/organisms/HeroBanner/HeroBanner";
 import { heroMovies } from "@/modules/Home/constants/banner";
