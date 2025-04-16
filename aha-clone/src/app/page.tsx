@@ -3,8 +3,9 @@
 import { ChatWithExpert } from "@/components/atoms/ChatWithExpert";
 import Card from "@/components/molecules/Card";
 import HeroBanner from "@/components/organisms/HeroBanner/HeroBanner";
+import SliderCarousel from "@/components/organisms/SliderCarousel";
 import { heroMovies } from "@/modules/Home/constants/banner";
-
+import { IMoviesSection, movies } from "@/utils/Home/moviedata";
 export default function HomePage() {
   return (
     <main>
@@ -23,6 +24,9 @@ export default function HomePage() {
         overlayPlayIcon={false}
         overlayText=""
         isAdultContent={false}
+        isContinueWatching={true}
+        totalTimeDuration={"1000"}
+        watchTimeDuration={"100"}
       />
 
       <Card
@@ -38,7 +42,11 @@ export default function HomePage() {
         overlayPlayIcon={false}
         overlayText=""
         isAdultContent={false}
+        isContinueWatching={false}
+        totalTimeDuration={""}
+        watchTimeDuration={""}
       />
+      <SliderCarousel movies={movies} />
     </main>
   );
 }

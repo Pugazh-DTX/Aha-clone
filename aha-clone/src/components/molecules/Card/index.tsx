@@ -3,18 +3,21 @@ import Image from "next/image";
 import premiumIcon from "../../../../public/Assets/icons/Card/tag-icon.svg";
 import playIcon from "../../../../public/Assets/icons/Card/play-icon.svg";
 
-type CardProps = {
+export type CardProps = {
   isCastCard: boolean;
   footerTitle: string;
   imageSrc: string;
   alt?: string;
   isPremium: boolean;
-  cardWidth: string;
+  cardWidth?: string;
   aspectRatio: string;
   isRoundedImage: boolean;
   overlayPlayIcon: boolean;
   overlayText?: string;
   isAdultContent: boolean;
+  isContinueWatching: boolean;
+  totalTimeDuration: string;
+  watchTimeDuration: string;
 };
 
 const Card = ({
@@ -29,25 +32,50 @@ const Card = ({
   overlayPlayIcon,
   overlayText,
   isAdultContent,
+  isContinueWatching,
+  totalTimeDuration,
+  watchTimeDuration,
 }: CardProps) => {
+  const runTime = Number(watchTimeDuration);
+  const totalDuration = Number(totalTimeDuration);
+
+  const progress = (runTime / totalDuration) * 100;
+
   return (
     <div
-      className={`card ${isCastCard ? "" : "hover-card"}`}
-      style={{ width: isCastCard ? "fit-content" : cardWidth }}
+      className={`card ${isCastCard ? "" : "hover-card"} ${
+        aspectRatio === "2/3"
+          ? "ap-2X3"
+          : aspectRatio === "16/9"
+          ? "ap-16X9"
+          : aspectRatio === "2/6"
+          ? "ap-2X6"
+          : aspectRatio === "16/18"
+          ? "ap-16X18"
+          : aspectRatio === "1/1"
+          ? "ap-1X1"
+          : aspectRatio === "9/16"
+          ? "ap-9X16"
+          : ""
+      }`}
+      style={{
+        width: isCastCard ? "fit-content" : isRoundedImage ? "130px" : "",
+      }}
     >
       <div
-        className="image-wrapper"
+        className={`image-wrapper cursor-pointer ${
+          isCastCard ? "cast-card-width" : "card-full-width"
+        }`}
         style={{
           aspectRatio,
           borderRadius: `${isRoundedImage ? "50%" : "8px"}`,
-          width: isCastCard ? "96px" : "100%",
         }}
       >
         <div className="card-skeleton-container">
           <div className="card-skeleton-img"></div>
         </div>
         <div>
-          <Image src={imageSrc} alt={alt} fill />
+          <Image src={imageSrc} alt={`${footerTitle}img`} fill />
         </div>
         {isPremium && (
           <div className="premium-tag">
@@ -73,26 +101,36 @@ const Card = ({
           </div>
         </div>
       </div>
-      {footerTitle && (
-        <div className={`${isCastCard ? "cast-card-footer" : "card-footer"}`}>
-          <p
-            className={`${
-              isCastCard ? "cast-card-footer-title" : "card-footer-title"
-            }`}
-          >
-            {footerTitle}
-          </p>
-          {isAdultContent && (
+      <div style={{ width: "100%", padding: "5px 0" }}>
+        {isContinueWatching && totalTimeDuration && watchTimeDuration && (
+          <div className="card-progress-bar-container">
             <div
+              className="card-progress-bar-inner"
+              style={{ width: `${progress}%` }}
+            ></div>
+          </div>
+        )}
+        {footerTitle && (
+          <div className={`${isCastCard ? "cast-card-footer" : "card-footer"}`}>
+            <p
               className={`${
-                isCastCard ? "cast-card-footer-tag" : "card-footer-tag"
+                isCastCard ? "cast-card-footer-title" : "card-footer-title"
               }`}
             >
-              A
-            </div>
-          )}
-        </div>
-      )}
+              {footerTitle}
+            </p>
+            {isAdultContent && (
+              <div
+                className={`${
+                  isCastCard ? "cast-card-footer-tag" : "card-footer-tag"
+                }`}
+              >
+                A
+              </div>
+            )}
+          </div>
+        )}
+      </div>
     </div>
   );
 };

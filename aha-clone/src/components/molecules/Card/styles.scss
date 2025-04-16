@@ -136,3 +136,64 @@
   white-space: nowrap;
   align-self: self-start;
 }
+.card-progress-bar-container {
+  position: relative;
+  overflow: hidden;
+  width: 100%;
+  height: 5px;
+  border-radius: 8px;
+  background: hsla(0, 0%, 100%, 0.3);
+}
+.card-progress-bar-inner {
+  position: absolute;
+  background: #ff6d2e;
+  height: 100%;
+  transition: width 0.3s ease-in-out;
+}
+.ap-2X3 {
+  width: 160px;
+}
+.ap-2X6 {
+  width: 160px;
+}
+.ap-16X9 {
+  width: 212px;
+}
+.ap-16X18 {
+  width: 212px;
+}
+.ap-1X1 {
+  width: 150px;
+}
+.ap-9X16 {
+  width: 212px;
+}
+
+@media screen and (max-width: 900px) {
+  .ap-2X3 {
+    width: 120px;
+  }
+  .ap-2X6 {
+    width: 128px;
+  }
+  .ap-16X9 {
+    width: 160px;
+  }
+  .ap-16X18 {
+    width: 160px;
+  }
+  .ap-1X1 {
+    width: 120px;
+  }
+}
+.card-full-width {
+  width: 100%;
+}
+.cast-card-width {
+  width: 96px;
+}
+@media screen and (max-width: 480px) {
+  .cast-card-width {
+    width: 85px;
+  }
+}
