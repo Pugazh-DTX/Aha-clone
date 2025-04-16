@@ -1,0 +1,32 @@
+.detail-tab-main {
+  margin-top: 1.1rem;
+}
+
+.detail-tab-list-ali {
+  display: flex;
+}
+
+.tab-menu-text {
+  padding: 0.6rem 1rem;
+  font-size: 1rem;
+  cursor: pointer;
+  &:hover {
+    color: #fff;
+  }
+}
+
+.non-selected-list-name {
+  color: #7f7e86;
+}
+
+.selected-list-name {
+  font-weight: 600;
+  border-bottom: 2px solid #ff6d2e;
+  color: #fff;
+}
+
+.detail-tab-content {
+  padding: calc(3.5vw + 1rem) 1rem 1rem 1em;
+  border-top: 1px solid rgba(229, 229, 229, 0.2901960784);
+  margin-top: -1px;
+}
