@@ -1,0 +1,69 @@
+.carousel-wrapper {
+  position: relative;
+  display: flex;
+  align-items: center;
+
+  &:hover .icon-position {
+    display: flex;
+    pointer-events: auto;
+  }
+}
+
+.slider-container {
+  display: flex;
+  gap: 8px;
+  overflow: auto hidden;
+  padding-top: 15px;
+  scrollbar-width: none;
+
+  > div:first-child {
+    padding-left: 2rem;
+  }
+
+  > div:last-child {
+    padding-right: 2rem;
+  }
+
+  &::-webkit-scrollbar {
+    display: none;
+  }
+}
+
+.icon-position {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  z-index: 3;
+  /* display: flex; */
+  justify-content: center;
+  align-items: center;
+  height: 100%;
+  width: 5%;
+  display: none;
+}
+.prev {
+  left: 0;
+  background: linear-gradient(
+    270deg,
+    rgba(255, 255, 255, 0),
+    rgba(0, 0, 0, 0.43) 20%,
+    rgba(0, 0, 0, 0.8) 66%
+  );
+}
+.next {
+  right: 0;
+  background: linear-gradient(
+    90deg,
+    rgba(255, 255, 255, 0),
+    rgba(0, 0, 0, 0.43) 20%,
+    rgba(0, 0, 0, 0.8) 66%
+  );
+}
+@media screen and (max-width: 900px) {
+  .slider-container > div:first-child {
+    padding-left: 1rem;
+  }
+  .slider-container > div:last-child {
+    padding-right: 1rem;
+  }
+}
