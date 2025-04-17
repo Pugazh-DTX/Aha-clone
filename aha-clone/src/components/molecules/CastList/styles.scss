@@ -1,0 +1,10 @@
+.cast-list-main {
+  display: flex;
+  flex-flow: row wrap;
+  margin-left: 0;
+  padding-left: 1rem;
+  -moz-column-gap: 4rem;
+  column-gap: 4rem;
+  row-gap: 1rem;
+  margin-top: 30px;
+}
