@@ -1,0 +1,18 @@
+.movie-detail-list {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  width: 30%;
+  row-gap: 10px;
+}
+
+.detail-left-content {
+  font-size: 1rem;
+  color: #7f7e86;
+  line-height: 22px;
+}
+
+.detail-right-content {
+  font-size: 1rem;
+  color: #fff;
+  line-height: 22px;
+}
