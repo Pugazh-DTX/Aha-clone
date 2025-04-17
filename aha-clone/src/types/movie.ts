@@ -1,12 +1,14 @@
+export interface Lang {
+  en: string;
+  ta: string;
+}
+
 export interface IHeroMovie {
-    id: string;
-    title: string;
-    year: number;
-    length: string;
-    genre: string;
-    description: string;
-    bgImage: string;
-    thumbnail: string;
-    bgVideo?: string;
-  }
-  
+  title: { en: string };
+  year: number;
+  length: string;
+  genre: Lang[];
+  description: { en: string };
+  posterUrl: string;
+  thumbnail: string;
+}
