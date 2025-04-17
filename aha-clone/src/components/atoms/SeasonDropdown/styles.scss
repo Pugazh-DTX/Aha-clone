@@ -1,0 +1,70 @@
+.season-dropdown-main {
+  width: 7.4rem;
+  min-width: 9.4rem;
+  height: 84px;
+  position: relative;
+}
+
+.season-dropdown-box {
+  font-size: 18px;
+  border-radius: 6px;
+  position: relative;
+  height: 48px;
+  font-weight: 600;
+  display: flex;
+  flex: 1;
+  justify-content: center;
+  align-items: center;
+  box-shadow: 4px 4px 20px -2px #00000059;
+  border: 1.75px solid #5d6265;
+  gap: 6px;
+  transition: all 0.2s ease-out;
+}
+
+.chevron-down-icon {
+  transition: transform 0.2s ease-out;
+}
+
+.rotate-180 {
+  transform: rotate(180deg);
+  transition: transform 0.2s ease-out;
+}
+
+.season-dropdown-opction-main {
+  width: 100%;
+  position: absolute;
+  top: 56px;
+  left: 0;
+  list-style: none;
+  overflow: hidden;
+  transition: all 0.2s ease-out;
+  background: linear-gradient(359.9deg, #3b4046 -0.38%, #161718 133.21%);
+  border-radius: 16px;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: center;
+  z-index: 1;
+  margin: 16px 0;
+}
+
+.open-list {
+  height: auto;
+  padding: 10px 0;
+  z-index: 2;
+}
+
+.closed-list {
+  height: 0;
+  padding: 0;
+}
+
+.season-li {
+  padding: 10px 0;
+  list-style: none;
+}
+
+.season-li-link {
+  font-size: 14px;
+  text-decoration: none;
+}
