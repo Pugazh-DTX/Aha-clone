@@ -1,4 +1,16 @@
 // src/app/page.tsx
+<<<<<<< HEAD
+// import HeroBanner from "@/components/organisms/HeroBanner/HeroBanner";
+
+// import { heroMovies } from "@/modules/Home/constants/banner";
+import HomePage from "@/modules/Home/HomePage";
+
+export default function Home () {
+  return (
+    <main>
+      {/* <HeroBanner movies={heroMovies} /> */}
+      <HomePage />
+=======
 
 import { ChatWithExpert } from "@/components/atoms/ChatWithExpert";
 import Card from "@/components/molecules/Card";
@@ -47,6 +59,7 @@ export default function HomePage() {
         watchTimeDuration={""}
       />
       <SliderCarousel movies={movies} />
+>>>>>>> 4b6a4f70a486013a11dc879771ff7695938a60b0
     </main>
   );
 }

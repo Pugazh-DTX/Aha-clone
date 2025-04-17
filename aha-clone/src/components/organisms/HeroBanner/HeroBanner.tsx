@@ -6,11 +6,13 @@ import { IHeroMovie } from '@/types/movie';
 
 interface HeroBannerProps {
   movies: IHeroMovie[];
+  onThumbnailClick: (index: number) => void;
+  activeIndex: number;
 }
 
-const HeroBanner: React.FC<HeroBannerProps> = ({ movies }) => {
+const HeroBanner: React.FC<HeroBannerProps> = ({ movies, onThumbnailClick, activeIndex }) => {
   const visibleSlides = 3;
-  const [activeIndex, setActiveIndex] = useState(0);
+  const [currentIndex, setCurrentIndex] = useState(activeIndex);
   const touchStartX = useRef(0);
   const touchEndX = useRef(0);
 
@@ -22,14 +24,14 @@ const HeroBanner: React.FC<HeroBannerProps> = ({ movies }) => {
       handleNext();
     }, 5000);
     return () => clearInterval(interval);
-  }, [movies.length]);
+  }, [currentIndex, movies.length]);
 
   const handlePrev = () => {
-    setActiveIndex((prev) => (prev - 1 + movies.length) % movies.length);
+    setCurrentIndex((prev) => (prev - 1 + movies.length) % movies.length);
   };
 
   const handleNext = () => {
-    setActiveIndex((prev) => (prev + 1) % movies.length);
+    setCurrentIndex((prev) => (prev + 1) % movies.length);
   };
 
   const handleSwipe = () => {
@@ -42,42 +44,39 @@ const HeroBanner: React.FC<HeroBannerProps> = ({ movies }) => {
   const getVisibleThumbnails = () => {
     const half = Math.floor(visibleSlides / 2);
     const visible = [];
-
     for (let i = -half; i <= half; i++) {
-      const index = (activeIndex + i + movies.length) % movies.length;
+      const index = (currentIndex + i + movies.length) % movies.length;
       visible.push({ ...movies[index], originalIndex: index });
     }
-
     return visible;
   };
 
-  const activeMovie = movies[activeIndex];
-
+  const activeMovie = movies[currentIndex];
+  
+  console.log('Active Movie:', activeMovie);
+  console.log('Thumbnails:', getVisibleThumbnails());
   return (
     <div className="heroContainer">
       <div
         className="heroBackground"
-        style={{ backgroundImage: `url(${activeMovie.bgImage})` }}
+        style={{ backgroundImage: `url(${activeMovie.posterUrl})` }}
         onTouchStart={(e) => (touchStartX.current = e.touches[0].clientX)}
         onTouchEnd={(e) => {
           touchEndX.current = e.changedTouches[0].clientX;
           handleSwipe();
         }}
       >
-        <div className="linerar">
+        <div className="linear">
           <div className="heroOverlay">
             <div className="details">
-              <h1 className="title">{activeMovie.title}</h1>
+              <h1 className="title">{activeMovie.title?.en}</h1>
               <p className="meta">
-                {activeMovie.year} • {activeMovie.length} • {activeMovie.genre}
+                {activeMovie.year} • {activeMovie.length} • {activeMovie.genre.map((g) => g.en.trim()).join(' • ')}
               </p>
-              <p className="description">{activeMovie.description}</p>
+              <p className="description">{activeMovie.description?.en}</p>
             </div>
 
-            {/* Thumbnail carousel for desktop */}
             <div className="thumbnailCarousel desktopOnly">
-
-
               <div className="thumbnailArrows-left">
                 <button className="arrow-left" onClick={handlePrev}>❮</button>
               </div>
@@ -91,7 +90,7 @@ const HeroBanner: React.FC<HeroBannerProps> = ({ movies }) => {
                   }}
                 >
                   <img
-                    src={movies[(activeIndex - 1 + movies.length) % movies.length].thumbnail}
+                    src={movies[(currentIndex - 1 + movies.length) % movies.length].thumbnail}
                     alt="prev"
                     className="thumbnail"
                   />
@@ -100,38 +99,37 @@ const HeroBanner: React.FC<HeroBannerProps> = ({ movies }) => {
                     <img
                       key={movie.originalIndex}
                       src={movie.thumbnail}
-                      alt={movie.title}
-                      className={`thumbnail ${movie.originalIndex === activeIndex ? 'active' : ''}`}
-                      onClick={() => setActiveIndex(movie.originalIndex)}
+                      alt={movie.title?.en}
+                      className={`thumbnail ${movie.originalIndex === currentIndex ? 'active' : ''}`}
+                      onClick={() => onThumbnailClick(movie.originalIndex)}
                     />
                   ))}
 
                   <img
-                    src={movies[(activeIndex + 1) % movies.length].thumbnail}
+                    src={movies[(currentIndex + 1) % movies.length].thumbnail}
                     alt="next"
                     className="thumbnail"
                   />
                 </div>
               </div>
+
               <div className="thumbnailArrows-right">
                 <button className="arrow-right" onClick={handleNext}>❯</button>
               </div>
-
             </div>
           </div>
         </div>
 
-        {/* Dots (outside linear for mobile) */}
         <div className="heroControls mobileOnly">
           <div className="dotsNavigation">
             {movies.map((_, index) => (
               <span
                 key={index}
-                className={`dot ${index === activeIndex ? 'active' : ''}`}
-                onClick={() => setActiveIndex(index)}
+                className={`dot ${index === currentIndex ? 'active' : ''}`}
+                onClick={() => setCurrentIndex(index)}
                 tabIndex={0}
                 role="button"
-                onKeyDown={(e) => e.key === 'Enter' && setActiveIndex(index)}
+                onKeyDown={(e) => e.key === 'Enter' && setCurrentIndex(index)}
               />
             ))}
           </div>
