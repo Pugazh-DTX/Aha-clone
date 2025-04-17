@@ -103,7 +103,12 @@ const Card = ({
           </div>
         </div>
       </div>
-      <div style={{ width: "100%", padding: `${isCastCard ? "" : "5px 0"}` }}>
+      <div
+        style={{
+          width: "100%",
+          padding: `${isCastCard ? "11px 0px 10px" : "5px 0"}`,
+        }}
+      >
         {isContinueWatching && totalTimeDuration && watchTimeDuration && (
           <div className="card-progress-bar-container">
             <div
