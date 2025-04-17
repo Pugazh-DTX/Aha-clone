@@ -57,3 +57,8 @@ export const castList = [
     footerTitle: "Rj Vijay",
   },
 ];
+
+export const movieDetailList = {
+  director: "Chidambaram Manivannan",
+  studio: "Kanaa Production",
+};
