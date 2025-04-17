@@ -24,3 +24,36 @@ export const movieCardDetail = [
       "A surprise party is organised by Leena and her friends for Poorna. Algatz seek assistance from his friend Naalu Jordan for his plan.",
   },
 ];
+
+export const castList = [
+  {
+    imageSrc:
+      "https://image-resizer-cloud-api.akamaized.net/image/rj-vijay/0-1x1.jpg?width=120&updatedTime=2025-03-25T06:48:44Z",
+    footerTitle: "Rj Vijay",
+  },
+  {
+    imageSrc:
+      "https://image-resizer-cloud-api.akamaized.net/image/rj-vijay/0-1x1.jpg?width=120&updatedTime=2025-03-25T06:48:44Z",
+    footerTitle: "Rj Vijay",
+  },
+  {
+    imageSrc:
+      "https://image-resizer-cloud-api.akamaized.net/image/rj-vijay/0-1x1.jpg?width=120&updatedTime=2025-03-25T06:48:44Z",
+    footerTitle: "Rj Vijay",
+  },
+  {
+    imageSrc:
+      "https://image-resizer-cloud-api.akamaized.net/image/rj-vijay/0-1x1.jpg?width=120&updatedTime=2025-03-25T06:48:44Z",
+    footerTitle: "Rj Vijay",
+  },
+  {
+    imageSrc:
+      "https://image-resizer-cloud-api.akamaized.net/image/rj-vijay/0-1x1.jpg?width=120&updatedTime=2025-03-25T06:48:44Z",
+    footerTitle: "Rj Vijay",
+  },
+  {
+    imageSrc:
+      "https://image-resizer-cloud-api.akamaized.net/image/rj-vijay/0-1x1.jpg?width=120&updatedTime=2025-03-25T06:48:44Z",
+    footerTitle: "Rj Vijay",
+  },
+];
