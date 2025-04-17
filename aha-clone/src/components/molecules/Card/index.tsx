@@ -5,6 +5,7 @@ import playIcon from "../../../../public/Assets/icons/Card/play-icon.svg";
 
 export type CardProps = {
   isCastCard: boolean;
+  isNoHoverAnimate?: boolean;
   footerTitle: string;
   imageSrc: string;
   alt?: string;
@@ -22,6 +23,7 @@ export type CardProps = {
 
 const Card = ({
   isCastCard,
+  isNoHoverAnimate,
   footerTitle,
   imageSrc,
   alt = "",
@@ -43,7 +45,7 @@ const Card = ({
 
   return (
     <div
-      className={`card ${isCastCard ? "" : "hover-card"} ${
+      className={`card ${isCastCard || isNoHoverAnimate ? "" : "hover-card"} ${
         aspectRatio === "2/3"
           ? "ap-2X3"
           : aspectRatio === "16/9"
