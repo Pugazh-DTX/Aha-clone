@@ -10,7 +10,7 @@ export type CardProps = {
   alt?: string;
   isPremium: boolean;
   cardWidth?: string;
-  aspectRatio: string;
+  aspectRatio: "2/3" | "2/6" | "16/9" | "16/18" | "1/1" | "9/16";
   isRoundedImage: boolean;
   overlayPlayIcon: boolean;
   overlayText?: string;
