@@ -1,3 +1,15 @@
+export const movieDetailBanner: any = {
+  Premium: "premium-banner.jpg",
+  "U/A": true,
+  "16+": true,
+  hideText: "Madurai Paiyanum Chennai Ponnum",
+  bannerTitle: "Madurai Paiyanum Chennai Ponnum",
+  bannerSupOne: "2025 • 1 Season • Romance • Comedy",
+  bannerSupTwo: "Humorous • Adventurous • Romantic",
+  bannerDes:
+    "Subash, a 27-year-old soulful native of Madurai, now thriving in Chennai, leads a quiet life balancing his work at a bookstore, his passion as a budding lyricist, and his dreams of becoming an IPS officer. His peaceful routine takes an unexpected turn when he meets Mira, a spirited 25-year-old with a vision of opening a terrace café. What begins as a clash of dreams soon blossoms into a heartfelt journey. Together, Subash and Mira transform the terrace into a vibrant space filled with good food and soulful music.",
+};
+
 export const movieCardDetail = [
   {
     imageSrc:
