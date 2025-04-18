@@ -2,7 +2,7 @@ import { Button } from "@/components/atoms";
 import "./styles.scss";
 
 import Image from "next/image";
-export const MovieDetail = () => {
+export const MovieDetailBanner = () => {
   return (
     <div
       className="movie-detail-main"
