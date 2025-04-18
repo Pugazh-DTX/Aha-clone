@@ -6,7 +6,7 @@ interface CastItem {
   imageSrc?: string;
 }
 
-export const CastList = ({ data }: { data: CastItem[] }) => {
+export const MovieCastList = ({ data }: { data: CastItem[] }) => {
   return (
     <div className="cast-list-main">
       {data.map((item, index) => (
