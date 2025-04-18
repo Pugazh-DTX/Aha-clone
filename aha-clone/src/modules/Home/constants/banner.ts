@@ -7,12 +7,12 @@ export const heroMovies: IHeroMovie[] = [
     year: 2025,
     length: '2h 12m',
     genre: 'Family Drama • Comedy',
-    description:
-      "Shiva and Guna are working in Dubai and are coming to India to meet their parents with their families. Due to some incidents happening at the airport, both of their children swapped. After boarding the plane in a hurry, in midair, Guna realizes that the child they are carrying is not his baby girl. Parallelly, Shiva, too realizes that the child they are carrying is not their baby boy. As the airport is informed, they investigate and inform Shiva and Guna about the misplacement of their babies. A baby boy is going to Guna's family, which is expecting a baby girl in Madurai. A baby girl goes to Shiva's family, who are expecting a baby boy. How do they deal with their families with a misplaced child? The rest of the story is a mix of comedy with beautiful sentiments of how the child reunites with its mother and father.",
+    description: "Shiva and Guna are working in Dubai and are coming to India to meet their parents with their families. Due to some incidents happening at the airport, both of their children swapped. After boarding the plane in a hurry, in midair, Guna realizes that the child they are carrying is not his baby girl. Parallelly, Shiva, too realizes that the child they are carrying is not their baby boy. As the airport is informed, they investigate and inform Shiva and Guna about the misplacement of their babies. A baby boy is going to Guna's family, which is expecting a baby girl in Madurai. A baby girl goes to Shiva's family, who are expecting a baby boy. How do they deal with their families with a misplaced child? The rest of the story is a mix of comedy with beautiful sentiments of how the child reunites with its mother and father.",
 
     bgImage: 'https://image-resizer-cloud-api.akamaized.net/image/0B338F36-3E5A-4C43-A4DA-06728DB11B05/0-16x9.jpg?width=1250&updatedTime=2025-04-03T12:04:11Z&dt=Web', // make sure this file exists
-    bgVideo: '/ssets/videos/Banner.mp4',
+
     thumbnail: 'https://image-resizer-cloud-api.akamaized.net/image/0B338F36-3E5A-4C43-A4DA-06728DB11B05/0-16x9.jpg?width=1250&updatedTime=2025-04-03T12:04:11Z&dt=Web',
+    posterUrl: undefined
   },
   {
     id: '2',
@@ -24,7 +24,7 @@ export const heroMovies: IHeroMovie[] = [
     bgImage: 'https://image-resizer-cloud-api.akamaized.net/image/49B283E2-29FA-46A9-A2DA-8822C9EDBE22/0-16x9.jpg?width=1250&updatedTime=2025-03-25T06:18:28Z&dt=Web',
 
     thumbnail: 'https://image-resizer-cloud-api.akamaized.net/image/49B283E2-29FA-46A9-A2DA-8822C9EDBE22/0-16x9.jpg?width=160&updatedTime=2025-03-25T06:18:28Z&dt=Web',
-    
+    posterUrl: undefined
   },
   {
     id: '3',
@@ -36,7 +36,7 @@ export const heroMovies: IHeroMovie[] = [
     bgImage: 'https://image-resizer-cloud-api.akamaized.net/image/D1B61FD0-0A7D-40AB-84E0-17774CDE91F7/0-16x9.jpg?width=1250&updatedTime=2025-03-27T12:09:42Z&dt=Web',
 
     thumbnail: 'https://image-resizer-cloud-api.akamaized.net/image/D1B61FD0-0A7D-40AB-84E0-17774CDE91F7/0-16x9.jpg?width=1250&updatedTime=2025-03-27T12:09:42Z&dt=Web',
-  
+    posterUrl: undefined
   },
 
   {
@@ -49,7 +49,7 @@ export const heroMovies: IHeroMovie[] = [
     bgImage: 'https://image-resizer-cloud-api.akamaized.net/image/754EBB87-954E-45FA-9495-581ED92ED78B/0-16x9.jpg?width=2310&updatedTime=2025-03-20T12:14:46Z&dt=Web',
 
     thumbnail: 'https://image-resizer-cloud-api.akamaized.net/image/754EBB87-954E-45FA-9495-581ED92ED78B/0-16x9.jpg?width=2310&updatedTime=2025-03-20T12:14:46Z&dt=Web',
-  
+    posterUrl: undefined
   },
   {
     id: '5',
@@ -61,7 +61,7 @@ export const heroMovies: IHeroMovie[] = [
     bgImage: 'https://image-resizer-cloud-api.akamaized.net/image/73183ACE-1352-4EE6-9145-1B55EC40D7CA/0-16x9.jpg?width=2310&updatedTime=2025-02-13T03:34:42Z&dt=Web',
 
     thumbnail: 'https://image-resizer-cloud-api.akamaized.net/image/73183ACE-1352-4EE6-9145-1B55EC40D7CA/0-16x9.jpg?width=2310&updatedTime=2025-02-13T03:34:42Z&dt=Web',
-  
+    posterUrl: undefined
   },
 
   {
@@ -74,5 +74,6 @@ export const heroMovies: IHeroMovie[] = [
     bgImage: 'https://image-resizer-cloud-api.akamaized.net/image/9E7C2C6B-57D7-4BCF-92B9-1C278F6F4791/0-16x9.jpg?width=2310&updatedTime=2025-03-25T06:02:24Z&dt=Web',
 
     thumbnail: 'https://image-resizer-cloud-api.akamaized.net/image/9E7C2C6B-57D7-4BCF-92B9-1C278F6F4791/0-16x9.jpg?width=2310&updatedTime=2025-03-25T06:02:24Z&dt=Web',
+    posterUrl: undefined
   },
 ];

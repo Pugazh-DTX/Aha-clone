@@ -1,7 +1,7 @@
 import Card from "../Card";
 import "./styles.scss";
 
-export const DetailCard = ({ data }: { data: any }) => {
+export const MovieDetailCard = ({ data }: { data: any }) => {
   return (
     <div className="detail-card-main">
       <Card
