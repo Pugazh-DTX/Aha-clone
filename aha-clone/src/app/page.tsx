@@ -2,6 +2,7 @@
 
 import { ChatWithExpert } from "@/components/atoms/ChatWithExpert";
 import Card from "@/components/molecules/Card";
+import SubscribeCard from "@/components/molecules/SubscribeCard";
 import HeroBanner from "@/components/organisms/HeroBanner/HeroBanner";
 import SliderCarousel from "@/components/organisms/SliderCarousel";
 import { heroMovies } from "@/modules/Home/constants/banner";
@@ -13,7 +14,7 @@ export default function HomePage() {
       <ChatWithExpert />
       <Card
         isCastCard={false}
-        footerTitle={"Cricket World Cup"}
+        footerTitle={"Hello"}
         imageSrc={
           "https://image-resizer-cloud-api.akamaized.net/image/FC9BAF7F-3292-4CB7-B7E9-314E0D09CD0E/0-2x3.jpg?width=305&updatedTime=2025-04-11T10:26:04Z&dt=Web"
         }
