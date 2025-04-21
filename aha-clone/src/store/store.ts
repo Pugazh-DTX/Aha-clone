@@ -1,11 +1,13 @@
-import { configureStore } from '@reduxjs/toolkit';
-import configReducer from './slices/configSlice';
-import landingReducer from './slices/landingSlice'
+import { configureStore } from "@reduxjs/toolkit";
+import configReducer from "./slices/configSlice";
+import landingReducer from "./slices/landingSlice";
+
+import layoutReducer from "./slices/layoutSlice";
 export const store = configureStore({
   reducer: {
     config: configReducer,
     landing: landingReducer,
-
+    layout: layoutReducer,
   },
 });
 

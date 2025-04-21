@@ -1,7 +1,7 @@
-import { createSlice, createAsyncThunk } from '@reduxjs/toolkit';
-import { fetchConfigAPI } from '@/services/api/config.api';
-import { ConfigDataType } from '@/types/config.types';
-import { RootState } from '../store';
+import { createSlice, createAsyncThunk } from "@reduxjs/toolkit";
+import { fetchConfigAPI } from "@/services/api/config.api";
+import { ConfigDataType } from "@/types/config.types";
+import { RootState } from "../store";
 
 interface ConfigState {
   configData: ConfigDataType | null;
@@ -16,7 +16,8 @@ const initialState: ConfigState = {
 };
 
 export const fetchConfig = createAsyncThunk(
-  'config/fetch',
+  "config/fetch",
+
   async (_, thunkAPI) => {
     try {
       const data = await fetchConfigAPI();
@@ -35,12 +36,12 @@ export const fetchConfig = createAsyncThunk(
 );
 
 const configSlice = createSlice({
-  name: 'config',
+  name: "config",
   initialState,
   reducers: {},
-  extraReducers: builder => {
+  extraReducers: (builder) => {
     builder
-      .addCase(fetchConfig.pending, state => {
+      .addCase(fetchConfig.pending, (state) => {
         state.loading = true;
         state.error = null;
       })

@@ -1,4 +1,5 @@
 export interface ISubscriptionPlans {
+  language: "telugu" | "tamil";
   isGoldPack: boolean;
   tagText: string;
   aboutAd: string;
@@ -20,6 +21,7 @@ export const subscriptionPlans: ISubscriptionPlans[] = [
     retailPrice: 999,
     priceBefore: 1499,
     priceDuration: "year",
+    language: "telugu",
   },
   {
     isGoldPack: false,
@@ -31,6 +33,7 @@ export const subscriptionPlans: ISubscriptionPlans[] = [
     retailPrice: 699,
     priceBefore: 1299,
     priceDuration: "year",
+    language: "telugu",
   },
   {
     isGoldPack: false,
@@ -42,6 +45,7 @@ export const subscriptionPlans: ISubscriptionPlans[] = [
     retailPrice: 199,
     priceBefore: 299,
     priceDuration: "3 months",
+    language: "telugu",
   },
   {
     isGoldPack: false,
@@ -53,5 +57,6 @@ export const subscriptionPlans: ISubscriptionPlans[] = [
     retailPrice: 499,
     priceBefore: 699,
     priceDuration: "year",
+    language: "telugu",
   },
 ];

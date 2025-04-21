@@ -1,11 +1,48 @@
+"use client";
+
 import React from "react";
 import "./styles.scss";
+
+import { useEffect } from "react";
+import { useDispatch } from "react-redux";
+import {
+  hideFooter,
+  hideHeader,
+  showFooter,
+  showHeader,
+} from "@/store/slices/layoutSlice";
 import SubscribeCard from "../../../components/molecules/SubscribeCard";
 import { subscriptionPlans } from "@/utils/ViewPlans/viewplans";
 import { subsPagePlatforms } from "@/utils/ViewPlans/viewplansplatforms";
 const ViewPlans = () => {
+  const dispatch = useDispatch();
+
+  useEffect(() => {
+    // function to check window width and update header
+    const handleResize = () => {
+      if (window.innerWidth <= 959) {
+        dispatch(hideHeader());
+      } else {
+        dispatch(showHeader());
+      }
+      dispatch(hideFooter());
+    };
+    handleResize(); // run once immediately when component mounts
+
+    window.addEventListener("resize", handleResize);
+    // Optional: when page unmounts (user navigates away), show again
+    return () => {
+      window.removeEventListener("resize", handleResize);
+      dispatch(showHeader());
+      dispatch(showFooter());
+    };
+  }, [dispatch]);
+
   return (
-    <section className="subs-page-parent-container">
+    <section
+      className="subs-page-parent-container"
+      style={{ minHeight: "100vh", height: "100%", width: "100%" }}
+    >
       <div className="subs-page-container">
         <div className="subs-page-header-container">
           <div

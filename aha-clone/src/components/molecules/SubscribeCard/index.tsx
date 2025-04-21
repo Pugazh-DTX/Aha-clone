@@ -3,8 +3,11 @@ import Image from "next/image";
 import "./styles.scss";
 import ahaGold from "../../../../public/Assets/icons/SubscribeCard/aha-gold-plan.svg";
 import clockIcon from "../../../../public/Assets/icons/SubscribeCard/clock-icon.svg";
+import tamilLetterBg from "../../../../public/Assets/icons/SubscribeCard/letter-tamil-subs-card.svg";
+import teluguLetterBg from "../../../../public/Assets/icons/SubscribeCard/letter-telugu-subs-card.svg";
 import { Button } from "@/components/atoms";
 import { ISubscriptionPlans } from "@/utils/ViewPlans/viewplans";
+
 const SubscribeCard = ({ plan }: { plan: ISubscriptionPlans }) => {
   return (
     <section className="subscribe-card-parent">
@@ -16,6 +19,20 @@ const SubscribeCard = ({ plan }: { plan: ISubscriptionPlans }) => {
             fill
           />
         </div>
+        {!plan.isGoldPack && (
+          <div className="subscribe-card-letter-bg">
+            <Image
+              src={`${
+                plan.language === "telugu"
+                  ? teluguLetterBg.src
+                  : tamilLetterBg.src
+              }`}
+              alt={""}
+              className="subscribe-card-letter-img"
+              fill
+            ></Image>
+          </div>
+        )}
         {plan.tagText && (
           <div
             className="subscribe-card-tag"
