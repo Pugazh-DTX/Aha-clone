@@ -1,0 +1,265 @@
+.subscribe-card {
+  height: 18vw;
+  width: 28vw;
+  min-width: 260px;
+  min-height: 168px;
+  max-width: 405px;
+  max-height: 260px;
+  position: relative;
+  overflow: hidden;
+}
+.subscribe-card-letter-bg {
+  position: absolute;
+  width: 50%;
+  height: 100%;
+  right: 0;
+  z-index: 0;
+  top: 50%;
+  transform: translateY(-50%);
+}
+.subscribe-card-letter-img {
+  width: 100%;
+  height: auto;
+}
+.subscribe-card-tag {
+  position: absolute;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-width: 30%;
+  width: -webkit-max-content;
+  width: max-content;
+  height: 12.6%;
+  top: 0;
+  left: 1%;
+  border-top-left-radius: 16px;
+  border-bottom-right-radius: 16px;
+  z-index: 1;
+}
+.subscribe-card-tag-text {
+  font-size: 0.8vw;
+  font-style: normal;
+  font-weight: 600;
+  mix-blend-mode: normal;
+  margin: 0 9px;
+  @media screen and (min-width: 1500px) {
+    font-size: 0.8rem;
+  }
+  @media screen and (min-width: 481px) and (max-width: 899px) {
+    font-size: 0.9vw;
+  }
+  @media screen and (max-width: 480px) {
+    font-size: 2.8vw;
+  }
+}
+.subscribe-card-content {
+  position: absolute;
+  top: 0;
+  width: 90%;
+  height: 90%;
+  left: 5%;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+.subscribe-card-content-info {
+  padding: 0vw 0.2vw 0;
+  position: relative;
+  top: 20%;
+  left: 5%;
+  max-width: 90%;
+}
+.aha-gold-img {
+  background-image: url("/Assets/icons/SubscribeCard/aha-gold-plan.svg");
+  background-repeat: no-repeat;
+  background-size: contain;
+  margin: 0 0 14px;
+}
+.subscribe-card-content-title {
+  font-style: normal;
+  font-weight: 400;
+  font-size: calc(1.5vw + var(--font-size-description-increment, 0vw));
+  line-height: calc(1.5vw + var(--font-size-description-increment, 0vw));
+  margin: 0 0 14px;
+  @media screen and (min-width: 1500px) {
+    font-size: 1.4em;
+    line-height: 1.4em;
+  }
+  @media screen and (max-width: 900px) {
+    font-size: 1.9vw;
+    line-height: 2vw;
+  }
+  @media screen and (max-width: 520px) {
+    font-size: 5.5vw;
+    line-height: 5.5vw;
+  }
+}
+.subscribe-card-content-description {
+  font-style: normal;
+  font-weight: 600;
+  font-size: calc(0.9vw + var(--font-size-details-increment, 0vw));
+  line-height: calc(1.7vw + var(--font-size-details-increment, 0vw));
+  margin: 0;
+  width: 98%;
+  @media screen and (min-width: 1500px) {
+    font-size: 1em;
+    line-height: 1em;
+  }
+  @media screen and (max-width: 900px) {
+    font-size: 1.2vw;
+    line-height: 2vw;
+  }
+  @media screen and (max-width: 520px) {
+    font-size: calc(0.9vw + var(--font-size-details-increment, 0vw));
+    line-height: calc(1.7vw + var(--font-size-details-increment, 0vw));
+  }
+}
+.subscribe-card-ad-free {
+  position: absolute;
+  top: 5%;
+  right: 3%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.offer-icon {
+  height: 14.6px;
+  width: 13.5px;
+  background-image: url("/Assets/icons/SubscribeCard/clock-icon.svg");
+  background-repeat: no-repeat;
+  background-size: contain;
+  margin-right: 6.5px;
+}
+.subscribe-card-ad-free-text {
+  font-style: normal;
+  font-weight: 400;
+  font-size: calc(0.8vw + var(--font-size-increment, 0vw));
+  line-height: calc(0.8vw + var(--font-size-increment, 0vw));
+  letter-spacing: 1.95567px;
+  color: #fff;
+  mix-blend-mode: normal;
+  margin: 0;
+}
+.subscribe-card-content-footer {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  border-top: 1.30498px dashed hsla(0, 0%, 100%, 0.17);
+  padding-top: 15px;
+  @media screen and (max-width: 520px) {
+    padding-top: 22px;
+  }
+}
+.subscribe-card-footer-price {
+  display: flex;
+  align-items: center;
+  padding-left: 1vw;
+  @media screen and (max-width: 520px) {
+    padding-left: 5vw;
+  }
+  .retail-price {
+    font-style: normal;
+    font-weight: 300;
+    margin: 0;
+    margin-right: 0.5vw;
+    font-size: calc(1.3vw + var(--font-size-increment, 0vw));
+    line-height: calc(1.4vw + var(--font-size-increment, 0vw));
+    letter-spacing: -0.05em;
+    @media screen and (max-width: 900px) {
+      font-size: 1.6vw;
+      line-height: 1.7vw;
+    }
+    @media screen and (max-width: 520px) {
+      font-size: calc(1.3vw + var(--font-size-increment, 0vw));
+      line-height: calc(1.4vw + var(--font-size-increment, 0vw));
+      letter-spacing: -0.05em;
+      margin-right: calc(0.2vw + var(--font-size-increment, 0vw));
+    }
+  }
+  .price-duration {
+    font-size: 1vw;
+    @media screen and (max-width: 900px) {
+      font-size: 1.3vw;
+    }
+    @media screen and (max-width: 520px) {
+      font-size: 3vw;
+    }
+  }
+  .price-before {
+    opacity: 0.3;
+  }
+  .price-before {
+    font-style: normal;
+    font-weight: 300;
+    margin: 0;
+    margin-right: 0.5vw;
+    font-size: calc(1.3vw + var(--font-size-increment, 0vw));
+    line-height: calc(1.4vw + var(--font-size-increment, 0vw));
+    letter-spacing: -0.05em;
+    @media screen and (max-width: 900px) {
+      font-size: 1.6vw;
+      line-height: 1.7vw;
+    }
+    @media screen and (max-width: 520px) {
+      font-size: calc(1.3vw + var(--font-size-increment, 0vw));
+      line-height: calc(1.4vw + var(--font-size-increment, 0vw));
+      letter-spacing: -0.05em;
+      margin-right: calc(0.2vw + var(--font-size-increment, 0vw));
+    }
+  }
+}
+
+.subscribe-card-button {
+  color: #fff;
+  border: none;
+  padding: 1vw 1.7vw;
+  font-size: calc(1.2vw + var(--font-size-increment, 0vw));
+  line-height: calc(1.2vw + var(--font-size-increment, 0vw));
+  border-radius: 50px !important;
+  font-style: normal !important;
+  font-weight: 600 !important;
+  width: calc(10vw + var(--susbcribe-button-width, 0vw));
+  height: calc(3.34vw + var(--susbcribe-button-size, 0vw));
+  max-width: 140px;
+  max-height: 48px;
+  letter-spacing: 0.5px !important;
+  transition: background 0.3s ease;
+  cursor: pointer;
+  white-space: nowrap;
+  &:hover {
+    background-color: #ff1f3d;
+  }
+  @media screen and (min-width: 1500px) {
+    font-size: 1rem !important;
+    line-height: 1rem;
+    padding: 1rem 2rem !important;
+  }
+  @media screen and (max-width: 900px) {
+    line-height: 1.5vw;
+  }
+  @media screen and (max-width: 520px) {
+    font-size: calc(0.8vw + var(--font-size-increment, 0vw));
+    line-height: 3.2vw;
+    padding: 3vw 6vw;
+  }
+}
+.gold-button {
+  background: linear-gradient(180deg, #f3c17d -0.9%, #84551d 99.1%);
+}
+.orange-button {
+  background: linear-gradient(0deg, #b61a09 -86.4%, #ff6d2e);
+}
+@media screen and (max-width: 520px) {
+  .subscribe-card-parent {
+    --font-size-increment: 2vw;
+    --font-size-description-increment: 4vw;
+    --font-size-details-increment: 2vw;
+    --susbcribe-button-size: 5vw;
+    --susbcribe-button-width: 14vw;
+  }
+
+  .subscribe-card {
+    width: 90vw;
+    height: 58vw;
+  }
+}

@@ -1,20 +1,22 @@
 // src/components/organisms/HeroBanner/HeroBannerWrapper.tsx
 
-'use client';
+"use client";
 
-import React, { useEffect, useMemo, useState } from 'react';
-import { useDispatch, useSelector } from 'react-redux';
-import { RootState, AppDispatch } from '@/store/store';
-import { fetchLanding } from '@/store/slices/landingSlice';
-import { AhaAdapter } from '@/adapters/ahaAdapter';
-import HeroBanner from '@/components/organisms/HeroBanner/HeroBanner';
-import { IHeroMovie } from '@/types/movie';
+import React, { useEffect, useMemo, useState } from "react";
+import { useDispatch, useSelector } from "react-redux";
+import { RootState, AppDispatch } from "@/store/store";
+import { fetchLanding } from "@/store/slices/landingSlice";
+import { AhaAdapter } from "@/adapters/ahaAdapter";
+import HeroBanner from "@/components/organisms/HeroBanner/HeroBanner";
+import { IHeroMovie } from "@/types/movie";
 
 const HeroBannerWrapper: React.FC = () => {
   const dispatch = useDispatch<AppDispatch>();
 
   const { configData } = useSelector((state: RootState) => state.config);
-  const { landingData, loading, error } = useSelector((state: RootState) => state.landing);
+  const { landingData, loading, error } = useSelector(
+    (state: RootState) => state.landing
+  );
 
   const [activeIndex, setActiveIndex] = useState(0);
 
@@ -23,6 +25,8 @@ const HeroBannerWrapper: React.FC = () => {
       dispatch(fetchLanding());
     }
   }, [configData, landingData, dispatch]);
+
+  console.log("landingData:", landingData);
 
   const heroMovies: IHeroMovie[] = useMemo(() => {
     if (landingData) {
