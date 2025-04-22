@@ -8,15 +8,18 @@ import { useDispatch } from "react-redux";
 import {
   hideFooter,
   hideHeader,
+  setOnlyShowLogo,
   showFooter,
   showHeader,
 } from "@/store/slices/layoutSlice";
 import SubscribeCard from "../../../components/molecules/SubscribeCard";
 import { subscriptionPlans } from "@/utils/ViewPlans/viewplans";
 import { subsPagePlatforms } from "@/utils/ViewPlans/viewplansplatforms";
+import { useRouter } from "next/navigation";
+
 const ViewPlans = () => {
   const dispatch = useDispatch();
-
+  const router = useRouter();
   useEffect(() => {
     // function to check window width and update header
     const handleResize = () => {
@@ -24,6 +27,7 @@ const ViewPlans = () => {
         dispatch(hideHeader());
       } else {
         dispatch(showHeader());
+        dispatch(setOnlyShowLogo(true)); // ✅ Only show logo on this page
       }
       dispatch(hideFooter());
     };
@@ -34,9 +38,14 @@ const ViewPlans = () => {
     return () => {
       window.removeEventListener("resize", handleResize);
       dispatch(showHeader());
+      dispatch(setOnlyShowLogo(false)); // ✅ Reset when leaving page
       dispatch(showFooter());
     };
   }, [dispatch]);
+
+  const handleClick = () => {
+    router.back();
+  };
 
   return (
     <section
@@ -48,6 +57,7 @@ const ViewPlans = () => {
           <div
             className="subs-page-arrow-icon cursor-pointer"
             style={{ width: "20px", height: "20px" }}
+            onClick={handleClick}
           ></div>
           <h1 className="subs-page-header-text">Choose a Plan</h1>
         </div>
