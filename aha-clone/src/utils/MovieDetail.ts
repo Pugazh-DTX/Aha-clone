@@ -1,5 +1,5 @@
 export const movieDetailBanner: any = {
-  Premium: "premium-banner.jpg",
+  premium: true,
   "U/A": true,
   "16+": true,
   hideText: "Madurai Paiyanum Chennai Ponnum",

@@ -12,7 +12,7 @@ interface DetailTabProps {
   tabs?: Tab[];
 }
 
-export const DetailTab: React.FC<DetailTabProps> = ({ tabs = [] }) => {
+export const MovieDetailTab: React.FC<DetailTabProps> = ({ tabs = [] }) => {
   const [selectedTab, setSelectedTab] = useState<string | undefined>(undefined);
 
   useEffect(() => {

@@ -85,6 +85,19 @@
   gap: 3px;
 }
 
+.del-hide-text {
+  width: 90%;
+  flex-direction: column;
+  max-width: 15em;
+  opacity: 0.4;
+  font-size: 2vw;
+  font-style: normal;
+  font-weight: 700;
+  line-height: 2vw;
+  letter-spacing: 0;
+  text-align: left;
+}
+
 .del-header-main {
   max-width: 27em;
   font-size: 2.5vw;

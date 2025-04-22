@@ -2,7 +2,7 @@ import { Button } from "@/components/atoms";
 import "./styles.scss";
 
 import Image from "next/image";
-export const MovieDetail = () => {
+export const MovieDetailBanner = ({ data }: { data: any }) => {
   return (
     <div
       className="movie-detail-main"
@@ -25,29 +25,23 @@ export const MovieDetail = () => {
       {/*left del-ali-main */}
       <div className="del-ali-main">
         <div className="box-ali-main">
-          <div className="box-one">
-            <div className="right-bg-img"></div>
-            Premium
-          </div>
-          <div className="box-bg-card">U/A</div>
-          <div className="box-bg-card">16+</div>
+          {data.premium && (
+            <div className="box-one">
+              <div className="right-bg-img"></div>
+              Premium
+            </div>
+          )}
+          {data["U/A"] && <div className="box-bg-card">U/A</div>}
+          {data["16+"] && <div className="box-bg-card">16+</div>}
         </div>
-        <h1 className="del-header-main">Madurai Paiyanum Chennai Ponnum</h1>
+        {data.hideText && <h2 className="del-hide-text">{data.hideText}</h2>}
+        <h1 className="del-header-main">{data.bannerTitle}</h1>
         <div>
-          <p className="del-del-text">2025 • 1 Season • Romance • Comedy</p>
-          <p className="del-del-text">Humorous • Adventurous • Romantic</p>
+          <p className="del-del-text">{data.bannerSupOne}</p>
+          <p className="del-del-text">{data.bannerSupTwo}</p>
         </div>
         <div className="del-detail-ali-main">
-          <p className="del-detail-p">
-            {" "}
-            Subash, a 27-year-old soulful Madurai native now thriving in
-            Chennai, balancing life as a bookstore employee, budding lyricist,
-            and IPS aspirant. His peaceful life takes an unexpected turn when
-            Mira, an ambitious 25-year-old with dreams of opening a terrace
-            cafe. This Clash of dreams evolves into a heartfelt journey. Subash
-            and Mira transform the terrace into a vibrant place of good food and
-            music.
-          </p>
+          <p className="del-detail-p">{data.bannerDes}</p>
           <div className="show-more-text"> Show More... </div>
         </div>
         <div className="two-btn-ali-main">
