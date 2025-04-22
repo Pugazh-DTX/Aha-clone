@@ -4,11 +4,13 @@ import { createSlice } from "@reduxjs/toolkit";
 interface LayoutState {
   showHeader: boolean;
   showFooter: boolean;
+  onlyShowLogo: boolean;
 }
 
 const initialState: LayoutState = {
   showHeader: true,
   showFooter: true,
+  onlyShowLogo: false,
 };
 
 const layoutSlice = createSlice({
@@ -33,6 +35,10 @@ const layoutSlice = createSlice({
     setFooterVisibility: (state, action) => {
       state.showFooter = action.payload;
     },
+    setOnlyShowLogo(state, action) {
+      // 3. add reducer function
+      state.onlyShowLogo = action.payload;
+    },
   },
 });
 
@@ -43,6 +49,7 @@ export const {
   hideFooter,
   setHeaderVisibility,
   setFooterVisibility,
+  setOnlyShowLogo,
 } = layoutSlice.actions;
 
 export default layoutSlice.reducer;

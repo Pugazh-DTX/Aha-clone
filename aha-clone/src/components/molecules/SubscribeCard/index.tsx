@@ -7,17 +7,14 @@ import tamilLetterBg from "../../../../public/Assets/icons/SubscribeCard/letter-
 import teluguLetterBg from "../../../../public/Assets/icons/SubscribeCard/letter-telugu-subs-card.svg";
 import { Button } from "@/components/atoms";
 import { ISubscriptionPlans } from "@/utils/ViewPlans/viewplans";
+import subscriptionCard from "../../../../public/Assets/images/SubscriptionPagePlatforms/subscription-card.png";
 
 const SubscribeCard = ({ plan }: { plan: ISubscriptionPlans }) => {
   return (
     <section className="subscribe-card-parent">
       <div className="subscribe-card">
         <div>
-          <Image
-            src={"https://www.aha.video/assets/images/utils/card.svg"}
-            alt={"card"}
-            fill
-          />
+          <Image src={subscriptionCard.src} alt={"card"} fill />
         </div>
         {!plan.isGoldPack && (
           <div className="subscribe-card-letter-bg">
