@@ -1,58 +1,58 @@
 'use client';
-
+ 
 import React, { useEffect, useState, useRef } from 'react';
 import './styles.scss';
-import { IHeroMovie } from '@/types/movie';
-
+import { Resource } from '@/types/ahaTypes';
+ 
 interface HeroBannerProps {
-  movies: IHeroMovie[];
+  resources: Resource[];
   onThumbnailClick: (index: number) => void;
   activeIndex: number;
 }
-
-const HeroBanner: React.FC<HeroBannerProps> = ({ movies, onThumbnailClick, activeIndex }) => {
+ 
+const HeroBanner: React.FC<HeroBannerProps> = ({ resources, onThumbnailClick, activeIndex }) => {
   const visibleSlides = 3;
   const [currentIndex, setCurrentIndex] = useState(activeIndex);
   const touchStartX = useRef(0);
   const touchEndX = useRef(0);
-
+ 
   const thumbnailWidth = 110;
   const transitionDuration = 600;
-
+ 
   useEffect(() => {
     const interval = setInterval(() => {
       handleNext();
     }, 5000);
     return () => clearInterval(interval);
-  }, [currentIndex, movies.length]);
-
+  }, [currentIndex, resources.length]);
+ 
   const handlePrev = () => {
-    setCurrentIndex((prev) => (prev - 1 + movies.length) % movies.length);
+    setCurrentIndex((prev) => (prev - 1 + resources.length) % resources.length);
   };
-
+ 
   const handleNext = () => {
-    setCurrentIndex((prev) => (prev + 1) % movies.length);
+    setCurrentIndex((prev) => (prev + 1) % resources.length);
   };
-
+ 
   const handleSwipe = () => {
     const delta = touchStartX.current - touchEndX.current;
     if (Math.abs(delta) > 50) {
       delta > 0 ? handleNext() : handlePrev();
     }
   };
-
+ 
   const getVisibleThumbnails = () => {
     const half = Math.floor(visibleSlides / 2);
     const visible = [];
     for (let i = -half; i <= half; i++) {
-      const index = (currentIndex + i + movies.length) % movies.length;
-      visible.push({ ...movies[index], originalIndex: index });
+      const index = (currentIndex + i + resources.length) % resources.length;
+      visible.push({ ...resources[index], originalIndex: index });
     }
     return visible;
   };
-
-  const activeMovie = movies[currentIndex];
-  
+ 
+  const activeMovie = resources[currentIndex];
+ 
   console.log('Active Movie:', activeMovie);
   console.log('Thumbnails:', getVisibleThumbnails());
   return (
@@ -71,16 +71,16 @@ const HeroBanner: React.FC<HeroBannerProps> = ({ movies, onThumbnailClick, activ
             <div className="details">
               <h1 className="title">{activeMovie.title?.en}</h1>
               <p className="meta">
-                {activeMovie.year} • {activeMovie.length} • {activeMovie.genre.map((g) => g.en.trim()).join(' • ')}
+                {activeMovie.year} • {activeMovie.length} • {activeMovie.genre.map((g) => g.en.trim())}
               </p>
               <p className="description">{activeMovie.description?.en}</p>
             </div>
-
+ 
             <div className="thumbnailCarousel desktopOnly">
               <div className="thumbnailArrows-left">
                 <button className="arrow-left" onClick={handlePrev}>❮</button>
               </div>
-
+ 
               <div className="carouselViewport">
                 <div
                   className="carouseltrack"
@@ -90,11 +90,11 @@ const HeroBanner: React.FC<HeroBannerProps> = ({ movies, onThumbnailClick, activ
                   }}
                 >
                   <img
-                    src={movies[(currentIndex - 1 + movies.length) % movies.length].thumbnail}
+                    src={resources[(currentIndex - 1 + resources.length) % resources.length].thumbnail}
                     alt="prev"
                     className="thumbnail"
                   />
-
+ 
                   {getVisibleThumbnails().map((movie) => (
                     <img
                       key={movie.originalIndex}
@@ -104,25 +104,25 @@ const HeroBanner: React.FC<HeroBannerProps> = ({ movies, onThumbnailClick, activ
                       onClick={() => onThumbnailClick(movie.originalIndex)}
                     />
                   ))}
-
+ 
                   <img
-                    src={movies[(currentIndex + 1) % movies.length].thumbnail}
+                    src={resources[(currentIndex + 1) % resources.length].thumbnail}
                     alt="next"
                     className="thumbnail"
                   />
                 </div>
               </div>
-
+ 
               <div className="thumbnailArrows-right">
                 <button className="arrow-right" onClick={handleNext}>❯</button>
               </div>
             </div>
           </div>
         </div>
-
+ 
         <div className="heroControls mobileOnly">
           <div className="dotsNavigation">
-            {movies.map((_, index) => (
+            {resources.map((_, index) => (
               <span
                 key={index}
                 className={`dot ${index === currentIndex ? 'active' : ''}`}
@@ -138,5 +138,5 @@ const HeroBanner: React.FC<HeroBannerProps> = ({ movies, onThumbnailClick, activ
     </div>
   );
 };
-
+ 
 export default HeroBanner;

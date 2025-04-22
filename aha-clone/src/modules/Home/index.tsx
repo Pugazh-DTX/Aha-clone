@@ -1,26 +1,42 @@
 'use client';
 
-import React, { useState } from 'react';
-import HeroBanner from '@/components/organisms/HeroBanner/HeroBanner';
-import { heroMovies } from './constants/banner';
+import React, { useEffect, useMemo} from 'react';
+import { useSelector, useDispatch } from "react-redux";
+import { AppDispatch, RootState } from "@/store/store";
+import { fetchLanding } from "@/store/slices/landingSlice";
+import { AhaAdapter } from "@/adapters/ahaAdapter";
+import Catlog from '@/components/templates/Catlog';
+import { Container, Tab } from "@/types/ahaTypes";
 
 const HomePage = () => {
-  const [currentMovieIndex, setCurrentMovieIndex] = useState(0);
-  const currentMovie = heroMovies[currentMovieIndex];
+ 
+  const dispatch = useDispatch<AppDispatch>();
 
-  // Handle thumbnail click to update the active movie
-  const handleThumbnailClick = (index: number) => {
-    setCurrentMovieIndex(index);
-  };
+  const { configData } = useSelector((state: RootState) => state.config);
+  const { landingData, loading, error } = useSelector((state: RootState) => state.landing);
+
+
+  useEffect(() => {
+    if (configData) {
+      dispatch(fetchLanding());
+    }
+  }, [configData]);
+
+  const adaptedContainer: Tab[] = useMemo(() => {
+    let tabs: Tab[] = [];
+    if (landingData?.data) {
+      tabs = AhaAdapter(landingData?.data);
+    }
+    return tabs;
+  }, [landingData?.data, configData]);
+
+  const currentTabContainers: Container[] =
+    adaptedContainer.length > 0 ? adaptedContainer[0].containers : [];
+
 
   return (
-    <div>
-      <HeroBanner
-        movies={heroMovies} // Pass the full movie list
-        thumbnails={heroMovies} // Pass the thumbnails array
-        onThumbnailClick={handleThumbnailClick} // Handler for thumbnail click
-        activeIndex={currentMovieIndex} // Active index to highlight the current movie
-      />
+    <div className='home-page-wrapper'>
+      <Catlog tabContainers={currentTabContainers} loading={loading} />
     </div>
   );
 };

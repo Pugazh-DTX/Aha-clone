@@ -3,11 +3,19 @@ export interface LocalizedText {
     ta: string;
     [key: string]: string;
   }
+
+  
+  
+  export interface LocalizedTextItem {
+    lang: string;
+    n: string;
+  }
   
   export interface ImageUrls {
     poster?: string;
     banner?: string;
     thumbnail?: string;
+    carouselthumbnail?: string;
     autoPreviewUrl?: string;
     autoPreview?: string;
     logo?: string;
@@ -31,6 +39,7 @@ export interface LocalizedText {
     releaseDate: any;
     bgImage: any;
     thumbnail: any;
+    carouselthumbnail: any;
     posterUrl: any;
     autoPreviewUrl: string;
     year: any;
@@ -78,11 +87,15 @@ export interface LocalizedText {
   }
   
   export interface Container {
+    bgImage: string;
+    name: string;
+    title: string;
+    carouseltitle?: string;
     id: string;
     layoutType: string;
     ratio: string;
     deviceType: string;
-    tag: string;
+    tag: any;
     font_style: string;
     scrollStyle: {
       autoPlay: boolean;

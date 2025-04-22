@@ -1,5 +1,3 @@
-"use client";
-
 import React, { useEffect, useRef, useState } from "react";
 import "./styles.scss";
 import Image from "next/image";
@@ -8,10 +6,17 @@ import { IMoviesSection } from "@/utils/Home/moviedata";
 import arrowLeft from "../../../../public/Assets/icons/Card/arrow-left.svg";
 import arrowRight from "../../../../public/Assets/icons/Card/arrow-right.svg";
 import HorizontalListHeader from "@/components/molecules/HorizontalListHeader";
-const SliderCarousel = ({ movies }: { movies: IMoviesSection }) => {
+import { Container } from "@/types/ahaTypes";
+
+interface SliderCarouselProps {
+  container: Container;
+}
+
+const SliderCarousel: React.FC<SliderCarouselProps> = ({ container }) => {
   const sliderRef = useRef<HTMLDivElement>(null);
   const [showPrev, setShowPrev] = useState(false);
   const [showNext, setShowNext] = useState(true);
+  const [data, setData] = useState(container.resources || []); // Use containerArr directly
 
   const checkScrollPosition = () => {
     const slider = sliderRef.current;
@@ -35,14 +40,13 @@ const SliderCarousel = ({ movies }: { movies: IMoviesSection }) => {
 
   useEffect(() => {
     const slider = sliderRef.current;
-    //Avoid unnecessary arrow on resize
     let resizeTimeout: NodeJS.Timeout;
 
     const handleResize = () => {
       clearTimeout(resizeTimeout);
       resizeTimeout = setTimeout(() => {
         checkScrollPosition();
-      }, 100); // Debounce delay
+      }, 100);
     };
 
     checkScrollPosition();
@@ -59,38 +63,43 @@ const SliderCarousel = ({ movies }: { movies: IMoviesSection }) => {
   return (
     <section>
       <HorizontalListHeader
-        sectionTitle={movies.heading}
-        containerLength={movies.moviesArr.length}
+        sectionTitle={container.title}
+        containerLength={data.length}
       />
       <div className="carousel-wrapper">
         {showPrev && (
           <div className="icon-position prev">
             <Image
-              sizes={"30"}
+              sizes="30"
               onClick={() => scroll("left")}
               className="cursor-pointer"
               src={arrowLeft}
-              alt={""}
+              alt="Previous"
             />
           </div>
         )}
         <div className="slider-container" ref={sliderRef}>
-          {movies.moviesArr.map((movie, id) => {
+          {data.map((resource, index) => {
+            const validKey =
+              typeof resource.id === "number" && !isNaN(resource.id)
+                ? resource.id
+                : `${resource.title?.en || "movie"}-${index}`;
+
             return (
-              <div key={id}>
+              <div key={validKey}>
                 <Card
                   isCastCard={false}
                   isContinueWatching={false}
-                  footerTitle={movie.movieTitle}
-                  imageSrc={movie.movieImg}
-                  isPremium={false}
-                  cardWidth={"160px"}
-                  aspectRatio={"2/3"}
+                  footerTitle={resource.title.en}
+                  imageSrc={resource.carouselthumbnail}
+                  isPremium={resource.tag}
+                  cardWidth="160px"
+                  aspectRatio="2/3"
                   isRoundedImage={false}
                   overlayPlayIcon={false}
-                  isAdultContent={true}
-                  totalTimeDuration={""}
-                  watchTimeDuration={""}
+                  isAdultContent={false}
+                  totalTimeDuration=""
+                  watchTimeDuration=""
                 />
               </div>
             );
@@ -99,11 +108,11 @@ const SliderCarousel = ({ movies }: { movies: IMoviesSection }) => {
         {showNext && (
           <div className="icon-position next">
             <Image
-              sizes={"30"}
+              sizes="30"
               onClick={() => scroll("right")}
               className="cursor-pointer"
               src={arrowRight}
-              alt={""}
+              alt="Next"
             />
           </div>
         )}

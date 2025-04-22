@@ -2,26 +2,26 @@ import { createSlice, createAsyncThunk } from '@reduxjs/toolkit';
 import { fetchLandingScreen } from '@/services/api/landing.api';
 import { ILandingData } from '@/types/landing.types';
 import { RootState } from '../store';
-
+ 
 interface LandingState {
   landingData: ILandingData | null;
   loading: boolean;
   error: string | null;
 }
-
+ 
 const initialState: LandingState = {
   landingData: null,
   loading: false,
   error: null,
 };
-
+ 
 // Define the asynchronous thunk action
 export const fetchLanding = createAsyncThunk<ILandingData, void, { rejectValue: string }>(
   'landing/fetch',
   async (_, thunkAPI) => {
-
+ 
     try {
-      const data = await fetchLandingScreen(); 
+      const data = await fetchLandingScreen();
       console.log('Landing Screen Data:', data); // Assuming it returns data in expected format
       return data;
     } catch (err: any) {
@@ -39,6 +39,8 @@ export const fetchLanding = createAsyncThunk<ILandingData, void, { rejectValue: 
   }
 );
 
+
+ 
 // Create the slice to manage landing state
 const landingSlice = createSlice({
   name: 'landing',
@@ -61,5 +63,5 @@ const landingSlice = createSlice({
       });
   },
 });
-
+ 
 export default landingSlice.reducer;
