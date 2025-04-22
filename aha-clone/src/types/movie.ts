@@ -4,9 +4,11 @@ export interface Lang {
 }
 
 export interface IHeroMovie {
+  id: string;
   title: { en: string };
   year: number;
   length: string;
+  type: string;
   genre: Lang[];
   description: { en: string };
   posterUrl: string;
