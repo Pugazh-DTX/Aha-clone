@@ -6,7 +6,7 @@ import { IMoviesSection } from "@/utils/Home/moviedata";
 import arrowLeft from "../../../../public/Assets/icons/Card/arrow-left.svg";
 import arrowRight from "../../../../public/Assets/icons/Card/arrow-right.svg";
 import HorizontalListHeader from "@/components/molecules/HorizontalListHeader";
-import { Container } from "@/types/ahaTypes";
+import { Container,Resource } from "@/types/ahaTypes";
 
 interface SliderCarouselProps {
   container: Container;
@@ -85,23 +85,26 @@ const SliderCarousel: React.FC<SliderCarouselProps> = ({ container }) => {
                 ? resource.id
                 : `${resource.title?.en || "movie"}-${index}`;
 
+                
             return (
+              
               <div key={validKey}>
                 <Card
                   isCastCard={false}
                   isContinueWatching={false}
                   footerTitle={resource.title.en}
                   imageSrc={resource.carouselthumbnail}
-                  isPremium={resource.tag}
+                  isPremium={resource.ispremium}
                   cardWidth="160px"
                   aspectRatio="2/3"
                   isRoundedImage={false}
                   overlayPlayIcon={false}
-                  isAdultContent={false}
+                  isAdultContent={resource.is_adult_content}
                   totalTimeDuration=""
                   watchTimeDuration=""
                 />
               </div>
+              
             );
           })}
         </div>

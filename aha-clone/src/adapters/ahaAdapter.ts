@@ -2,7 +2,7 @@ import { Tab, Container, Resource, AspectRatio } from "@/types/ahaTypes";
 import { getLocalizedText, getLocalizedArray } from "@/utils/localizationHelpers";
 import { constructImageUrl } from "@/utils/imageurl";
  
- 
+const ADULT_RATINGS = ['A', '18+', 'R'];
 const aspectRatios: AspectRatio = {
   _1x1: "1x1",
   _3x1: "3x1",
@@ -12,6 +12,7 @@ const aspectRatios: AspectRatio = {
   _16x18: "16x18",
  _9x16: "9x16",
 }
+
  
 // Helper function to format length from seconds to hours and minutes (e.g., 6751 seconds = "1h 52m")
 function formatLength(seconds: number): string {
@@ -33,7 +34,7 @@ export const AhaAdapter = (data: any = { t: [] }, lang:string = 'en'): Tab[] => 
     return [];  // Return empty array if 't' is not available or data is invalid
   }
 
-
+   
  
  
   return data.t.map((tab: any): Tab => ({
@@ -45,7 +46,7 @@ export const AhaAdapter = (data: any = { t: [] }, lang:string = 'en'): Tab[] => 
       layoutType: container.lo || 'regular',
       ratio: container.iar || '16:9',
       deviceType: container.diar,
-      tag: container.tag_overlay,
+      premiumlogo: container.tag_overlay,
       font_style: container.text_style,
       scrollStyle: {
         autoPlay: container.scroll_style?.autoplay === 'enable',
@@ -58,8 +59,16 @@ export const AhaAdapter = (data: any = { t: [] }, lang:string = 'en'): Tab[] => 
         id: resource.id,
         type: resource.cty === 'webseries' ? 'webseries' : 'movie',
         title: getLocalizedText(resource.lon),
-        
+        rating: resource.rat?.[0]?.v || '',
+        is_adult_content: ADULT_RATINGS.includes(resource.rat?.[0]?.v),
         description: getLocalizedText(resource.lod),
+        ispremium: resource.ent?.some((ent:any) => {
+          const now = new Date();
+          const start = new Date(ent.f_st_dt);
+          const end = new Date(ent.f_ed_dt);
+          const isFree = ent.sp?.includes("urn:package:free");
+          return start <= now && now <= end && !isFree;
+        }) || false,
         LocalDescription: getLocalizedText(resource.lold),
         LocalizedKeywords: getLocalizedText(resource.lok),
         LocalizedCast: getLocalizedText(resource.locs),
@@ -77,7 +86,6 @@ export const AhaAdapter = (data: any = { t: [] }, lang:string = 'en'): Tab[] => 
         metadata: {
           year: resource.r,
           releaseDate: resource.rdt || '',
-          rating: resource.rat?.[0]?.v || '',
           length: formatLength(resource.rt || 0), // Convert length from seconds to h:mm format
           genre: getLocalizedArray(resource.log), // Get localized genre array
           productionHouse: getLocalizedArray(resource.ph),
@@ -108,9 +116,8 @@ export const AhaAdapter = (data: any = { t: [] }, lang:string = 'en'): Tab[] => 
         year: resource.r,
         length: formatLength(resource.rt || 0), // Store the formatted length here as well
         genre: getLocalizedArray(resource.log), // Handle genre as an array
-        releaseDate: undefined,
- 
-       
+        releaseDate: resource.rdt || '',
+
       })),
     })),
     pagination: tab.pagination

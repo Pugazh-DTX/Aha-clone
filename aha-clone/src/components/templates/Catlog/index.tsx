@@ -23,6 +23,7 @@ const Catlog = ({tabContainers, loading}: CatlogProps) => {
       {!loading &&
         tabContainers.length > 0 &&
         tabContainers.map((container: Container, i: number) => {
+          if(container.resources?.length === 0) return <React.Fragment />; // Skip empty containers
           if (container.layoutType === "banner") {
             return (
               <HeroBanner
