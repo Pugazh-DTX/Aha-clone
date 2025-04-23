@@ -43,6 +43,8 @@ export interface LocalizedText {
     posterUrl: any;
     autoPreviewUrl: string;
     year: any;
+    is_adult_content: boolean;
+    ispremium: any;
     length: any;
     genre: any;
     LocalDescription: any;
@@ -58,7 +60,6 @@ export interface LocalizedText {
     metadata: {
       description: any;
       year: number;
-      rating: string;
       releaseDate: string;
       length: string;
       genre: any;
@@ -95,7 +96,7 @@ export interface LocalizedText {
     layoutType: string;
     ratio: string;
     deviceType: string;
-    tag: any;
+    premiumlogo: any;
     font_style: string;
     scrollStyle: {
       autoPlay: boolean;

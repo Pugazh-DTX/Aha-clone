@@ -71,7 +71,7 @@ const HeroBanner: React.FC<HeroBannerProps> = ({ resources, onThumbnailClick, ac
             <div className="details">
               <h1 className="title">{activeMovie.title?.en}</h1>
               <p className="meta">
-                {activeMovie.year} • {activeMovie.length} • {activeMovie.genre.map((g) => g.en.trim())}
+                {activeMovie.year} • {activeMovie.length} • {activeMovie.genre.map((g) => g.en.trim()).join(' • ')} 
               </p>
               <p className="description">{activeMovie.description?.en}</p>
             </div>
