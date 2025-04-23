@@ -2,6 +2,9 @@ export interface IMoviesSection {
   heading: string;
   moviesArr: IMovies[];
   isRoundedImage: boolean;
+  recentSearchList: string[];
+  isSearchNotFound: boolean;
+  isShowingResults: boolean;
 }
 export interface IMovies {
   id: number;
@@ -11,8 +14,9 @@ export interface IMovies {
   isPremium: boolean;
   isOverlayPlayIcon: boolean;
 }
-export const upcomingOnAha: IMoviesSection = {
-  heading: "Upcoming On aha",
+
+export const searchData: IMoviesSection = {
+  heading: "Trending Searches",
   moviesArr: [
     {
       id: 1,
@@ -41,6 +45,30 @@ export const upcomingOnAha: IMoviesSection = {
       isOverlayPlayIcon: true,
       overlayText: "",
     },
+    {
+      id: 4,
+      movieImg:
+        "https://image-resizer-cloud-api.akamaized.net/image/6AF3D408-1E62-41D2-9A19-06BB4B8F07EC/0-16x9.jpg?width=305&updatedTime=2025-03-26T05:16:25Z&dt=Web",
+      movieTitle: "Hometown Trailer",
+      isPremium: false,
+      isOverlayPlayIcon: true,
+      overlayText: "",
+    },
+    {
+      id: 5,
+      movieImg:
+        "https://image-resizer-cloud-api.akamaized.net/image/7080E032-7F41-4153-A840-3D897510BCA2/0-16x9.jpg?width=305&updatedTime=2025-03-07T13:54:15Z&dt=Web",
+      movieTitle: "3 Roses S2 Announcement Teaser",
+      isPremium: false,
+      isOverlayPlayIcon: true,
+      overlayText: "",
+    },
   ],
   isRoundedImage: false,
+  recentSearchList: ["Mass", "Arul", "Winner"],
+  isSearchNotFound: false,
+  isShowingResults: false,
 };
+
+//recentSearchList
+//"Mass", "Arul", "Winner"

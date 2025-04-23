@@ -78,7 +78,11 @@ const Card = ({
         isCastCard || isNoHoverAnimate ? "" : "hover-card"
       } ${getAspectClass()}`}
       style={{
-        width: isCastCard ? "fit-content" : isRoundedImage ? "130px" : "",
+        width: isCastCard
+          ? "fit-content"
+          : isRoundedImage
+          ? "130px"
+          : cardWidth,
       }}
     >
       <div

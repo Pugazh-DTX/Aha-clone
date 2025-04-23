@@ -1,3 +1,5 @@
+import { Tab } from "./ahaTypes";
+
 // For individual resource inside a container
 export interface IResource {
   id: string;
@@ -24,9 +26,13 @@ export interface ILandingContainer {
 
 // Represents the main landing data object
 export interface ILandingData {
-  data:any;
+  tabs:Tab[];  // Ensure it's an array of `Tab`
+  data: any[];  // Or whatever the appropriate type is for your data // Update accordingly
   containers?: any[];
   modules: ILandingModule[];
+  pageNumber: number;
+  totalPages: number;
+  
 }
 
 // Represents each module (keep this or enhance if you get more info)
