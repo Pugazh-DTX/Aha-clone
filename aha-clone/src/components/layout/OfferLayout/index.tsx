@@ -18,7 +18,7 @@ const OfferLayout = ({ children }: OfferLayoutProps) => {
   return (
     <div>
       <div className="offer-header-layout">
-        <div className="offer-logo" onClick={handleClick}>
+        <div className="offer-logo cursor-pointer" onClick={handleClick}>
           <Image
             src={logo}
             alt="Aha Logo"

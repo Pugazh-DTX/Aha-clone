@@ -1,4 +1,4 @@
-import React, { useEffect, useRef, useState } from "react";
+import React, { useEffect, useLayoutEffect, useRef, useState } from "react";
 import "./styles.scss";
 import Image from "next/image";
 import Card from "@/components/molecules/Card";
@@ -38,9 +38,9 @@ const SliderCarousel: React.FC<SliderCarouselProps> = ({ container }) => {
     }
   };
 
-  useEffect(() => {
+  useLayoutEffect(() => {
     const slider = sliderRef.current;
-    let resizeTimeout: NodeJS.Timeout;
+    let resizeTimeout: ReturnType<typeof setTimeout>;
 
     const handleResize = () => {
       clearTimeout(resizeTimeout);
@@ -49,17 +49,25 @@ const SliderCarousel: React.FC<SliderCarouselProps> = ({ container }) => {
       }, 100);
     };
 
-    checkScrollPosition();
+    checkScrollPosition(); // Run immediately after DOM layout but before paint
     slider?.addEventListener("scroll", checkScrollPosition);
-    window.addEventListener("resize", handleResize);
+
+    // Using ResizeObserver to track size changes of the slider
+    let resizeObserver: ResizeObserver | null = null;
+
+    if (slider) {
+      resizeObserver = new ResizeObserver(() => {
+        handleResize();
+      });
+      resizeObserver.observe(slider);
+    }
 
     return () => {
       slider?.removeEventListener("scroll", checkScrollPosition);
-      window.removeEventListener("resize", handleResize);
+      resizeObserver?.disconnect();
       clearTimeout(resizeTimeout);
     };
   }, []);
-
   return (
     <section>
       <HorizontalListHeader
