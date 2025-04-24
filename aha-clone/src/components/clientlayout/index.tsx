@@ -3,8 +3,8 @@
 
 import { Provider, useSelector } from "react-redux";
 import { RootState, store } from "@/store/store";
-import Header from "@/components/layout/header/header";
-import { Footer } from "@/components/layout/footer/footer";
+import Header from "@/components/layout/Header";
+import { Footer } from "@/components/layout/Footer";
 export default function ClientLayoutWrapper({
   children,
 }: {
