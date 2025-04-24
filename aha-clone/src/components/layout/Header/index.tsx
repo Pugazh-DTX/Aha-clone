@@ -1,6 +1,6 @@
 "use client";
 
-import styles from "./Header.module.scss";
+import styles from "./styles.module.scss";
 import Link from "next/link";
 import { usePathname, useRouter } from "next/navigation";
 import { useEffect, useRef, useState } from "react";
@@ -10,7 +10,7 @@ import logo from "../../../../public/Assets/icons/Logo.svg";
 import search from "../../../../public/Assets/icons/Header/search-icon.svg";
 import avatar from "../../../../public/Assets/icons/Header/avator-icon.svg";
 import { Button } from "../../atoms/button";
-import BottomNav from "./BottomNav.tsx";
+import BottomNav from "./BottomNav";
 import { useSelector } from "react-redux";
 import { RootState } from "@/store/store";
 const Header = () => {

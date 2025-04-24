@@ -1,10 +1,10 @@
 import type { Metadata } from "next";
 import "./globals.css";
-import { Footer } from "@/components/layout/footer/footer";
-import Header from "@/components/layout/header/header";
+import { Footer } from "@/components/layout/Footer";
+import Header from "@/components/layout/Header";
 import AppProvider from "@/components/providers/AppProvider";
 
-import ClientLayout from "@/components/clientlayout/ClientLayout";
+import ClientLayout from "@/components/clientlayout";
 export const metadata: Metadata = {
   title: "Watch Movies, Web Series, TV Shows, Live TV Channels - aha",
   description: "Watch Movies, Web Series, TV Shows, Live TV Channels - aha",
