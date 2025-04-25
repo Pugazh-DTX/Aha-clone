@@ -1,7 +1,7 @@
-import { createSlice, createAsyncThunk, PayloadAction } from '@reduxjs/toolkit';
-import { fetchLandingScreen } from '@/services/api/landing.api';
-import { ILandingData } from '@/types/landing.types';
-import { RootState } from '../store';
+import { createSlice, createAsyncThunk, PayloadAction } from "@reduxjs/toolkit";
+import { fetchLandingScreen } from "@/services/api/landing.api";
+import { ILandingData } from "@/types/landing.types";
+import { RootState } from "../store";
 
 interface LandingState {
   landingData: ILandingData | null;
@@ -10,7 +10,7 @@ interface LandingState {
   pageNumber: number;
   pageSize: number;
   pageChanged: boolean;
-  hasMore: boolean;  // Track if there is more data
+  hasMore: boolean; // Track if there is more data
 }
 
 const initialState: LandingState = {
@@ -18,14 +18,18 @@ const initialState: LandingState = {
   loading: false,
   error: null,
   pageNumber: 1,
-  hasMore: true,  // Initial assumption is there is more data
+  hasMore: true, // Initial assumption is there is more data
   pageSize: 5,
   pageChanged: false,
 };
 
 // Define the asynchronous thunk action
-export const fetchLanding = createAsyncThunk<ILandingData, void, { rejectValue: string }>(
-  'landing/fetch',
+export const fetchLanding = createAsyncThunk<
+  ILandingData,
+  void,
+  { rejectValue: string }
+>(
+  "landing/fetch",
   async (_, thunkAPI) => {
     const { getState } = thunkAPI;
     const { landing } = getState() as RootState;
@@ -33,12 +37,12 @@ export const fetchLanding = createAsyncThunk<ILandingData, void, { rejectValue: 
     try {
       const { pageNumber, pageSize } = landing;
       const data = await fetchLandingScreen(pageNumber, pageSize);
-      
+
       // Return the fetched data
       return data;
     } catch (err: any) {
-      console.error('Error fetching landing screen:');
-      return thunkAPI.rejectWithValue(err.message || 'Unknown error occurred');
+      console.error("Error fetching landing screen:");
+      return thunkAPI.rejectWithValue(err.message || "Unknown error occurred");
     }
   },
   {
@@ -83,7 +87,10 @@ const landingSlice = createSlice({
         state.pageChanged = false;
 
         // Safely check if action.payload.data exists and is not null/undefined
-        const newHasMore = action.payload.data && action.payload.data.length < state.pageSize ? false : true;
+        const newHasMore =
+          action.payload.data && action.payload.data.length < state.pageSize
+            ? false
+            : true;
 
         state.landingData = action.payload;
         state.hasMore = newHasMore; // Update hasMore based on the new data
@@ -96,6 +103,6 @@ const landingSlice = createSlice({
   },
 });
 
-export const { setPageNumber, appendLandingData, setHasMore } = landingSlice.actions;
+export const { setPageNumber, appendLandingData, setHasMore } =
+  landingSlice.actions;
 export default landingSlice.reducer;
-

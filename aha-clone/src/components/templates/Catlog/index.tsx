@@ -1,20 +1,17 @@
 "use client";
 
 import React, { useState } from "react";
-import HeroBanner from "@/components/organisms/HeroBanner";
+import HeroBanner from "../../../components/organisms/HeroBanner";
 import SliderCarousel from "@/components/organisms/SliderCarousel";
-import { Container} from "@/types/ahaTypes";
-
+import { Container } from "@/types/ahaTypes";
 
 interface CatlogProps {
-    tabContainers: Container[];
-    loading: boolean;
+  tabContainers: Container[];
+  loading: boolean;
 }
 
-const Catlog = ({tabContainers, loading}: CatlogProps) => {
- 
- const [activeIndex, setActiveIndex] = useState<number>(0);
-
+const Catlog = ({ tabContainers, loading }: CatlogProps) => {
+  const [activeIndex, setActiveIndex] = useState<number>(0);
 
   return (
     <div className="catlog-container">
@@ -23,7 +20,7 @@ const Catlog = ({tabContainers, loading}: CatlogProps) => {
       {!loading &&
         tabContainers.length > 0 &&
         tabContainers.map((container: Container, i: number) => {
-          if(container.resources?.length === 0) return <React.Fragment />; // Skip empty containers
+          if (container.resources?.length === 0) return <React.Fragment />; // Skip empty containers
           if (container.layoutType === "banner") {
             return (
               <HeroBanner
@@ -34,13 +31,8 @@ const Catlog = ({tabContainers, loading}: CatlogProps) => {
               />
             );
           }
-        
-          return (
-            <SliderCarousel
-              key={container.id}
-              container={container}
-            />         
-           );
+
+          return <SliderCarousel key={container.id} container={container} />;
         })}
     </div>
   );

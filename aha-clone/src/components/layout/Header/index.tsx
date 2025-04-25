@@ -199,13 +199,16 @@ const Header = () => {
 
           {/* Right side */}
           {!onlyShowLogo && (
-            <div>
-              <div className={styles.headerRightContainer}>
-                <Image
-                  src={headerIcons.search}
-                  alt={"Search icon"}
-                  className={styles.searchIcon}
-                />
+            <div className={styles.headerRightContainer}>
+              <div className={styles.searchWrapper}>
+                {!visible && (
+                  <Image
+                    src={headerIcons.search}
+                    alt={"Search icon"}
+                    className={`${styles.searchIcon} cursor-pointer `}
+                    onClick={handleIconClick}
+                  />
+                )}
 
                 {visible && pathname === "/search" && (
                   <div

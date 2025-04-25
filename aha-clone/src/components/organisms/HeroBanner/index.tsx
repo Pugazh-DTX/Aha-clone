@@ -59,7 +59,7 @@ const HeroBanner: React.FC<HeroBannerProps> = ({
 
   console.log("Active Movie:", activeMovie);
   console.log("Thumbnails:", getVisibleThumbnails());
-  
+
   return (
     <div className="heroContainer">
       <div
@@ -77,7 +77,7 @@ const HeroBanner: React.FC<HeroBannerProps> = ({
               <h1 className="title">{activeMovie.title}</h1>
               <p className="meta">
                 {activeMovie.year} • {activeMovie.length} •{" "}
-                {activeMovie.genre.map((g) => g.trim()).join(" • ")}
+                {activeMovie.genre.map((g: any) => g.trim()).join(" • ")}
               </p>
               <p className="description">{activeMovie.description}</p>
             </div>
