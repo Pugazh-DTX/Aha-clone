@@ -4,6 +4,10 @@ import "./styles.scss";
 import { searchData } from "../../utils/Search/search";
 import Card from "@/components/molecules/Card";
 import { useDispatch } from "react-redux";
+import { useSearchParams } from "next/navigation";
+
+import { fetchSearchScreen } from "../../services/api/search.api"; // update path as needed
+
 import {
   hideFooter,
   hideHeader,
@@ -12,6 +16,8 @@ import {
 } from "@/store/slices/layoutSlice";
 const SearchPage = () => {
   const dispatch = useDispatch();
+  const searchParams = useSearchParams();
+  const query = searchParams.get("q");
 
   useEffect(() => {
     const handleResize = () => {
@@ -33,6 +39,18 @@ const SearchPage = () => {
       dispatch(showFooter());
     };
   }, [dispatch]);
+
+  useEffect(() => {
+    const loadData = async () => {
+      try {
+        const data = await fetchSearchScreen(1, 20);
+        console.log(data, "--");
+      } catch (error) {
+        console.error("Failed to fetch content:", error);
+      }
+    };
+    loadData();
+  }, []);
 
   return (
     <section>
@@ -66,11 +84,12 @@ const SearchPage = () => {
             </p>
           </div>
         )}
+        {/* Showing Results */}
         {searchData.isShowingResults && (
           <div>
             <p className="search-page-heading-text search-page-showing-result-text">
               Showing Results for{" "}
-              <span className="search-page-heading-text">Kavacham</span>
+              <span className="search-page-heading-text">{query}</span>
             </p>
           </div>
         )}

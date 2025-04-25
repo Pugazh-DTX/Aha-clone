@@ -6,17 +6,17 @@ import { IMoviesSection } from "@/utils/Home/moviedata";
 import arrowLeft from "../../../../public/Assets/icons/Card/arrow-left.svg";
 import arrowRight from "../../../../public/Assets/icons/Card/arrow-right.svg";
 import HorizontalListHeader from "@/components/molecules/HorizontalListHeader";
-import { Container,Resource } from "@/types/ahaTypes";
+import { Container, Resource } from "@/types/ahaTypes";
 
 interface SliderCarouselProps {
   container: Container;
 }
 
 const SliderCarousel: React.FC<SliderCarouselProps> = ({ container }) => {
+  const resources = container.resources;
   const sliderRef = useRef<HTMLDivElement>(null);
   const [showPrev, setShowPrev] = useState(false);
   const [showNext, setShowNext] = useState(true);
-  const [data, setData] = useState(container.resources || []); // Use containerArr directly
 
   const checkScrollPosition = () => {
     const slider = sliderRef.current;
@@ -72,7 +72,7 @@ const SliderCarousel: React.FC<SliderCarouselProps> = ({ container }) => {
     <section>
       <HorizontalListHeader
         sectionTitle={container.title}
-        containerLength={data.length}
+        containerLength={resources.length}
       />
       <div className="carousel-wrapper">
         {showPrev && (
@@ -87,20 +87,18 @@ const SliderCarousel: React.FC<SliderCarouselProps> = ({ container }) => {
           </div>
         )}
         <div className="slider-container" ref={sliderRef}>
-          {data.map((resource, index) => {
+          {resources.map((resource, index) => {
             const validKey =
               typeof resource.id === "number" && !isNaN(resource.id)
                 ? resource.id
                 : `${resource.title?.en || "movie"}-${index}`;
 
-                
             return (
-              
               <div key={validKey}>
                 <Card
                   isCastCard={false}
                   isContinueWatching={false}
-                  footerTitle={resource.title.en}
+                  footerTitle={resource.title}
                   imageSrc={resource.carouselthumbnail}
                   isPremium={resource.ispremium}
                   cardWidth="160px"
@@ -112,7 +110,6 @@ const SliderCarousel: React.FC<SliderCarouselProps> = ({ container }) => {
                   watchTimeDuration=""
                 />
               </div>
-              
             );
           })}
         </div>
