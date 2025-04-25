@@ -2,7 +2,7 @@
 
 import styles from "./styles.module.scss";
 import Link from "next/link";
-import { usePathname, useRouter } from "next/navigation";
+import { usePathname, useRouter, useSearchParams } from "next/navigation";
 import { useEffect, useRef, useState } from "react";
 import Image from "next/image";
 import { navLinks } from "@/utils/Header";
@@ -21,8 +21,31 @@ const Header = () => {
   const [hasOverflow, setHasOverflow] = useState(false);
   const [showInput, setShowInput] = useState(false);
   const [visible, setVisible] = useState(false);
+  const [value, setValue] = useState("");
 
   const router = useRouter();
+  // Search Logic---
+  const searchParams = useSearchParams();
+
+  useEffect(() => {
+    const currentValue = searchParams.get("q") || "";
+    setValue(currentValue);
+  }, [searchParams]);
+
+  useEffect(() => {
+    const timeout = setTimeout(() => {
+      const params = new URLSearchParams(searchParams.toString());
+
+      if (value) {
+        params.set("q", value);
+      } else {
+        params.delete("q");
+      }
+      router.push(`?${params.toString()}`);
+    }, 500);
+    return () => clearTimeout(timeout);
+  }, [value]);
+  //---
 
   useEffect(() => {
     const el = containerRef.current;
@@ -187,6 +210,10 @@ const Header = () => {
                       type="text"
                       placeholder="Search Title, Movie or Cast"
                       className={`${styles.searchInput} `}
+                      value={value}
+                      onChange={(e) => {
+                        setValue(e.target.value);
+                      }}
                     />
                   </div>
                 )}

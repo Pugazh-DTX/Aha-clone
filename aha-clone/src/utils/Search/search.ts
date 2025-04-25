@@ -67,7 +67,7 @@ export const searchData: IMoviesSection = {
   isRoundedImage: false,
   recentSearchList: ["Mass", "Arul", "Winner"],
   isSearchNotFound: false,
-  isShowingResults: false,
+  isShowingResults: true,
 };
 
 //recentSearchList

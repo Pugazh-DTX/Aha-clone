@@ -15,6 +15,5 @@ export const fetchConfigAPI = async (): Promise<ConfigDataType> => {
       "sec-ch-ua-mobile": "?1",
     },
   });
-
   return response.data;
 };
