@@ -59,6 +59,7 @@ const HeroBanner: React.FC<HeroBannerProps> = ({
 
   console.log("Active Movie:", activeMovie);
   console.log("Thumbnails:", getVisibleThumbnails());
+  
   return (
     <div className="heroContainer">
       <div
