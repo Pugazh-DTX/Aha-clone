@@ -23,15 +23,22 @@ export interface ILandingContainer {
   // Add other fields if needed
 }
 
+export interface IPagination {
+  start: number;
+  count: number;
+  total: number;  // or whatever field your API returns that gives the total number of records
+}
+
 
 // Represents the main landing data object
 export interface ILandingData {
-  tabs:Tab[];  // Ensure it's an array of `Tab`
-  data: any[];  // Or whatever the appropriate type is for your data // Update accordingly
+  tabs:[];  // Ensure it's an array of `Tab`
+  data:[];  // Or whatever the appropriate type is for your data // Update accordingly
   containers?: any[];
   modules: ILandingModule[];
   pageNumber: number;
   totalPages: number;
+  pagination: IPagination;
   
 }
 

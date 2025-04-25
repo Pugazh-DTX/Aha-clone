@@ -39,8 +39,8 @@ const Catlog = ({tabContainers, loading}: CatlogProps) => {
             <SliderCarousel
               key={container.id}
               container={container}
-            />
-          );
+            />         
+           );
         })}
     </div>
   );
