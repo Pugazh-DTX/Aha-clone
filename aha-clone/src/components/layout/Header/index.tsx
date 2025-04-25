@@ -45,7 +45,6 @@ const Header = () => {
     }, 500);
     return () => clearTimeout(timeout);
   }, [value]);
-  //---
 
   useEffect(() => {
     const el = containerRef.current;
