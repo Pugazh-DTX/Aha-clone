@@ -1,0 +1,41 @@
+.search-page-container {
+  padding: 104px 3vw;
+  align-content: center;
+}
+
+.search-cards-container {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px 6px;
+}
+.search-page-heading-text {
+  font-size: 32px;
+  line-height: 32px;
+  font-weight: 700;
+  margin: 25px 0;
+  @media (max-width: 900px) {
+    margin: 0 0 24px;
+    font-size: calc(0.7em + 2vw);
+  }
+}
+.search-page-heading-text.search-page-showing-result-text {
+  font-weight: 400;
+}
+.search-page-recent-search-list {
+  margin: 0 0 50px;
+  padding: 0;
+  list-style: none;
+}
+.search-page-recent-search-list-child {
+  color: #fa672b;
+  text-decoration: none;
+  font-size: 16px;
+  margin: 16px 0;
+  display: flex;
+}
+.search-not-found-container {
+  margin: 0 0 24px;
+}
+.search-page-did-mean-movie {
+  color: #fa672b;
+}

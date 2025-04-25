@@ -1,6 +1,6 @@
 "use client";
 
-import styles from "./Header.module.scss";
+import styles from "./styles.module.scss";
 import Link from "next/link";
 import { usePathname, useRouter } from "next/navigation";
 import { useEffect, useRef, useState } from "react";
@@ -10,7 +10,7 @@ import logo from "../../../../public/Assets/icons/Logo.svg";
 import search from "../../../../public/Assets/icons/Header/search-icon.svg";
 import avatar from "../../../../public/Assets/icons/Header/avator-icon.svg";
 import { Button } from "../../atoms/button";
-import BottomNav from "./BottomNav.tsx";
+import BottomNav from "./BottomNav";
 import { useSelector } from "react-redux";
 import { RootState } from "@/store/store";
 const Header = () => {
@@ -19,11 +19,10 @@ const Header = () => {
   const pathname = usePathname();
   const containerRef = useRef<HTMLDivElement>(null);
   const [hasOverflow, setHasOverflow] = useState(false);
-  const [currentPath, setCurrentPath] = useState("");
+  const [showInput, setShowInput] = useState(false);
+  const [visible, setVisible] = useState(false);
+
   const router = useRouter();
-  useEffect(() => {
-    setCurrentPath(window.location.pathname);
-  }, []);
 
   useEffect(() => {
     const el = containerRef.current;
@@ -64,6 +63,19 @@ const Header = () => {
     setMounted(true);
   }, []);
   if (!mounted) return null;
+
+  //search------------------------------
+
+  const handleIconClick = () => {
+    if (!visible) {
+      setVisible(true); // add to DOM
+      setTimeout(() => setShowInput(true), 10); // trigger animation
+    } else {
+      setShowInput(false); // start exit animation
+      setTimeout(() => setVisible(false), 400); // remove from DOM after animation
+    }
+    router.push("/search");
+  };
   return (
     <>
       <header
@@ -88,7 +100,7 @@ const Header = () => {
                 {" "}
                 <nav className={`${styles.nav} ${menuOpen ? styles.open : ""}`}>
                   {navLinks.map((link) => {
-                    const isActive = currentPath === link.path;
+                    const isActive = pathname === link.path;
                     return (
                       <Link
                         key={link.name}
@@ -150,12 +162,35 @@ const Header = () => {
           {/* Right side */}
           {!onlyShowLogo && (
             <div className={styles.headerRightContainer}>
-              <Image
-                src={search}
-                alt={"Search icon"}
-                className={styles.searchIcon}
-              />
+              <div className={styles.searchWrapper}>
+                {!visible && (
+                  <Image
+                    src={search}
+                    alt={"Search icon"}
+                    className={`${styles.searchIcon} cursor-pointer `}
+                    onClick={handleIconClick}
+                  />
+                )}
 
+                {visible && pathname === "/search" && (
+                  <div
+                    className={`${styles.searchBarContainer} ${
+                      styles.visible
+                    } ${showInput ? styles.show : ""}`}
+                  >
+                    <Image
+                      src={search}
+                      alt={"search"}
+                      className={styles.inputSearchIcon}
+                    />
+                    <input
+                      type="text"
+                      placeholder="Search Title, Movie or Cast"
+                      className={`${styles.searchInput} `}
+                    />
+                  </div>
+                )}
+              </div>
               <select className={styles.languageSelect}>
                 <option value="telugu">Telugu</option>
                 <option value="tamil">Tamil</option>
