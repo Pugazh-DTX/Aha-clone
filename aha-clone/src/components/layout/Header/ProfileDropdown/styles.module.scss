@@ -1,0 +1,155 @@
+.signIn {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 14px;
+  line-height: 22px;
+  white-space: nowrap;
+}
+
+.avatar {
+  width: 33px;
+  height: 33px;
+  border-radius: 50%;
+  overflow: hidden;
+  cursor: pointer;
+  background-color: #363940;
+  display: flex;
+  justify-content: center;
+  align-items: flex-end;
+}
+
+  .dropdown {
+    display: block;
+    width: fit-content;
+    position: absolute;
+    right: 10px;
+    padding-top: 16px;
+  }
+  
+  .dropdowncontent {
+    background: #1a1d1e;
+    border: 1px solid #35393f;
+    box-shadow: 0 4px 4px #00000040;
+    border-radius: 7px;
+    box-sizing: border-box;
+    padding: 22px 16px;
+    width: 217px;
+    height: auto;
+    overflow: hidden;
+  }
+  
+  .profiles {
+    display: flex;
+    flex-flow: row wrap;
+    gap: 10px;
+    justify-content: space-between;
+    text-decoration: none;
+  }
+  
+  .profile1 {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
+    width: 35px;
+    gap: 8px;
+    text-decoration: none;
+  }
+  
+  .profile1 p {
+    text-decoration: none;
+  }
+  
+  .activeProfile {
+    border: 2px solid white;
+    border-radius: 8px;
+  }
+  
+  .profiles p {
+    width: 100%;
+    text-overflow: ellipsis;
+    font-size: 10px;
+    line-height: 12px;
+    white-space: nowrap;
+    font-style: normal;
+    text-align: center;
+    font-weight: 600;
+    overflow: hidden;
+  }
+  
+  .addbtn {
+    background: none;
+    border: none;
+    cursor: pointer;
+    width: 100%;
+    text-overflow: ellipsis;
+    font-size: 10px;
+    line-height: 12px;
+    white-space: nowrap;
+    font-style: normal;
+    text-align: center;
+    font-weight: 600;
+    overflow: hidden;
+  }
+  .menubtn {
+    text-decoration: none;
+    color: #fff;
+    transition: all 0.25s;
+    -webkit-user-select: none;
+    user-select: none;
+    font-size: 12px;
+    line-height: 12px;
+    background: none;
+    border: none;
+    cursor: pointer;
+  }
+  
+
+  .addicon {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background: #1a1d1e;
+    border: 1px solid #35393f;
+    box-shadow: 0 4px 4px #00000040;
+    border-radius: 8px;
+    width: 32px;
+    height: 32px;
+  }
+  
+  .profile2 {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
+    width: 35px;
+    gap: 8px;
+  }
+  
+  .activeImage {
+    border: 1px solid white;
+    border-radius: 50%; // make it a circle
+    box-sizing: content-box;
+  }
+  
+  .menu {
+    display: flex;
+    flex-direction: column;
+    position: relative;
+  }
+  
+  .ngstarinserted {
+    display: flex;
+    align-items: center;
+    padding: 5px 0;
+    gap: 12px;
+  }
+
+
+  @media screen and (max-width: 900px){
+    .menu1{
+      display: none;
+    }
+  }
+  
