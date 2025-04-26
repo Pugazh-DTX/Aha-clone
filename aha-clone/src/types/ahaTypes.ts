@@ -91,6 +91,9 @@ export interface Container {
   deviceType: string;
   premiumlogo: any;
   font_style: string;
+   actions?: {
+    clickAction: string;
+  };
   scrollStyle: {
     autoPlay: boolean;
     direction: "lefttoright" | "righttoleft";

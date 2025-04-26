@@ -12,7 +12,7 @@ export const fetchLandingScreen = async (
     ivg: false,
     sfInfo: true,
     itvod: true,
-    acl: "te",
+    acl: "ta",
     reg: "in",
     dt: "mobileweb",
     cPageNumber: pageNumber,
