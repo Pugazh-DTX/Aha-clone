@@ -84,7 +84,10 @@ const Header = ({}) => {
   }, [visible, router]);
 
   // Show only logo in header (from Redux store)
-  const onlyShowLogo = useSelector((state: RootState) => state.layout.onlyShowLogo);
+
+  const onlyShowLogo = useSelector(
+    (state: RootState) => state.layout.onlyShowLogo
+  );
 
   const [mounted, setMounted] = useState(false);
   useEffect(() => {
@@ -121,7 +124,9 @@ const Header = ({}) => {
                       <Link
                         key={link.name}
                         href={link.path}
-                        className={`${styles.navItem} ${isActive ? styles.activeNav : ""}`}
+                        className={`${styles.navItem} ${
+                          isActive ? styles.activeNav : ""
+                        }`}
                       >
                         {link.name}
                       </Link>
@@ -131,7 +136,9 @@ const Header = ({}) => {
 
                 {/* Mobile Nav */}
                 <nav
-                  className={`${styles.mobileNav} ${menuOpen ? styles.open : ""}`}
+                  className={`${styles.mobileNav} ${
+                    menuOpen ? styles.open : ""
+                  }`}
                   ref={containerRef}
                   style={{
                     overflowX: "auto",
@@ -145,7 +152,9 @@ const Header = ({}) => {
                       <Link
                         key={link.name}
                         href={link.path}
-                        className={`${styles.navItem} ${isActive ? styles.activeNav : ""}`}
+                        className={`${styles.navItem} ${
+                          isActive ? styles.activeNav : ""
+                        }`}
                       >
                         {isActive && (
                           <div
@@ -171,18 +180,28 @@ const Header = ({}) => {
           {!onlyShowLogo && (
             <div className={styles.headerRightContainer}>
               <div className={styles.searchWrapper}>
-                {!visible && (
+                {!(pathname === "/search") && (
                   <Image
                     src={headerIcons.search}
                     alt={"Search icon"}
                     className={`${styles.searchIcon} cursor-pointer`}
                     onClick={handleIconClick}
+                    style={{
+                      display: `${pathname === "/search" ? "none" : "flex"}`,
+                    }}
                   />
                 )}
 
-                {visible && pathname === "/search" && (
+                {pathname === "/search" && (
                   <div
-                    className={`${styles.searchBarContainer} ${styles.visible} ${showInput ? styles.show : ""}`}
+                    className={`${styles.searchBarContainer} ${
+                      styles.visible
+                    } ${showInput ? styles.show : ""}`}
+                    style={{
+                      display: `${pathname === "/search" ? "flex" : "none"}`,
+                      opacity: `${pathname === "/search" ? "1" : "0"}`,
+                      marginRight: "5px",
+                    }}
                   >
                     <Image
                       src={headerIcons?.search}

@@ -10,9 +10,9 @@ import {
 } from "../../store/slices/searchSlice";
 import { useAppDispatch } from "@/store/hooks";
 import { ResourceAdapter } from "@/adapters/ahaAdapter";
-import SearchCatalog from "@/components/templates/SearchCatalog";
+import SearchCat from "@/components/templates/searchcat";
 
-const SearchPage = () => {
+const SearchScreen = () => {
   const [rArr, setRArr] = useState<string[]>([]);
 
   const dispatch = useAppDispatch();
@@ -55,7 +55,7 @@ const SearchPage = () => {
 
   return (
     <div>
-      <SearchCatalog
+      <SearchCat
         resource={adapterValue}
         source={source}
         query={query}
@@ -65,4 +65,4 @@ const SearchPage = () => {
   );
 };
 
-export default SearchPage;
+export default SearchScreen;

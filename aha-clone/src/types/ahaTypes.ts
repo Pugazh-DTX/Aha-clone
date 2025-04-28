@@ -17,6 +17,7 @@ export interface ImageUrls {
   autoPreviewUrl?: string;
   autoPreview?: string;
   logo?: string;
+  searchImg: string;
 }
 
 export interface AspectRatio {
