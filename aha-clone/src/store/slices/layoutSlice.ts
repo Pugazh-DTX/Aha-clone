@@ -1,16 +1,18 @@
 // src/store/slices/layoutSlice.ts
-import { createSlice } from "@reduxjs/toolkit";
+import { createSlice, PayloadAction } from "@reduxjs/toolkit";
 
 interface LayoutState {
   showHeader: boolean;
   showFooter: boolean;
   onlyShowLogo: boolean;
+  showOnlySearchBar: boolean;
 }
 
 const initialState: LayoutState = {
   showHeader: true,
   showFooter: true,
   onlyShowLogo: false,
+  showOnlySearchBar: false,
 };
 
 const layoutSlice = createSlice({
@@ -35,9 +37,12 @@ const layoutSlice = createSlice({
     setFooterVisibility: (state, action) => {
       state.showFooter = action.payload;
     },
-    setOnlyShowLogo(state, action) {
-      // 3. add reducer function
+
+    setOnlyShowLogo: (state, action: PayloadAction<boolean>) => {
       state.onlyShowLogo = action.payload;
+    },
+    setShowOnlySearchBar: (state, action: PayloadAction<boolean>) => {
+      state.showOnlySearchBar = action.payload;
     },
   },
 });
@@ -50,6 +55,7 @@ export const {
   setHeaderVisibility,
   setFooterVisibility,
   setOnlyShowLogo,
+  setShowOnlySearchBar,
 } = layoutSlice.actions;
 
 export default layoutSlice.reducer;

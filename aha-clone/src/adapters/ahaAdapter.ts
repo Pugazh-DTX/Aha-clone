@@ -70,6 +70,12 @@ export const ResourceAdapter = (
         1280,
         resource.updatedTime || ""
       ), // Banner URL
+      searchImg: constructImageUrl(
+        resource.id,
+        aspectRatios._16x9,
+        300,
+        resource.updatedTime || ""
+      ), //Search URL Img
     },
     bgImage: constructImageUrl(
       resource.id,

@@ -12,7 +12,7 @@ import {
   showHeader,
 } from "@/store/slices/layoutSlice";
 import { Resource } from "@/types/ahaTypes";
-const SearchCatalog = ({
+const SearchCat = ({
   resource,
   source,
   query,
@@ -127,4 +127,4 @@ const SearchCatalog = ({
   );
 };
 
-export default SearchCatalog;
+export default SearchCat;

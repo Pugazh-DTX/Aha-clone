@@ -17,6 +17,7 @@ export interface ImageUrls {
   autoPreviewUrl?: string;
   autoPreview?: string;
   logo?: string;
+  searchImg: string;
 }
 
 export interface AspectRatio {
@@ -91,6 +92,9 @@ export interface Container {
   deviceType: string;
   premiumlogo: any;
   font_style: string;
+   actions?: {
+    clickAction: string;
+  };
   scrollStyle: {
     autoPlay: boolean;
     direction: "lefttoright" | "righttoleft";

@@ -4,6 +4,9 @@ import "./styles.scss";
 import { searchData } from "../../../utils/Search/search";
 import Card from "@/components/molecules/Card";
 import { useDispatch } from "react-redux";
+import { useSearchParams } from "next/navigation";
+
+import { fetchInitialSearchScreenAPI } from "../../../services/api/search.api"; // update path as needed
 
 import {
   hideFooter,
@@ -11,17 +14,16 @@ import {
   showFooter,
   showHeader,
 } from "@/store/slices/layoutSlice";
+import SearchCatalog from "@/components/templates/SearchCatalog";
 import { Resource } from "@/types/ahaTypes";
-const SearchCatalog = ({
+const SearchCat = ({
   resource,
   source,
   query,
-  recentSearch,
 }: {
   resource: Resource[];
   source: string;
   query: string;
-  recentSearch: string[];
 }) => {
   const dispatch = useDispatch();
 
@@ -42,37 +44,33 @@ const SearchCatalog = ({
     return () => {
       window.removeEventListener("resize", handleResize);
       dispatch(showHeader());
-      dispatch(showFooter()); // reset on unmount
+      dispatch(showFooter());
     };
   }, [dispatch]);
-
   console.log(resource.length, "--length--");
   console.log(source, "--source--");
-  console.log(recentSearch, "RARR-");
   return (
     <section>
       <div className="search-page-container">
         {/* Recent Searches */}
 
-        {resource.length > 0 &&
-          recentSearch.length > 0 &&
-          source === "initial" && (
-            <div>
-              <h5 className="search-page-heading-text">Recent Searches</h5>
-              <ul className="search-page-recent-search-list">
-                {recentSearch.slice(0, 3).map((search, index) => {
-                  return (
-                    <li
-                      className="search-page-recent-search-list-child cursor-pointer"
-                      key={index}
-                    >
-                      <a style={{ color: "#fa672b" }}> {search}</a>
-                    </li>
-                  );
-                })}
-              </ul>
-            </div>
-          )}
+        {searchData.recentSearchList.length > 0 && (
+          <div>
+            <h5 className="search-page-heading-text">Recent Searches</h5>
+            <ul className="search-page-recent-search-list">
+              {searchData.recentSearchList.map((search, index) => {
+                return (
+                  <li
+                    className="search-page-recent-search-list-child cursor-pointer"
+                    key={index}
+                  >
+                    <a style={{ color: "#fa672b" }}> {search}</a>
+                  </li>
+                );
+              })}
+            </ul>
+          </div>
+        )}
         {/* Search Not Found */}
         {searchData.isSearchNotFound && (
           <div className="search-not-found-container">
@@ -127,4 +125,4 @@ const SearchCatalog = ({
   );
 };
 
-export default SearchCatalog;
+export default SearchCat;

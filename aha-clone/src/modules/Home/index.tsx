@@ -35,7 +35,7 @@ const HomePage = () => {
   }, [pageNumber]);
 
   const adaptedContainer: Tab[] = useMemo(() => {
-    return landingData?.data ? AhaAdapter(landingData.data, "te") : [];
+    return landingData?.data ? AhaAdapter(landingData.data, "en") : [];
   }, [landingData?.data]);
 
   useEffect(() => {
