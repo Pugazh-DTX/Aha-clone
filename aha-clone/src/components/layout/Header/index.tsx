@@ -219,10 +219,14 @@ const Header = ({}) => {
                 )}
               </div>
 
-              <select className={styles.languageSelect}>
-                <option value="tamil">Tamil</option>
-                <option value="telugu">Telugu</option>
-              </select>
+              <div
+                className={styles.languageSelect}
+                onClick={() => {
+                  router.push("/profile/language");
+                }}
+              >
+                <p>Tamil</p>
+              </div>
 
               <Button wrapperClass={styles.subscribeBtn} onClick={handleClick}>
                 Subscribe Now
