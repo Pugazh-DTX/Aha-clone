@@ -27,6 +27,9 @@ export type CardProps = {
   isContinueWatching: boolean;
   totalTimeDuration: string;
   watchTimeDuration: string;
+  resourceType: string;
+  resourceName: string;
+  onClickItem: (type: string, contentName: string) => void;
   // Removed duplicate tag property
 };
 
@@ -47,6 +50,9 @@ const Card = ({
   isContinueWatching,
   totalTimeDuration,
   watchTimeDuration,
+  resourceType,
+  resourceName,
+  onClickItem,
 }: CardProps) => {
   const runTime = Number(watchTimeDuration);
   const totalDuration = Number(totalTimeDuration);
@@ -84,6 +90,7 @@ const Card = ({
           ? "130px"
           : cardWidth,
       }}
+      onClick={() => onClickItem(resourceType, resourceName)}
     >
       <div
         className={`image-wrapper cursor-pointer ${

@@ -7,6 +7,7 @@ import arrowLeft from "../../../../public/Assets/icons/Card/arrow-left.svg";
 import arrowRight from "../../../../public/Assets/icons/Card/arrow-right.svg";
 import HorizontalListHeader from "@/components/molecules/HorizontalListHeader";
 import { Container, Resource } from "@/types/ahaTypes";
+import { useRouter } from "next/navigation";
 
 interface SliderCarouselProps {
   container: Container;
@@ -17,6 +18,8 @@ const SliderCarousel: React.FC<SliderCarouselProps> = ({ container }) => {
   const sliderRef = useRef<HTMLDivElement>(null);
   const [showPrev, setShowPrev] = useState(false);
   const [showNext, setShowNext] = useState(true);
+
+  const router = useRouter();
 
   const checkScrollPosition = () => {
     const slider = sliderRef.current;
@@ -68,6 +71,12 @@ const SliderCarousel: React.FC<SliderCarouselProps> = ({ container }) => {
       clearTimeout(resizeTimeout);
     };
   }, []);
+
+  const resourceOnClick = (resource_type: string, resource_name: string) => {
+    // console.log("Resource_click", { resource_type, resource_name });
+    router.push(`/${resource_type}/${resource_name}`);
+  };
+
   return (
     <section>
       <HorizontalListHeader
@@ -108,6 +117,9 @@ const SliderCarousel: React.FC<SliderCarouselProps> = ({ container }) => {
                   isAdultContent={resource.is_adult_content}
                   totalTimeDuration=""
                   watchTimeDuration=""
+                  resourceName={resource.name}
+                  resourceType={resource.type}
+                  onClickItem={resourceOnClick}
                 />
               </div>
             );

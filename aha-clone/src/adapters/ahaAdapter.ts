@@ -32,7 +32,8 @@ export const ResourceAdapter = (
 
   return resources.map((resource: any) => ({
     id: resource.id,
-    type: resource.cty === "webseries" ? "webseries" : "movie",
+    name: resource.nu || "",
+    type: resource.cty || "",
     title: getLocalizedText(resource.lon)[lang],
     rating: resource.rat?.[0]?.v || "",
     is_adult_content: ADULT_RATINGS.includes(resource.rat?.[0]?.v),

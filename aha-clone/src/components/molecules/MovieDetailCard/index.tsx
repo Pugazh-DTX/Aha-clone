@@ -22,9 +22,13 @@ export const MovieDetailCard = ({ data }: { data: any }) => {
         watchTimeDuration={""}
       />
       <div>
-        <h2 className="season-title">{data.movieTitle}</h2>
-        <h3 className="season-sup-title">{data.movieSupTitle}</h3>
-        <p className="season-card-des">{data.movieDescription}</p>
+        <h2 className="season-title">{data.movieTitle || "no data found"}</h2>
+        <h3 className="season-sup-title">
+          {data.movieSupTitle || "no data found"}
+        </h3>
+        <p className="season-card-des">
+          {data.movieDescription || "no data found"}
+        </p>
       </div>
     </div>
   );

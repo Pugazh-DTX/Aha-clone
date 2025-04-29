@@ -74,3 +74,20 @@ export const movieDetailList = {
   director: "Chidambaram Manivannan",
   studio: "Kanaa Production",
 };
+
+export const movieTab = [
+  {
+    label: "Episodes",
+    content: "",
+  },
+  {
+    label: "Cast",
+    content: "",
+  },
+  {
+    label: "Details",
+    content: "",
+  },
+];
+
+export const season = ["Season 1", "Season 2", "Season 3"];

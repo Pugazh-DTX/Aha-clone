@@ -78,6 +78,7 @@ export interface Resource {
     clickAction: string;
   };
   urn: string;
+  name: string;
   [key: string]: any; // Allow for additional properties
 }
 
@@ -92,7 +93,7 @@ export interface Container {
   deviceType: string;
   premiumlogo: any;
   font_style: string;
-   actions?: {
+  actions?: {
     clickAction: string;
   };
   scrollStyle: {
