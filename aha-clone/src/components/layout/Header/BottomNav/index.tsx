@@ -3,9 +3,10 @@ import "./styles.scss";
 import { bottomNavLinks } from "@/utils/Header";
 import Link from "next/link";
 import Image from "next/image";
-import { usePathname } from "next/navigation";
+import { usePathname, useRouter } from "next/navigation";
 const BottomNav = () => {
   const pathname = usePathname();
+  const router = useRouter();
   return (
     <nav>
       <div className="bottomNav">
@@ -13,10 +14,12 @@ const BottomNav = () => {
           {bottomNavLinks.map((bottomLink, index) => {
             const isActive = pathname === bottomLink.path;
             return (
-              <Link
-                href={bottomLink.path}
-                className={`bottomNavItem ${isActive ? "activeNav" : ""}`}
+              <div
+                className={`bottomNavItem ${
+                  isActive ? "activeNav" : ""
+                } cursor-pointer`}
                 key={index}
+                onClick={() => router.push(bottomLink.path)}
               >
                 <div className="bottomNavItemIcon">
                   <Image
@@ -29,7 +32,7 @@ const BottomNav = () => {
                   ></Image>
                 </div>
                 <h6 style={{ fontSize: "10px" }}>{bottomLink.name}</h6>
-              </Link>
+              </div>
             );
           })}
         </div>

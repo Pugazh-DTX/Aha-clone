@@ -5,14 +5,15 @@ const LANDING_API_URL =
 
 export const fetchLandingScreen = async (
   pageNumber: number,
-  pageSize: number
+  pageSize: number,
+  acl: string
 ) => {
   const params = {
     ipr: true,
     ivg: false,
     sfInfo: true,
     itvod: true,
-    acl: "ta",
+    acl: acl,
     reg: "in",
     dt: "mobileweb",
     cPageNumber: pageNumber,

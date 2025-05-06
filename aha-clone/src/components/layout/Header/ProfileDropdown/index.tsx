@@ -1,4 +1,4 @@
-'use client'
+"use client";
 import { useState } from "react";
 import { useRouter } from "next/navigation";
 import Image from "next/image";
@@ -26,7 +26,11 @@ const ProfileDropdown = () => {
   const handleSettings = () => router.push("/account/info");
 
   const menuActions = [
-    { icon: headerIcons.pen, label: "Manage Profiles", onClick: handleManageProfiles },
+    {
+      icon: headerIcons.pen,
+      label: "Manage Profiles",
+      onClick: handleManageProfiles,
+    },
     { icon: headerIcons.settings, label: "Settings", onClick: handleSettings },
     { icon: headerIcons.watch, label: "Watchlist", onClick: () => {} }, // Placeholder for action
     { icon: headerIcons.link, label: "Link TV App", onClick: () => {} }, // Placeholder for action
@@ -36,7 +40,7 @@ const ProfileDropdown = () => {
 
   return (
     <div
-      className="menu"
+      className={styles.signinMenu}
       onMouseEnter={() => setDropdownOpen(true)}
       onMouseLeave={() => setDropdownOpen(false)}
     >
@@ -63,10 +67,17 @@ const ProfileDropdown = () => {
                 <div className={styles.profile1} style={{ cursor: "pointer" }}>
                   <div className={styles.addicon}>
                     <div className="icon">
-                      <Image src={headerIcons.add} alt="Add Profile" width={13} height={13} />
+                      <Image
+                        src={headerIcons.add}
+                        alt="Add Profile"
+                        width={13}
+                        height={13}
+                      />
                     </div>
                   </div>
-                  <button className={styles.addbtn} onClick={handleAddClick}>Add</button>
+                  <button className={styles.addbtn} onClick={handleAddClick}>
+                    Add
+                  </button>
                 </div>
 
                 {/* Profile Buttons */}
@@ -83,7 +94,11 @@ const ProfileDropdown = () => {
                         alt={profile.name}
                         width={33}
                         height={33}
-                        className={selectedProfile?.name === profile.name ? styles.activeImage : ""}
+                        className={
+                          selectedProfile?.name === profile.name
+                            ? styles.activeImage
+                            : ""
+                        }
                       />
                     </div>
                     <p>{profile.name}</p>

@@ -2,6 +2,7 @@ import { createSlice, createAsyncThunk, PayloadAction } from "@reduxjs/toolkit";
 import { fetchLandingScreen } from "@/services/api/landing.api";
 import { ILandingData } from "@/types/landing.types";
 import { RootState } from "../store";
+import { useSelector } from "react-redux";
 
 interface LandingState {
   landingData: ILandingData | null;
@@ -32,11 +33,13 @@ export const fetchLanding = createAsyncThunk<
   "landing/fetch",
   async (_, thunkAPI) => {
     const { getState } = thunkAPI;
-    const { landing } = getState() as RootState;
+    const { landing, language } = getState() as RootState;
+    const acl = language.acl;
+    // console.log(language.acl, "acll");
 
     try {
       const { pageNumber, pageSize } = landing;
-      const data = await fetchLandingScreen(pageNumber, pageSize);
+      const data = await fetchLandingScreen(pageNumber, pageSize, acl);
 
       // Return the fetched data
       return data;

@@ -1,0 +1,60 @@
+.language-language-card {
+  background: #2c2c2c;
+  border-radius: 10px;
+  padding-left: 20px;
+  display: flex;
+  height: 105px;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 10px;
+  cursor: pointer;
+  transition: background 0.3s ease;
+
+  &:hover {
+    background: #3c3c3c;
+  }
+
+  &.language-active {
+    background: linear-gradient(
+      131.81deg,
+      rgba(78, 67, 63, 0.5) 3.92%,
+      rgba(255, 110, 69, 0.5) 111.82%
+    );
+  }
+}
+
+.language-language-info {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+
+  h4 {
+    color: white;
+    margin: 0;
+  }
+}
+
+.language-check-circle {
+  width: 22px;
+  height: 22px;
+  border-radius: 50%;
+  background: url("/Assets/icons/LanguagePage/language-select-icon-inactive.svg")
+    no-repeat center;
+  background-size: contain;
+  color: white;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 14px;
+  &.icon-active {
+    background: url("/Assets/icons/LanguagePage/language-select-icon-active.svg")
+      no-repeat center;
+    background-size: contain;
+  }
+}
+
+.language-actor-image {
+  width: auto;
+  height: 100%;
+  object-fit: contain;
+}

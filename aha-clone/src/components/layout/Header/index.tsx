@@ -22,7 +22,7 @@ const Header = ({}) => {
   const [showInput, setShowInput] = useState(false);
   const [visible, setVisible] = useState(false);
   const [value, setValue] = useState("");
-
+  const language = useSelector((state: RootState) => state.language.acl);
   const router = useRouter();
   // Search Logic---
   const searchParams = useSearchParams();
@@ -105,14 +105,15 @@ const Header = ({}) => {
         <div className={styles.headerContainer}>
           {/* Left side */}
           <div className={styles.headerLeftContainer}>
-            <Link href="/" className={styles.logo}>
+            <div className={`${styles.logo} cursor-pointer`}>
               <Image
                 src={headerIcons?.logo}
                 alt="Aha Logo"
                 priority
                 className={styles.logoImage}
+                onClick={() => router.push("/")}
               />
-            </Link>
+            </div>
 
             {/* Large screen Nav */}
             {!onlyShowLogo && (
@@ -121,15 +122,15 @@ const Header = ({}) => {
                   {navLinks.map((link) => {
                     const isActive = pathname === link.path;
                     return (
-                      <Link
+                      <div
                         key={link.name}
-                        href={link.path}
                         className={`${styles.navItem} ${
                           isActive ? styles.activeNav : ""
-                        }`}
+                        } cursor-pointer`}
+                        onClick={() => router.push(link.path)}
                       >
                         {link.name}
-                      </Link>
+                      </div>
                     );
                   })}
                 </nav>
@@ -149,12 +150,12 @@ const Header = ({}) => {
                   {navLinks.slice(0, 4).map((link) => {
                     const isActive = pathname === link.path;
                     return (
-                      <Link
+                      <div
                         key={link.name}
-                        href={link.path}
                         className={`${styles.navItem} ${
                           isActive ? styles.activeNav : ""
                         }`}
+                        onClick={() => router.push(link.path)}
                       >
                         {isActive && (
                           <div
@@ -168,7 +169,7 @@ const Header = ({}) => {
                           />
                         )}
                         {link.name}
-                      </Link>
+                      </div>
                     );
                   })}
                 </nav>
@@ -184,11 +185,8 @@ const Header = ({}) => {
                   <Image
                     src={headerIcons.search}
                     alt={"Search icon"}
-                    className={`${styles.searchIcon} cursor-pointer`}
+                    className={`${styles.searchIcon} cursor-pointer `}
                     onClick={handleIconClick}
-                    style={{
-                      display: `${pathname === "/search" ? "none" : "flex"}`,
-                    }}
                   />
                 )}
 
@@ -220,12 +218,12 @@ const Header = ({}) => {
               </div>
 
               <div
-                className={styles.languageSelect}
+                className={`${styles.languageSelect} cursor-pointer`}
                 onClick={() => {
                   router.push("/profile/language");
                 }}
               >
-                <p>Tamil</p>
+                <p>{`${language === "te" ? "Telugu" : "Tamil"}`}</p>
               </div>
 
               <Button wrapperClass={styles.subscribeBtn} onClick={handleClick}>
