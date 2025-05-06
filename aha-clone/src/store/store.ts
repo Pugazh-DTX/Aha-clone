@@ -4,12 +4,14 @@ import landingReducer from "./slices/landingSlice";
 
 import layoutReducer from "./slices/layoutSlice";
 import searchReducer from "./slices/searchSlice";
+import languageSlice from "./slices/languageSlice";
 export const store = configureStore({
   reducer: {
     config: configReducer,
     landing: landingReducer,
     layout: layoutReducer,
     search: searchReducer,
+    language: languageSlice,
   },
 });
 

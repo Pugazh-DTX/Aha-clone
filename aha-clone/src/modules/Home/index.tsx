@@ -20,23 +20,24 @@ const HomePage = () => {
   const { landingData, loading, pageNumber, hasMore } = useSelector(
     (state: RootState) => state.landing
   );
+  const { acl, displayLanguage } = useSelector((state: RootState) => state.language);
 
   useEffect(() => {
     if (configData && pageNumber === 1) {
       dispatch(fetchLanding());
     }
-  }, [configData]);
+  }, [configData, acl]);
 
   useEffect(() => {
     if (pageNumber > 1) {
-      console.log("Fetching page", pageNumber); // 👈 Log this
+      console.log("Fetching page", pageNumber);
       dispatch(fetchLanding());
     }
   }, [pageNumber]);
 
   const adaptedContainer: Tab[] = useMemo(() => {
-    return landingData?.data ? AhaAdapter(landingData.data, "en") : [];
-  }, [landingData?.data]);
+    return landingData?.data ? AhaAdapter(landingData.data, displayLanguage) : [];
+  }, [landingData?.data, displayLanguage]);
 
   useEffect(() => {
     if (adaptedContainer.length > 0) {

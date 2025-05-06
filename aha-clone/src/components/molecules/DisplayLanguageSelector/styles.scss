@@ -1,0 +1,27 @@
+.language-language-toggle {
+  display: flex;
+  background: linear-gradient(180deg, #3b4046 9.38%, #2d3037 100%) !important;
+  border-radius: 30px;
+  overflow: hidden;
+  margin-bottom: 35px;
+  height: 45px;
+  .language-toggle-btn {
+    flex: 1;
+    padding: 12px 20px !important;
+    border: none;
+    border-radius: 50px !important;
+    background: transparent !important;
+    color: white;
+    cursor: pointer;
+    transition: background 0.3s ease;
+
+    &.language-active {
+      background: linear-gradient(
+        131.81deg,
+        rgba(78, 67, 63, 0.5) 3.92%,
+        rgba(255, 110, 69, 0.5) 111.82%
+      ) !important;
+      font-weight: bold;
+    }
+  }
+}
