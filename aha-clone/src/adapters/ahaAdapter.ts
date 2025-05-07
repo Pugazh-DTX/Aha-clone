@@ -188,7 +188,7 @@ export const AhaAdapter = (
   return data.t.map(
     (tab: any): Tab => ({
       id: tab.id || "",
-      title: getLocalizedText(tab.lon),
+      title: (tab.lon),
       containers: ContainerAdapter(tab.c || [], lang),
       pagination: tab.pagination
         ? {
