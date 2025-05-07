@@ -1,8 +1,10 @@
-
-
 import { createSlice, createAsyncThunk, PayloadAction } from "@reduxjs/toolkit";
 import { fetchLandingScreen } from "@/services/api/landing.api";
-import { ILandingData, ILandingTab, ILandingModule } from "@/types/landing.types";
+import {
+  ILandingData,
+  ILandingTab,
+  ILandingModule,
+} from "@/types/landing.types";
 import { RootState } from "../store";
 import { useSelector } from "react-redux";
 import { getLocalizedText } from "@/utils/localizationHelpers";
@@ -101,7 +103,10 @@ const landingSlice = createSlice({
     },
     appendLandingData: (state, action: PayloadAction<ILandingData>) => {
       if (state.landingData) {
-        state.landingData.data = [...state.landingData.data, ...action.payload.data];
+        state.landingData.data = [
+          ...state.landingData.data,
+          ...action.payload.data,
+        ];
       } else {
         state.landingData = action.payload;
       }

@@ -1,7 +1,7 @@
 "use client";
 
 import React, { useEffect, useState, useRef, useMemo } from "react";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { AppDispatch, RootState } from "@/store/store";
 // import { fetchLanding, setPageNumber, setStoreFrontId } from "@/store/slices/landingSlice";
 import { AhaAdapter } from "@/adapters/ahaAdapter";
@@ -16,15 +16,44 @@ const HomePage = () => {
   const { tab } = useParams(); // Get current tab from URL
   const dispatch = useDispatch<AppDispatch>();
 
-  const [currentTabContainers, setCurrentTabContainers] = useState<Container[]>([]);
+  const [currentTabContainers, setCurrentTabContainers] = useState<Container[]>(
+    []
+  );
   const [currentTabIndex, setCurrentTabIndex] = useState<number>(1); // Default to the first tab
   const observerRef = useRef<HTMLDivElement | null>(null);
 
+  // const { configData } = useSelector((state: RootState) => state.config);
+  // const { landingData, loading, pageNumber, hasMore } = useSelector(
+  //   (state: RootState) => state.landing
+  // );
+  const { acl, displayLanguage } = useSelector(
+    (state: RootState) => state.language
+  );
+
+  // useEffect(() => {
+  //   if (configData && pageNumber === 1) {
+  //     dispatch(fetchLanding());
+  //   }
+  // }, [configData, acl]);
+
+  // useEffect(() => {
+  //   if (pageNumber > 1) {
+  //     console.log("Fetching page", pageNumber);
+  //     dispatch(fetchLanding());
+  //   }
+  // }, [pageNumber]);
   // const { configData } = useAppSelector((state: RootState) => state.config);
 
-  const {loading, data:landingData , error} = useLandingApi({sfid : "2E553D81-94BB-4B9D-8F62-C77CFA74DCEB", tid : "FD5FAD7A-DD74-4A2E-B313-D73ADB25ABA6"});
+  const {
+    loading,
+    data: landingData,
+    error,
+  } = useLandingApi({
+    sfid: "2E553D81-94BB-4B9D-8F62-C77CFA74DCEB",
+    tid: "FD5FAD7A-DD74-4A2E-B313-D73ADB25ABA6",
+  });
 
-  console.log(landingData, "landingData")
+  console.log(landingData, "landingData");
   // const { landingData, loading, pageNumber, hasMore, error, storeFrontId } = useAppSelector(
   //   (state: RootState) => state.landing
   // );
@@ -49,12 +78,12 @@ const HomePage = () => {
 
   // // Adapt landing data
   const adaptedContainer: Tab[] = useMemo(() => {
-    return landingData ? AhaAdapter(landingData, "en") : [];
-  }, [landingData]);
+    return landingData ? AhaAdapter(landingData, displayLanguage) : [];
+  }, [landingData, displayLanguage]);
 
-  // console.log(adaptedContainer)  
+  // console.log(adaptedContainer)
   // console.log(AhaAdapter)
-  
+
   // // Handle tab index based on URL params
   // useEffect(() => {
   //   const selectedTabIndex = adaptedContainer.findIndex(

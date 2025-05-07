@@ -40,7 +40,10 @@ const Catlog = ({ tabContainers, loading, error }: CatlogProps) => {
         // Loading placeholder for smoother infinite scroll
         if (loading && container === tabContainers[tabContainers.length - 1]) {
           return (
-            <div key={`loading-${container.id}`} className="loading-placeholder">
+            <div
+              key={`loading-${container.id}`}
+              className="loading-placeholder"
+            >
               Loading more content...
             </div>
           );
@@ -54,7 +57,10 @@ const Catlog = ({ tabContainers, loading, error }: CatlogProps) => {
             activeIndex={activeIndex}
           />
         ) : (
-          <SliderCarousel key={`carousel-${container.id}`} container={container} />
+          <SliderCarousel
+            key={`carousel-${container.id}`}
+            container={container}
+          />
         );
       })}
     </div>
