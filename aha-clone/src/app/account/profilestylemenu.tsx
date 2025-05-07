@@ -10,12 +10,12 @@ const ProfileStyleMenuNoIcons: React.FC = () => {
   const router = useRouter();
 
   const menuItems = [
-    { name: 'info', route: '/account/info' },
-    { name: 'subscription', route: '/account/subscription' },
-    { name: 'device', route: '/account/device' },
-    { name: 'profiles', route: '/account/profiles' },
-    { name: 'parental', route: '/account/parental' },
-    { name: 'settings', route: '/account/settings' },
+    { name: 'Account Info', route: '/account/info' },
+    { name: 'Subscription & Rentals', route: '/account/subscription' },
+    { name: 'Device Management', route: '/account/device' },
+    { name: 'User Profiles', route: '/account/profiles' },
+    { name: 'Parental Control', route: '/account/parental' },
+    { name: 'App Settings', route: '/account/settings' },
   ];
 
   const handleNavigate = (route: string) => {

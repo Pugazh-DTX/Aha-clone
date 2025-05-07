@@ -1,6 +1,4 @@
-import { Tab } from "./ahaTypes";
-
-// For individual resource inside a container
+// Resource inside a container
 export interface IResource {
   id: string;
   bgImage: string;
@@ -10,42 +8,47 @@ export interface IResource {
   };
   tag?: string;
   rating?: number;
-  // Add more fields as per API if needed
 }
 
-// Represents each container
+// Individual container
 export interface ILandingContainer {
   id: string;
   title: string;
   type: string;
   resources?: IResource[];
   metadata?: Record<string, any>;
-  // Add other fields if needed
 }
 
+// Pagination details
 export interface IPagination {
   start: number;
   count: number;
-  total: number;  // or whatever field your API returns that gives the total number of records
+  total: number;
 }
 
+// Tab information
+export interface ILandingTab {
+  id: string;
+  name: string;
+}
 
-// Represents the main landing data object
+// Module structure
+export interface ILandingModule {
+  moduleType: string;
+  moduleCode: string;
+  moduleTitle: string;
+  id: any; 
+  content: ILandingContainer[];
+}
+
+// Main landing response
 export interface ILandingData {
-  tabs:[];  // Ensure it's an array of `Tab`
-  data:[];  // Or whatever the appropriate type is for your data // Update accordingly
-  containers?: any[];
+  tabs: ILandingTab[];
+  data: ILandingModule[];
+  store_front_id: string;
+  containers?: ILandingContainer[];
   modules: ILandingModule[];
   pageNumber: number;
   totalPages: number;
   pagination: IPagination;
-  
-}
-
-// Represents each module (keep this or enhance if you get more info)
-export interface ILandingModule {
-  moduleType: any;
-  moduleCode: string;
-  moduleTitle: string;
-  content: any[]; // Replace when you know the structure
 }

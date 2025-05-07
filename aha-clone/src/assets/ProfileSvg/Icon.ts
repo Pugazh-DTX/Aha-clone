@@ -12,12 +12,12 @@ interface IconProps {
 }
 
 const Icons: Record<string, React.FC<IconProps>> = {
-  info: AccountIcon,
-  subscription: SubIcon,
-  settings: SettingIcon,
-  device: DeviceIcon,
-  profiles: UserIcon,
-  parental: ParentalIcon,
+  "Account Info": AccountIcon,
+  "Subscription & Rentals": SubIcon,
+  "Device Management": DeviceIcon ,
+  "User Profiles": UserIcon,
+  "Parental Control": ParentalIcon,
+  "App Settings": SettingIcon,
 };
 
 export default Icons;

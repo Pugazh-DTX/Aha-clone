@@ -1,0 +1,138 @@
+.sub{
+    display: flex
+;
+    flex-direction: column;
+    height:65vh;
+    min-height: auto !important;
+    position: relative;
+}
+
+.sub-head{
+    display: flex
+    ;
+        flex-direction: row;
+        align-items: center;
+        width: 100%;
+        padding: 35px 0 0 29px;
+}
+
+.back-arrow{
+    visibility: hidden;
+    margin-right: 10px;
+}
+
+.sub-head h1{
+    margin: 0;
+    padding: 0;
+    font-style: normal;
+    font-weight: 500;
+    font-size: 20px;
+    line-height: 32px;
+}
+
+.sub-ctn{
+    display: flex
+    ;
+        flex-direction: column;
+        padding: 35px 30px 20px 60px;
+}
+
+.ctn-head h4{
+    padding-bottom: 10px;
+    color: #9a9a9a;
+    font-size: 13px;
+    font-weight: 400;
+}
+
+.sub-empty{
+    display: flex
+    ;
+        justify-content: space-between;
+        align-items: center;
+}
+
+.sub-empty-text{
+    text-align: center;
+    font-size: 14px;
+    font-weight: 400;
+}
+
+.sub-emt-btn{
+    margin-right: 12px;
+}
+
+.primary-btn {
+    margin: 3px 0;
+    background: linear-gradient(#b61a09 -86.4%, #ff6d2e 100%);
+    min-width: 146px;
+    box-shadow: none;
+    padding: 13px 0;
+    border: none;
+    font-weight: 500;
+    font-size: 12px;
+    border-radius: 50px;
+    letter-spacing: .5px;
+  }
+
+  .sub-ctn-btn{
+    display: flex
+;
+    justify-content: flex-end;
+    gap: 50px;
+    padding: 0 44px 15px;
+  }
+
+  .sub-cancel{
+    display: flex
+;
+    justify-content: center;
+    align-items: center;
+  }
+.out-btn{
+    padding: 12px 24px;
+    border: 1px solid hsla(0, 0%, 100%, 0.2);
+    background: transparent;
+    border-radius: 50px;
+    color: white;
+    font-weight: 500;
+    font-size: 15px;
+    min-width: 210px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.sub2{
+    padding: 32px;
+    flex: 0;
+    align-self: flex-start;
+    justify-self: flex-start;
+}
+
+.header{
+    display: flex
+;
+    flex-direction: row;
+    align-items: center;
+    width: 100%;
+    margin-bottom: 18px;
+}
+
+.header h1{
+    margin-bottom: 4px;
+    padding: 0;
+    font-style: normal;
+    font-weight: 700;
+    font-size: 24px;
+    line-height: 32px;
+}
+
+.arrow-icon{
+    margin-right: 20px;
+    cursor: pointer;
+}
+
+
+
+
+
+// padding: 5px 44px 15px;

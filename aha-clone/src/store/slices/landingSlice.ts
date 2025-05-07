@@ -1,8 +1,13 @@
 import { createSlice, createAsyncThunk, PayloadAction } from "@reduxjs/toolkit";
 import { fetchLandingScreen } from "@/services/api/landing.api";
-import { ILandingData } from "@/types/landing.types";
+import {
+  ILandingData,
+  ILandingTab,
+  ILandingModule,
+} from "@/types/landing.types";
 import { RootState } from "../store";
 import { useSelector } from "react-redux";
+import { getLocalizedText } from "@/utils/localizationHelpers";
 
 interface LandingState {
   landingData: ILandingData | null;
@@ -10,8 +15,12 @@ interface LandingState {
   error: string | null;
   pageNumber: number;
   pageSize: number;
+  hasMore: boolean;
   pageChanged: boolean;
-  hasMore: boolean; // Track if there is more data
+  tabs: ILandingTab[];
+  activeTabId: string | null;
+  storeFrontId: string | null;
+  modules: ILandingModule[];
 }
 
 const initialState: LandingState = {
@@ -19,9 +28,13 @@ const initialState: LandingState = {
   loading: false,
   error: null,
   pageNumber: 1,
-  hasMore: true, // Initial assumption is there is more data
   pageSize: 5,
+  hasMore: true,
   pageChanged: false,
+  tabs: [],
+  activeTabId: null,
+  storeFrontId: null,
+  modules: [],
 };
 
 // Define the asynchronous thunk action
@@ -57,13 +70,36 @@ export const fetchLanding = createAsyncThunk<
 );
 
 // Create the slice to manage landing state
+// export const fetchLanding = createAsyncThunk<
+//   ILandingData,
+//   void,
+//   { rejectValue: string }
+// >("landing/fetch", async (_, thunkAPI) => {
+//   const { pageNumber, pageSize } = (thunkAPI.getState() as RootState).landing;
+//   try {
+//     const data = await fetchLandingScreen(pageNumber, pageSize);
+//     return data;
+//   } catch (err: any) {
+//     return thunkAPI.rejectWithValue(err.message || "Failed to fetch landing");
+//   }
+// });
+
 const landingSlice = createSlice({
   name: "landing",
   initialState,
   reducers: {
     setPageNumber: (state, action: PayloadAction<number>) => {
       state.pageNumber = action.payload;
-      state.pageChanged = true; // Set pageChanged to true when page number is updated
+      state.pageChanged = true;
+    },
+    setHasMore: (state, action: PayloadAction<boolean>) => {
+      state.hasMore = action.payload;
+    },
+    setStoreFrontId: (state, action: PayloadAction<string>) => {
+      state.storeFrontId = action.payload;
+    },
+    setActiveTabId: (state, action: PayloadAction<string>) => {
+      state.activeTabId = action.payload;
     },
     appendLandingData: (state, action: PayloadAction<ILandingData>) => {
       if (state.landingData) {
@@ -72,40 +108,52 @@ const landingSlice = createSlice({
           ...action.payload.data,
         ];
       } else {
-        state.landingData = action.payload; // If no data exists, just store the first page
+        state.landingData = action.payload;
       }
     },
-    setHasMore: (state, action: PayloadAction<boolean>) => {
-      state.hasMore = action.payload;
-    },
   },
-  extraReducers: (builder) => {
-    builder
-      .addCase(fetchLanding.pending, (state) => {
-        state.loading = true;
-        state.error = null;
-      })
-      .addCase(fetchLanding.fulfilled, (state, action) => {
-        state.loading = false;
-        state.pageChanged = false;
+  // extraReducers: (builder) => {
+  //   builder
+  //     .addCase(fetchLanding.pending, (state) => {
+  //       state.loading = true;
+  //       state.error = null;
+  //     })
+  //     .addCase(fetchLanding.fulfilled, (state, action) => {
+  //       state.loading = false;
+  //       state.pageChanged = false;
 
-        // Safely check if action.payload.data exists and is not null/undefined
-        const newHasMore =
-          action.payload.data && action.payload.data.length < state.pageSize
-            ? false
-            : true;
+  //       state.landingData = action.payload;
 
-        state.landingData = action.payload;
-        state.hasMore = newHasMore; // Update hasMore based on the new data
-      })
-      .addCase(fetchLanding.rejected, (state, action) => {
-        state.loading = false;
-        state.error = action.payload as string;
-        state.pageChanged = false;
-      });
-  },
+  //       let currentTabs:any[] = action.payload.data.t || [];
+  //       let formatedTabs = currentTabs.length > 0 ? currentTabs.map((t) => {return {id: t.id , name : getLocalizedText(t.lon)["en"]}}) : [];
+  //       state.tabs = formatedTabs;
+  //       state.storeFrontId = action.payload.data?.id || null;
+
+  //       // const storefront = (action.payload.data as any)?.ty === "Storefront" ? action.payload.data : null;
+  //       // state.storeFrontId = storefront?.id ?? null;
+
+  //       // const firstTab = action.payload.tabs?.[0];
+  //       // state.activeTabId = firstTab?.tab_id ?? null;
+
+  //       state.modules = action.payload.modules || [];
+  //       state.hasMore = Array.isArray(action.payload?.data)
+  //         ? action.payload.data.length >= state.pageSize
+  //         : false;
+  //     })
+  //     .addCase(fetchLanding.rejected, (state, action) => {
+  //       state.loading = false;
+  //       state.error = action.payload ?? "Unknown error";
+  //       state.pageChanged = false;
+  //     });
+  // },
 });
 
-export const { setPageNumber, appendLandingData, setHasMore } =
-  landingSlice.actions;
+export const {
+  setPageNumber,
+  setHasMore,
+  appendLandingData,
+  setActiveTabId,
+  setStoreFrontId,
+} = landingSlice.actions;
+
 export default landingSlice.reducer;
