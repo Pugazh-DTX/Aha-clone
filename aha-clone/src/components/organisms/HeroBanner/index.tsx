@@ -27,6 +27,8 @@ const HeroBanner: React.FC<HeroBannerProps> = ({
     const interval = setInterval(() => {
       handleNext();
     }, 5000);
+
+    // Cleanup interval on component unmount
     return () => clearInterval(interval);
   }, [currentIndex, resources.length]);
 
@@ -57,9 +59,6 @@ const HeroBanner: React.FC<HeroBannerProps> = ({
 
   const activeMovie = resources[currentIndex];
 
-  console.log("Active Movie:", activeMovie);
-  console.log("Thumbnails:", getVisibleThumbnails());
-
   return (
     <div className="heroContainer">
       <div
@@ -84,7 +83,11 @@ const HeroBanner: React.FC<HeroBannerProps> = ({
 
             <div className="thumbnailCarousel desktopOnly">
               <div className="thumbnailArrows-left">
-                <button className="arrow-left" onClick={handlePrev}>
+                <button
+                  className="arrow-left"
+                  onClick={handlePrev}
+                  aria-label="Previous Slide"
+                >
                   ❮
                 </button>
               </div>
@@ -130,7 +133,11 @@ const HeroBanner: React.FC<HeroBannerProps> = ({
               </div>
 
               <div className="thumbnailArrows-right">
-                <button className="arrow-right" onClick={handleNext}>
+                <button
+                  className="arrow-right"
+                  onClick={handleNext}
+                  aria-label="Next Slide"
+                >
                   ❯
                 </button>
               </div>

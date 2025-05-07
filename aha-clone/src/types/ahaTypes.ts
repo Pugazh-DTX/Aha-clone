@@ -93,7 +93,7 @@ export interface Container {
   premiumlogo: any;
   font_style: string;
    actions?: {
-    clickAction: string;
+    click_action: string;
   };
   scrollStyle: {
     autoPlay: boolean;
@@ -104,9 +104,9 @@ export interface Container {
 }
 
 export interface Tab {
-  id: string;
-  title: LocalizedText;
-  containers: Container[];
+  id: string;  // Ensure this property is included
+  title: string;
+  containers?: Container[]; // Other properties of Tab as needed
   pagination?: {
     start: number;
     rows: number;

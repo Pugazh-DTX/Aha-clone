@@ -2,11 +2,10 @@ import React, { useEffect, useLayoutEffect, useRef, useState } from "react";
 import "./styles.scss";
 import Image from "next/image";
 import Card from "@/components/molecules/Card";
-import { IMoviesSection } from "@/utils/Home/moviedata";
+import { Container, Resource } from "@/types/ahaTypes";
 import arrowLeft from "../../../../public/Assets/icons/Card/arrow-left.svg";
 import arrowRight from "../../../../public/Assets/icons/Card/arrow-right.svg";
 import HorizontalListHeader from "@/components/molecules/HorizontalListHeader";
-import { Container, Resource } from "@/types/ahaTypes";
 
 interface SliderCarouselProps {
   container: Container;
@@ -49,7 +48,7 @@ const SliderCarousel: React.FC<SliderCarouselProps> = ({ container }) => {
       }, 100);
     };
 
-    checkScrollPosition(); // Run immediately after DOM layout but before paint
+    checkScrollPosition();
     slider?.addEventListener("scroll", checkScrollPosition);
 
     // Using ResizeObserver to track size changes of the slider
@@ -68,6 +67,7 @@ const SliderCarousel: React.FC<SliderCarouselProps> = ({ container }) => {
       clearTimeout(resizeTimeout);
     };
   }, []);
+
   return (
     <section>
       <HorizontalListHeader

@@ -1,83 +1,109 @@
 "use client";
 
-import React, { useEffect, useMemo, useRef, useState } from "react";
-import { useDispatch, useSelector } from "react-redux";
+import React, { useEffect, useState, useRef, useMemo } from "react";
+import { useDispatch } from "react-redux";
 import { AppDispatch, RootState } from "@/store/store";
-import { fetchLanding, setPageNumber } from "@/store/slices/landingSlice";
+// import { fetchLanding, setPageNumber, setStoreFrontId } from "@/store/slices/landingSlice";
 import { AhaAdapter } from "@/adapters/ahaAdapter";
 import Catlog from "@/components/templates/Catlog";
 import { Container, Tab } from "@/types/ahaTypes";
+import { useParams } from "next/navigation";
+import { useAppSelector } from "@/store/hooks";
+import { config } from "process";
+import useLandingApi from "@/hooks/useLandingApi";
 
 const HomePage = () => {
+  const { tab } = useParams(); // Get current tab from URL
   const dispatch = useDispatch<AppDispatch>();
-  const [currentTabContainers, setCurrentTabContainers] = useState<Container[]>(
-    []
-  );
-  const [currentTabIndex] = useState<number>(0); // static for now
+
+  const [currentTabContainers, setCurrentTabContainers] = useState<Container[]>([]);
+  const [currentTabIndex, setCurrentTabIndex] = useState<number>(1); // Default to the first tab
   const observerRef = useRef<HTMLDivElement | null>(null);
 
-  const { configData } = useSelector((state: RootState) => state.config);
-  const { landingData, loading, pageNumber, hasMore } = useSelector(
-    (state: RootState) => state.landing
-  );
-  const { acl, displayLanguage } = useSelector((state: RootState) => state.language);
+  // const { configData } = useAppSelector((state: RootState) => state.config);
 
-  useEffect(() => {
-    if (configData && pageNumber === 1) {
-      dispatch(fetchLanding());
-    }
-  }, [configData, acl]);
+  const {loading, data:landingData , error} = useLandingApi({sfid : "2E553D81-94BB-4B9D-8F62-C77CFA74DCEB", tid : "FD5FAD7A-DD74-4A2E-B313-D73ADB25ABA6"});
 
-  useEffect(() => {
-    if (pageNumber > 1) {
-      console.log("Fetching page", pageNumber);
-      dispatch(fetchLanding());
-    }
-  }, [pageNumber]);
+  console.log(landingData, "landingData")
+  // const { landingData, loading, pageNumber, hasMore, error, storeFrontId } = useAppSelector(
+  //   (state: RootState) => state.landing
+  // );
 
+  // // Fetch data when configData is available and pageNumber is 1
+  // useEffect(() => {
+  //   if (configData && pageNumber === 1) {
+  //     dispatch(fetchLanding());
+  //   }
+  // }, [configData, pageNumber]);
+
+  // console.log(landingData)
+
+  // // Fetch next page when pageNumber updates
+  // useEffect(() => {
+  //   if (pageNumber > 1) {
+  //     dispatch(fetchLanding());
+  //   }
+  // }, [pageNumber]);
+
+  // console.log(landingData,fetchLanding)
+
+  // // Adapt landing data
   const adaptedContainer: Tab[] = useMemo(() => {
-    return landingData?.data ? AhaAdapter(landingData.data, displayLanguage) : [];
-  }, [landingData?.data, displayLanguage]);
+    return landingData ? AhaAdapter(landingData, "en") : [];
+  }, [landingData]);
 
+  // console.log(adaptedContainer)  
+  // console.log(AhaAdapter)
+  
+  // // Handle tab index based on URL params
+  // useEffect(() => {
+  //   const selectedTabIndex = adaptedContainer.findIndex(
+  //     (item) => item.tab_id === tab );
+
+  //   setCurrentTabIndex(selectedTabIndex >= 0 ? selectedTabIndex : 0);  // Set the tab index based on URL params
+  // }, [tab, adaptedContainer]);
+
+  // // Set containers for the active tab
   useEffect(() => {
-    if (adaptedContainer.length > 0) {
+    if (adaptedContainer.length > 0 && currentTabIndex >= 0) {
       const currentTab = adaptedContainer[currentTabIndex];
-      setCurrentTabContainers((prev) => [
-        ...prev,
-        ...(currentTab.containers || []),
-      ]);
+      setCurrentTabContainers(currentTab.containers || []);
+      // dispatch(setStoreFrontId(currentTab.tab_id)); // Set the storeFrontId when tab changes
     }
   }, [adaptedContainer, currentTabIndex]);
 
-  // 👇 Infinite Scroll Observer (No UI)
-  useEffect(() => {
-    const observer = new IntersectionObserver(
-      (entries) => {
-        const firstEntry = entries[0];
-        console.log("Observer Triggered:", firstEntry.isIntersecting); // 🧪 Log this
-        if (firstEntry.isIntersecting && !loading && hasMore) {
-          // Instead of using a function to increment the pageNumber, directly use the new value.
-          dispatch(setPageNumber(pageNumber + 1));
-        }
-      },
-      { threshold: 0.8 }
-    );
+  // // Intersection Observer for infinite scroll
+  // useEffect(() => {
+  //   const observer = new IntersectionObserver(
+  //     (entries) => {
+  //       const firstEntry = entries[0];
+  //       if (firstEntry.isIntersecting && !loading && hasMore) {
+  //         dispatch(setPageNumber(pageNumber + 1));
+  //       }
+  //     },
+  //     { threshold: 0.8 }
+  //   );
 
-    const currentObserverRef = observerRef.current;
-    if (currentObserverRef) {
-      observer.observe(currentObserverRef);
-    }
+  //   const currentObserverRef = observerRef.current;
+  //   if (currentObserverRef) {
+  //     observer.observe(currentObserverRef);
+  //   }
 
-    return () => {
-      if (currentObserverRef) observer.unobserve(currentObserverRef);
-    };
-  }, [loading, hasMore, pageNumber]); // Add pageNumber as a dependency to track its updates
-
-  console.log("Scroll Trigger: ", { loading, hasMore, pageNumber });
+  //   return () => {
+  //     if (currentObserverRef) observer.unobserve(currentObserverRef);
+  //   };
+  // }, [loading, hasMore, pageNumber]);
 
   return (
     <div className="home-page-wrapper">
-      <Catlog tabContainers={currentTabContainers} loading={loading} />
+      {error ? (
+        <div className="error-state">
+          <p>Failed to load content</p>
+          <p className="error-detail">{error}</p>
+        </div>
+      ) : (
+        <Catlog tabContainers={currentTabContainers} loading={loading} />
+      )}
       <div ref={observerRef} style={{ height: "1px" }} />
     </div>
   );
