@@ -7,7 +7,7 @@ export const metadata = {
 };
 
 const Search = () => {
-  return <SearchScreen />;
+  return <SearchPage />;
 };
 
 export default Search;

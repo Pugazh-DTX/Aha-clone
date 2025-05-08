@@ -7,8 +7,8 @@ import {
 // Thunks
 export const fetchInitialSearchScreen = createAsyncThunk(
   "search/fetchInitialSearchScreen",
-  async () => {
-    const data = await fetchInitialSearchScreenAPI();
+  async (acl: string) => {
+    const data = await fetchInitialSearchScreenAPI(acl);
     console.log("Data in Thunk", data);
     return data;
   }
@@ -16,8 +16,8 @@ export const fetchInitialSearchScreen = createAsyncThunk(
 
 export const fetchSearchResults = createAsyncThunk(
   "search/fetchSearchResults",
-  async (query: string) => {
-    return await fetchSearchResultsAPI(query);
+  async ({ acl, query }: { acl: string; query: string }) => {
+    return await fetchSearchResultsAPI(acl, query);
   }
 );
 

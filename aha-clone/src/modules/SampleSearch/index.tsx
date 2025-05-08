@@ -11,6 +11,7 @@ import {
 import { useAppDispatch } from "@/store/hooks";
 import { ResourceAdapter } from "@/adapters/ahaAdapter";
 import SearchCat from "@/components/templates/searchcat";
+import { getLanguageCode } from "@/utils/GetLanguageCode";
 
 const SearchScreen = () => {
   const [rArr, setRArr] = useState<string[]>([]);
@@ -23,18 +24,30 @@ const SearchScreen = () => {
     (state: any) => state.search
   );
 
+  const selectedLang =
+    (typeof window !== "undefined" &&
+      localStorage.getItem("selectedLanguage")) ||
+    "Telugu";
+  const acl = getLanguageCode(selectedLang);
+
   useEffect(() => {
     // Initial default load
     if (query?.trim().length <= 2) {
-      dispatch(fetchInitialSearchScreen());
+      dispatch(fetchInitialSearchScreen(acl));
     }
   }, [query, dispatch]);
 
   useEffect(() => {
     if (query.trim().length > 2) {
-      dispatch(fetchSearchResults(query));
+      dispatch(fetchSearchResults({ acl, query }));
     }
   }, [query, dispatch]);
+
+  const displayLang =
+    (typeof window !== "undefined" &&
+      localStorage.getItem("displayLanguage")) ||
+    "English";
+  const displayLanguage = getLanguageCode(displayLang);
 
   //console.log(data.data);
   const rawItems = Array.isArray(data) ? data : data?.data ?? [];

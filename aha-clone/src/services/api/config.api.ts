@@ -15,5 +15,9 @@ export const fetchConfigAPI = async (): Promise<ConfigDataType> => {
       "sec-ch-ua-mobile": "?1",
     },
   });
+  // console.log(
+  //   response.data.config.find((obj: any) => obj?.key === "catalogURL")?.value,
+  //   "config"
+  // );
   return response.data;
 };

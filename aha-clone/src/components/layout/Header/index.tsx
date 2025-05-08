@@ -22,7 +22,11 @@ const Header = ({}) => {
   const [showInput, setShowInput] = useState(false);
   const [visible, setVisible] = useState(false);
   const [value, setValue] = useState("");
-  const language = useSelector((state: RootState) => state.language.acl);
+  const language =
+    (typeof window !== "undefined" &&
+      localStorage.getItem("selectedLanguage")) ||
+    "Telugu";
+
   const router = useRouter();
   // Search Logic---
   const searchParams = useSearchParams();
@@ -223,7 +227,7 @@ const Header = ({}) => {
                   router.push("/profile/language");
                 }}
               >
-                <p>{`${language === "te" ? "Telugu" : "Tamil"}`}</p>
+                <p>{language}</p>
               </div>
 
               <Button wrapperClass={styles.subscribeBtn} onClick={handleClick}>

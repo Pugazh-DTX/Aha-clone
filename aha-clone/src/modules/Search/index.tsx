@@ -11,6 +11,7 @@ import {
 import { useAppDispatch } from "@/store/hooks";
 import { ResourceAdapter } from "@/adapters/ahaAdapter";
 import SearchCatalog from "@/components/templates/SearchCatalog";
+import { getLanguageCode } from "@/utils/GetLanguageCode";
 
 const SearchPage = () => {
   const [rArr, setRArr] = useState<string[]>([]);
@@ -23,22 +24,35 @@ const SearchPage = () => {
     (state: any) => state.search
   );
 
+  const selectedLang =
+    (typeof window !== "undefined" &&
+      localStorage.getItem("selectedLanguage")) ||
+    "Telugu";
+  const acl = getLanguageCode(selectedLang);
+
   useEffect(() => {
     // Initial default load
     if (query?.trim().length <= 2) {
-      dispatch(fetchInitialSearchScreen());
+      dispatch(fetchInitialSearchScreen(acl));
     }
   }, [query, dispatch]);
 
   useEffect(() => {
     if (query.trim().length > 2) {
-      dispatch(fetchSearchResults(query));
+      dispatch(fetchSearchResults({ acl, query }));
     }
   }, [query, dispatch]);
 
+  const displayLang =
+    (typeof window !== "undefined" &&
+      localStorage.getItem("displayLanguage")) ||
+    "English";
+  const displayLanguage = getLanguageCode(displayLang);
+
   //console.log(data.data);
   const rawItems = Array.isArray(data) ? data : data?.data ?? [];
-  const adapterValue = ResourceAdapter(rawItems, "te");
+  console.log("adapterCalled");
+  const adapterValue = ResourceAdapter(rawItems, displayLanguage);
   //console.log(adapterValue, "--Adapter Value--");
   console.log(rawItems.length, "search resouce length");
 

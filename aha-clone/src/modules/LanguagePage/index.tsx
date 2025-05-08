@@ -11,16 +11,13 @@ import {
 import { Button } from "@/components/atoms";
 import teluguActor from "../../../public/Assets/images/LanguagePage/lang-telugu-actor.png";
 import tamilActor from "../../../public/Assets/images/LanguagePage/lang-tamil-actor.png";
-import activeIcon from "../../../public/Assets/icons/LanguagePage/language-select-icon-active.svg";
-import inactiveIcon from "../../../public/Assets/icons/LanguagePage/language-select-icon-inactive.svg";
-import Image from "next/image";
 import ContentLanguageSelector from "@/components/molecules/ContentLanguageSelector";
 import DisplayLanguageSelector from "@/components/molecules/DisplayLanguageSelector";
 import { setLanguage, setDisplayLanguage } from "@/store/slices/languageSlice";
 import { useRouter } from "next/navigation";
 import { fetchLanding } from "@/store/slices/landingSlice";
 import { AppDispatch } from "@/store/store";
-
+import { getLanguageCode } from "../../utils/GetLanguageCode";
 const LanguagePage = () => {
   const [selectedLanguage, setSelectedLanguage] = useState(() => {
     return localStorage.getItem("selectedLanguage") || "Telugu";
@@ -52,19 +49,6 @@ const LanguagePage = () => {
       dispatch(showFooter()); // reset on unmount
     };
   }, [dispatch]);
-
-  const getLanguageCode = (lang: string) => {
-    switch (lang.toLowerCase()) {
-      case "english":
-        return "en";
-      case "telugu":
-        return "te";
-      case "tamil":
-        return "ta";
-      default:
-        return "en";
-    }
-  };
 
   useEffect(() => {
     const acl = selectedLanguage === "Tamil" ? "ta" : "te";
