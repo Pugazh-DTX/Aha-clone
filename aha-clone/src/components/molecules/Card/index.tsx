@@ -1,8 +1,10 @@
 import "./styles.scss";
 import Image from "next/image";
+import { StaticImageData } from "next/image";
 import premiumIcon from "../../../../public/Assets/icons/Card/tag-icon.svg";
 import playIcon from "../../../../public/Assets/icons/Card/play-icon.svg";
-
+import cardAhaLogo from "../../../../public/Assets/icons/Card/card-aha-logo.svg";
+import cardAhaLogoBg from "../../../../public/Assets/icons/Card/Intersect.svg";
 export type CardTag = {
   enable: string; // "true" or "false"
   position: "topright" | "topleft"; // you can extend if needed
@@ -13,8 +15,9 @@ export type CardTag = {
 export type CardProps = {
   isCastCard: boolean;
   isNoHoverAnimate?: boolean;
+  isFooterTitle: boolean;
   footerTitle: string;
-  imageSrc: string;
+  imageSrc: StaticImageData | string;
   alt?: string;
   isPremium?: boolean;
   tag?: CardTag;
@@ -22,8 +25,13 @@ export type CardProps = {
   aspectRatio: "2/3" | "2/6" | "16/9" | "16/18" | "1/1" | "9/16";
   isRoundedImage: boolean;
   overlayPlayIcon: boolean;
+  isOverlayText?: boolean;
   overlayText?: string;
   isAdultContent: boolean;
+  isAhaTag?: boolean;
+  isDaysToGo?: boolean;
+  daysToGo?: string;
+  isLiveTv?: boolean;
   isContinueWatching: boolean;
   totalTimeDuration: string;
   watchTimeDuration: string;
@@ -33,6 +41,7 @@ export type CardProps = {
 const Card = ({
   isCastCard,
   isNoHoverAnimate,
+  isFooterTitle,
   footerTitle,
   imageSrc,
   alt = "",
@@ -44,6 +53,11 @@ const Card = ({
   overlayPlayIcon,
   overlayText,
   isAdultContent,
+  isAhaTag,
+  isDaysToGo,
+  daysToGo,
+  isOverlayText,
+  isLiveTv,
   isContinueWatching,
   totalTimeDuration,
   watchTimeDuration,
@@ -88,20 +102,27 @@ const Card = ({
       <div
         className={`image-wrapper cursor-pointer ${
           isCastCard ? "cast-card-width" : "card-full-width"
-        }`}
+        } ${isLiveTv ? "card-live-tv" : ""}`}
         style={{
           aspectRatio,
           borderRadius: `${isRoundedImage ? "50%" : "8px"}`,
         }}
       >
         {/* Skeleton loader */}
-        <div className="card-skeleton-container">
+        <div
+          className="card-skeleton-container"
+          style={{ display: isLiveTv ? "none" : "flex" }}
+        >
           <div className="card-skeleton-img"></div>
         </div>
 
         {/* Image */}
         <div>
-          <Image src={imageSrc} alt={`${footerTitle}img`} fill />
+          <Image
+            src={imageSrc}
+            alt={`${footerTitle}img`}
+            {...(!isLiveTv ? { fill: true } : {})}
+          />
         </div>
 
         {/* Premium Static Badge */}
@@ -111,11 +132,21 @@ const Card = ({
               <Image
                 src={premiumIcon}
                 alt={"premium-tag"}
-                width={10}
-                height={10}
+                width={12}
+                height={12}
               />
             </div>
             <p className="premium-tag-text">Premium</p>
+          </div>
+        )}
+        {/*Card Aha tag */}
+        {isAhaTag && (
+          <div>
+            <div className="card-aha-logo-parent-container">
+              <div className="card-aha-logo-inner">
+                <Image src={cardAhaLogo} alt={""} width={34} height={17} />
+              </div>
+            </div>
           </div>
         )}
 
@@ -133,17 +164,30 @@ const Card = ({
 
         {/* Play Icon */}
         {overlayPlayIcon && (
-          <div className="play-icon-container">
-            <Image src={playIcon} alt={"play-icon"} className="play-icon" />
+          <div>
+            <div className="overlay-play-icon-gradient"></div>
+            <div className="play-icon-container">
+              <Image src={playIcon} alt={"play-icon"} className="play-icon" />
+            </div>
           </div>
         )}
 
         {/* Overlay Text */}
-        <div className="overlay-text-container">
-          <div className="overlay-text-inner-container">
-            <p className="overlay-text">{overlayText}</p>
+        {isOverlayText && (
+          <div>
+            {isAhaTag ? (
+              <div className="card-aha-bottom-gradient"></div>
+            ) : (
+              <div className="overlay-gradient"></div>
+            )}
+
+            <div className="overlay-text-container">
+              <div className="overlay-text-inner-container">
+                <p className="overlay-text">{overlayText}</p>
+              </div>
+            </div>
           </div>
-        </div>
+        )}
       </div>
 
       {/* Footer */}
@@ -153,6 +197,14 @@ const Card = ({
           padding: `${isCastCard ? "11px 0px 10px" : "5px 0"}`,
         }}
       >
+        {/* Days to go */}
+        {isDaysToGo && (
+          <div className="card-coming-days-container">
+            <div className="card-coming-days-gradient">
+              <p className="card-coming-days">{daysToGo}</p>
+            </div>
+          </div>
+        )}
         {/* Continue Watching Progress */}
         {isContinueWatching && totalTimeDuration && watchTimeDuration && (
           <div className="card-progress-bar-container">
@@ -164,22 +216,28 @@ const Card = ({
         )}
 
         {/* Footer Title and A-Tag */}
-        {footerTitle && (
-          <div className={`${isCastCard ? "cast-card-footer" : "card-footer"}`}>
-            <p
-              className={`${
-                isCastCard ? "cast-card-footer-title" : "card-footer-title"
-              }`}
-            >
-              {footerTitle}
-            </p>
+        {isFooterTitle && (
+          <div
+            className={`${isCastCard ? "cast-card-footer" : "card-footer"} ${
+              isDaysToGo ? "card-footer-positioning" : ""
+            }`}
+          >
+            {footerTitle && (
+              <p
+                className={`${
+                  isCastCard ? "cast-card-footer-title" : "card-footer-title"
+                }`}
+              >
+                {footerTitle}
+              </p>
+            )}
             {isAdultContent && (
               <div
                 className={`${
                   isCastCard ? "cast-card-footer-tag" : "card-footer-tag"
                 }`}
               >
-                A
+                18+
               </div>
             )}
           </div>

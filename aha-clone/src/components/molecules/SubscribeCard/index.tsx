@@ -8,6 +8,7 @@ import teluguLetterBg from "../../../../public/Assets/icons/SubscribeCard/letter
 import { Button } from "@/components/atoms";
 import { ISubscriptionPlans } from "@/utils/ViewPlans/viewplans";
 import subscriptionCard from "../../../../public/Assets/images/SubscriptionPagePlatforms/subscription-card.png";
+import SubscribeOfferTag from "../SubcribeOffer";
 
 const SubscribeCard = ({ plan }: { plan: ISubscriptionPlans }) => {
   return (
@@ -70,8 +71,8 @@ const SubscribeCard = ({ plan }: { plan: ISubscriptionPlans }) => {
           <div className="subscribe-card-content-footer">
             <div className="subscribe-card-footer-price">
               <h6 className="retail-price">
-                <span>INR </span>
-                {plan.retailPrice}
+                <span className="price-duration">INR </span>
+                <span className="final-price"> {plan.retailPrice}</span>
                 <span className="price-duration"> / {plan.priceDuration}</span>
               </h6>
               <h6 className="price-before">
@@ -104,6 +105,11 @@ const SubscribeCard = ({ plan }: { plan: ISubscriptionPlans }) => {
           </div>
         </div>
       </div>
+      {plan.isShowOffers && (
+        <div style={{ marginTop: "1vw" }}>
+          <SubscribeOfferTag />
+        </div>
+      )}
     </section>
   );
 };

@@ -89,8 +89,8 @@ const Header = ({}) => {
 
   // Show only logo in header (from Redux store)
 
-  const onlyShowLogo = useSelector(
-    (state: RootState) => state.layout.onlyShowLogo
+  const { onlyShowLogo, showOnlySearchBar } = useSelector(
+    (state: RootState) => state.layout
   );
 
   const [mounted, setMounted] = useState(false);
@@ -98,6 +98,7 @@ const Header = ({}) => {
     setMounted(true);
   }, []);
   if (!mounted) return null;
+  console.log("showOnlySearchBar:", showOnlySearchBar, "pathname:", pathname);
 
   return (
     <>
@@ -106,142 +107,208 @@ const Header = ({}) => {
           !onlyShowLogo ? (scrolled ? styles.scrolled : styles.atTop) : ""
         }`}
       >
-        <div className={styles.headerContainer}>
-          {/* Left side */}
-          <div className={styles.headerLeftContainer}>
-            <div className={`${styles.logo} cursor-pointer`}>
-              <Image
-                src={headerIcons?.logo}
-                alt="Aha Logo"
-                priority
-                className={styles.logoImage}
-                onClick={() => router.push("/")}
-              />
-            </div>
+        {!showOnlySearchBar ? (
+          <div className={styles.headerContainer}>
+            {/* Left side */}
+            <div className={styles.headerLeftContainer}>
+              <div className={`${styles.logo} cursor-pointer`}>
+                <Image
+                  src={headerIcons?.logo}
+                  alt="Aha Logo"
+                  priority
+                  className={styles.logoImage}
+                  onClick={() => router.push("/")}
+                />
+              </div>
 
-            {/* Large screen Nav */}
-            {!onlyShowLogo && (
-              <>
-                <nav className={`${styles.nav} ${menuOpen ? styles.open : ""}`}>
-                  {navLinks.map((link) => {
-                    const isActive = pathname === link.path;
-                    return (
-                      <div
-                        key={link.name}
-                        className={`${styles.navItem} ${
-                          isActive ? styles.activeNav : ""
-                        } cursor-pointer`}
-                        onClick={() => router.push(link.path)}
-                      >
-                        {link.name}
-                      </div>
-                    );
-                  })}
-                </nav>
+              {/* Large screen Nav */}
+              {!onlyShowLogo && (
+                <>
+                  <nav
+                    className={`${styles.nav} ${menuOpen ? styles.open : ""}`}
+                  >
+                    {navLinks.map((link) => {
+                      const isActive = pathname === link.path;
+                      return (
+                        <div
+                          key={link.name}
+                          className={`${styles.navItem} ${
+                            isActive ? styles.activeNav : ""
+                          } cursor-pointer`}
+                          onClick={() => router.push(link.path)}
+                        >
+                          {link.name}
+                        </div>
+                      );
+                    })}
+                  </nav>
 
-                {/* Mobile Nav */}
-                <nav
-                  className={`${styles.mobileNav} ${
-                    menuOpen ? styles.open : ""
-                  }`}
-                  ref={containerRef}
-                  style={{
-                    overflowX: "auto",
-                    padding: hasOverflow ? "0 14px" : "0",
-                    transition: "padding 0.2s ease",
-                  }}
-                >
-                  {navLinks.slice(0, 4).map((link) => {
-                    const isActive = pathname === link.path;
-                    return (
-                      <div
-                        key={link.name}
-                        className={`${styles.navItem} ${
-                          isActive ? styles.activeNav : ""
-                        }`}
-                        onClick={() => router.push(link.path)}
-                      >
-                        {isActive && (
-                          <div
-                            style={{
-                              backgroundImage: `url(${link.icon.src})`,
-                              backgroundRepeat: "no-repeat",
-                              backgroundPosition: "center",
-                              height: "25px",
-                              width: "25px",
-                            }}
-                          />
-                        )}
-                        {link.name}
-                      </div>
-                    );
-                  })}
-                </nav>
-              </>
-            )}
-          </div>
-
-          {/* Right side */}
-          {!onlyShowLogo && (
-            <div className={styles.headerRightContainer}>
-              <div className={styles.searchWrapper}>
-                {!(pathname === "/search") && (
-                  <Image
-                    src={headerIcons.search}
-                    alt={"Search icon"}
-                    className={`${styles.searchIcon} cursor-pointer `}
-                    onClick={handleIconClick}
-                  />
-                )}
-
-                {pathname === "/search" && (
-                  <div
-                    className={`${styles.searchBarContainer} ${
-                      styles.visible
-                    } ${showInput ? styles.show : ""}`}
+                  {/* Mobile Nav */}
+                  <nav
+                    className={`${styles.mobileNav} ${
+                      menuOpen ? styles.open : ""
+                    }`}
+                    ref={containerRef}
                     style={{
-                      display: `${pathname === "/search" ? "flex" : "none"}`,
-                      opacity: `${pathname === "/search" ? "1" : "0"}`,
-                      marginRight: "5px",
+                      overflowX: "auto",
+                      padding: hasOverflow ? "0 14px" : "0",
+                      transition: "padding 0.2s ease",
                     }}
                   >
-                    <Image
-                      src={headerIcons?.search}
-                      alt={"search"}
-                      className={styles.inputSearchIcon}
-                    />
-                    <input
-                      type="text"
-                      placeholder="Search Title, Movie or Cast"
-                      className={styles.searchInput}
-                      value={value}
-                      onChange={(e) => setValue(e.target.value)}
-                    />
-                  </div>
-                )}
-              </div>
+                    {navLinks.slice(0, 4).map((link) => {
+                      const isActive = pathname === link.path;
+                      return (
+                        <div
+                          key={link.name}
+                          className={`${styles.navItem} ${
+                            isActive ? styles.activeNav : ""
+                          }`}
+                          onClick={() => router.push(link.path)}
+                        >
+                          {isActive && (
+                            <div
+                              style={{
+                                backgroundImage: `url(${link.icon.src})`,
+                                backgroundRepeat: "no-repeat",
+                                backgroundPosition: "center",
+                                height: "25px",
+                                width: "25px",
+                              }}
+                            />
+                          )}
+                          {link.name}
+                        </div>
+                      );
+                    })}
+                  </nav>
+                </>
+              )}
+            </div>
 
+            {/* Right side */}
+            {!onlyShowLogo && (
+              <div className={styles.headerRightContainer}>
+                <div className={styles.headerBellIcon}>
+                  <Image src={headerIcons.bell} alt={""} />
+                </div>
+                <div className={styles.searchWrapper}>
+                  {pathname !== "/search" && (
+                    <Image
+                      src={headerIcons.search}
+                      alt={"Search icon"}
+                      className={`${styles.searchIcon} cursor-pointer `}
+                      onClick={handleIconClick}
+                    />
+                  )}
+
+                  {pathname === "/search" && (
+                    <div
+                      className={`${styles.searchBarContainer} ${
+                        styles.visible
+                      } ${showInput ? styles.show : ""}`}
+                      style={{
+                        display: `${pathname === "/search" ? "flex" : "none"}`,
+                        opacity: `${pathname === "/search" ? "1" : "0"}`,
+                      }}
+                    >
+                      <Image
+                        src={headerIcons?.search}
+                        alt={"search"}
+                        className={styles.inputSearchIcon}
+                      />
+                      <input
+                        type="text"
+                        placeholder="Search Title, Movie or Cast"
+                        className={styles.searchInput}
+                        value={value}
+                        onChange={(e) => setValue(e.target.value)}
+                      />
+                      <Image
+                        src={headerIcons?.mike}
+                        alt={"search"}
+                        className={styles.inputSearchIcon}
+                      />
+                    </div>
+                  )}
+                </div>
+
+                <div
+                  className={`${styles.languageSelect} cursor-pointer`}
+                  onClick={() => {
+                    router.push("/profile/language");
+                  }}
+                >
+                  {/* <p>{language}</p> */}
+                  <Image
+                    src={headerIcons?.langChange}
+                    alt={""}
+                    height={25}
+                    width={25}
+                  />
+                </div>
+
+                <Button
+                  wrapperClass={styles.subscribeBtn}
+                  onClick={handleClick}
+                >
+                  Subscribe Now
+                </Button>
+
+                <ProfileDropdown />
+              </div>
+            )}
+          </div>
+        ) : (
+          <div className={styles.searchPageBarContainer}>
+            <div
+              className={`${styles.searchBackIcon} cursor-pointer`}
+              style={{ width: "20px", height: "20px" }}
+              onClick={() => {
+                router.back();
+              }}
+            ></div>
+            <div
+              className={`${styles.searchBarContainer} ${styles.visible} ${
+                showInput ? styles.show : ""
+              }`}
+              style={{
+                display: `${pathname === "/search" ? "flex" : "none"}`,
+                opacity: `${pathname === "/search" ? "1" : "0"}`,
+                justifyContent: "space-between",
+              }}
+            >
               <div
-                className={`${styles.languageSelect} cursor-pointer`}
-                onClick={() => {
-                  router.push("/profile/language");
+                style={{
+                  display: "flex",
+                  alignItems: "center",
+                  width: "100%",
                 }}
               >
-                <p>{language}</p>
+                <Image
+                  src={headerIcons?.search}
+                  alt={"search"}
+                  className={styles.inputSearchIcon}
+                />
+                <input
+                  type="text"
+                  placeholder="Search Title, Movie or Cast"
+                  className={styles.searchInput}
+                  value={value}
+                  onChange={(e) => setValue(e.target.value)}
+                />
               </div>
-
-              <Button wrapperClass={styles.subscribeBtn} onClick={handleClick}>
-                Subscribe Now
-              </Button>
-
-              <ProfileDropdown />
+              <Image
+                src={headerIcons?.mike}
+                alt={"search"}
+                className={styles.inputSearchIcon}
+              />
             </div>
-          )}
-        </div>
+          </div>
+        )}
       </header>
 
       {/* Bottom Nav */}
-      <BottomNav />
+      {!showOnlySearchBar && <BottomNav />}
     </>
   );
 };

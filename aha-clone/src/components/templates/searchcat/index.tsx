@@ -106,6 +106,7 @@ const SearchCat = ({
                 <Card
                   isCastCard={false}
                   isNoHoverAnimate={true}
+                  isFooterTitle={true}
                   footerTitle={movie.title}
                   imageSrc={movie.images.searchImg}
                   aspectRatio={"16/9"}

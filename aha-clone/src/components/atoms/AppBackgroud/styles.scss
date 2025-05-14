@@ -1,0 +1,8 @@
+.app-background {
+  background-image: url("/Assets/images/AppBackground/app-background.png");
+}
+@media (max-width: 900px) {
+  .app-background {
+    background-image: url("/Assets/images/AppBackground/subs-page-mob-bg.png");
+  }
+}

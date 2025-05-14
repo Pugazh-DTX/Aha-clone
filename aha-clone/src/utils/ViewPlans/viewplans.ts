@@ -8,6 +8,7 @@ export interface ISubscriptionPlans {
   retailPrice: number;
   priceBefore: number;
   priceDuration: string;
+  isShowOffers: boolean;
 }
 
 export const subscriptionPlans: ISubscriptionPlans[] = [
@@ -22,6 +23,7 @@ export const subscriptionPlans: ISubscriptionPlans[] = [
     priceBefore: 1499,
     priceDuration: "year",
     language: "telugu",
+    isShowOffers: true,
   },
   {
     isGoldPack: false,
@@ -34,6 +36,7 @@ export const subscriptionPlans: ISubscriptionPlans[] = [
     priceBefore: 1299,
     priceDuration: "year",
     language: "telugu",
+    isShowOffers: false,
   },
   {
     isGoldPack: false,
@@ -46,6 +49,7 @@ export const subscriptionPlans: ISubscriptionPlans[] = [
     priceBefore: 299,
     priceDuration: "3 months",
     language: "telugu",
+    isShowOffers: false,
   },
   {
     isGoldPack: false,
@@ -58,5 +62,6 @@ export const subscriptionPlans: ISubscriptionPlans[] = [
     priceBefore: 699,
     priceDuration: "year",
     language: "telugu",
+    isShowOffers: false,
   },
 ];

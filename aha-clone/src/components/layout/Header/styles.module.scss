@@ -83,39 +83,56 @@
     color: #e50914;
   }
 }
-
-.languageSelect {
-  background: #29292966;
-  border: none;
-  color: #fff;
-  padding: 0.4rem 0.75rem;
-  border-radius: 6px;
-  font-size: 14px;
-  appearance: none; // Chrome, Safari
-  -webkit-appearance: none; // Safari
-  -moz-appearance: none; // Firefox
-  background-image: url("/Assets/icons/Header/down-arrow.svg"); // your custom arrow
-  background-repeat: no-repeat;
-  background-position: right 0.5rem center;
-  background-size: 1.12rem; // <-- change this to control size
-  padding-right: 2rem; // give space for the arrow
-
-  &:focus {
-    outline: none;
-  }
+.headerBellIcon {
+  display: flex;
+  cursor: pointer;
 }
+.languageSelect {
+  display: flex;
+}
+// .languageSelect {
+//   background: #29292966;
+//   border: none;
+//   color: #fff;
+//   padding: 0.4rem 0.75rem;
+//   border-radius: 6px;
+//   font-size: 14px;
+//   appearance: none; // Chrome, Safari
+//   -webkit-appearance: none; // Safari
+//   -moz-appearance: none; // Firefox
+//   background-image: url("/Assets/icons/Header/down-arrow.svg"); // your custom arrow
+//   background-repeat: no-repeat;
+//   background-position: right 0.5rem center;
+//   background-size: 1.12rem; // <-- change this to control size
+//   padding-right: 2rem; // give space for the arrow
+
+//   &:focus {
+//     outline: none;
+//   }
+// }
 
 .searchIcon {
-  display: block;
+  display: flex;
+}
+.searchPageBarContainer {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 10px;
+  padding: 10px 0 14px;
 }
 
+.searchBackIcon {
+  background: url("/Assets/icons/SubscriptionPage/mob-arrow-left-subs-page.svg")
+    no-repeat center center !important;
+  background-size: cover !important;
+}
 .searchBarContainer {
   display: none;
   opacity: 0;
   align-items: center;
   justify-items: center;
   padding: 0 11px;
-  margin-left: 8px;
   width: 309px;
   height: 46px;
   background: linear-gradient(
@@ -128,10 +145,10 @@
   backdrop-filter: blur(40px);
   border-radius: 8px;
   transition: all 0.4s ease;
-  transform: translateX(20px);
 }
 .inputSearchIcon {
   opacity: 0.3;
+  cursor: pointer;
 }
 .searchWrapper {
   position: relative;
@@ -139,7 +156,7 @@
 
 .searchInput {
   margin: 0 0 0 12px;
-  height: 44px;
+  height: 46px;
   width: 80%;
   border-radius: 8px;
   background: transparent;
@@ -147,6 +164,7 @@
   outline: none;
   caret-color: #ff6d2e;
   color: #fff;
+  font-size: 16px;
 }
 
 .visible {
@@ -418,7 +436,9 @@
       box-shadow: 0 4px 4px #00000040;
     }
   }
-
+  .headerBellIcon {
+    display: none;
+  }
   .searchIcon {
     display: none;
   }
@@ -426,22 +446,25 @@
   .signIn {
     display: none;
   }
-
+  .searchBarContainer {
+    width: 85%;
+  }
   .languageSelect {
     left: 4vw;
     position: relative;
     cursor: pointer !important;
-    border-radius: 6px;
-    font-size: 0.7rem;
-    padding: 0.2rem;
-    appearance: none; // Chrome, Safari
-    -webkit-appearance: none; // Safari
-    -moz-appearance: none; // Firefox
-    background-image: url("/Assets/icons/Header/down-arrow.svg"); // your custom arrow
-    background-repeat: no-repeat;
-    background-position: right 0.5rem center;
-    background-size: 1.12rem; // <-- change this to control size
-    padding-right: 2rem; // give space for the arrow
+
+    // border-radius: 6px;
+    // font-size: 0.7rem;
+    // padding: 0.2rem;
+    // appearance: none; // Chrome, Safari
+    // -webkit-appearance: none; // Safari
+    // -moz-appearance: none; // Firefox
+    // background-image: url("/Assets/icons/Header/down-arrow.svg"); // your custom arrow
+    // background-repeat: no-repeat;
+    // background-position: right 0.5rem center;
+    // background-size: 1.12rem; // <-- change this to control size
+    // padding-right: 2rem; // give space for the arrow
   }
 }
 
@@ -462,6 +485,10 @@
 
   .mobileNav::-webkit-scrollbar {
     display: none;
+  }
+
+  .languageSelect {
+    left: 0;
   }
 }
 

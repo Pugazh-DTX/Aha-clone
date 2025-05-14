@@ -98,6 +98,7 @@ const SliderCarousel: React.FC<SliderCarouselProps> = ({ container }) => {
                 <Card
                   isCastCard={false}
                   isContinueWatching={false}
+                  isFooterTitle={true}
                   footerTitle={resource.title}
                   imageSrc={resource.carouselthumbnail}
                   isPremium={resource.ispremium}

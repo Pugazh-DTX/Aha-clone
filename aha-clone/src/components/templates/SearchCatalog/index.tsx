@@ -8,6 +8,8 @@ import { useDispatch } from "react-redux";
 import {
   hideFooter,
   hideHeader,
+  setOnlyShowLogo,
+  setShowOnlySearchBar,
   showFooter,
   showHeader,
 } from "@/store/slices/layoutSlice";
@@ -27,9 +29,11 @@ const SearchCatalog = ({
 
   useEffect(() => {
     const handleResize = () => {
-      if (window.innerWidth < 900) {
-        dispatch(hideHeader()); // Hide header below 900px
+      if (window.innerWidth <= 900) {
+        dispatch(setShowOnlySearchBar(true));
+        // Hide header below 900px
       } else {
+        dispatch(setShowOnlySearchBar(false));
         dispatch(showHeader()); // Show header above 900px
       }
       dispatch(hideFooter()); // Always hide footer
@@ -41,6 +45,8 @@ const SearchCatalog = ({
 
     return () => {
       window.removeEventListener("resize", handleResize);
+      dispatch(setShowOnlySearchBar(false));
+
       dispatch(showHeader());
       dispatch(showFooter()); // reset on unmount
     };
@@ -106,6 +112,7 @@ const SearchCatalog = ({
                 <Card
                   isCastCard={false}
                   isNoHoverAnimate={true}
+                  isFooterTitle={true}
                   footerTitle={movie.title}
                   imageSrc={movie.images.searchImg}
                   aspectRatio={"16/9"}

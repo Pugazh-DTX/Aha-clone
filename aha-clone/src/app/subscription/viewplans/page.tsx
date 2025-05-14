@@ -16,6 +16,7 @@ import SubscribeCard from "../../../components/molecules/SubscribeCard";
 import { subscriptionPlans } from "@/utils/ViewPlans/viewplans";
 import { subsPagePlatforms } from "@/utils/ViewPlans/viewplansplatforms";
 import { useRouter } from "next/navigation";
+import SubscribeOfferTag from "@/components/molecules/SubcribeOffer";
 
 const ViewPlans = () => {
   const dispatch = useDispatch();

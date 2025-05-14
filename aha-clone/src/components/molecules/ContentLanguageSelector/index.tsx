@@ -5,8 +5,11 @@ interface IContentLanguageProps {
   selectedLanguage: string;
   setSelectedLanguage: (language: string) => void;
   actorImgSrc: StaticImageData;
-  language: "Telugu" | "Tamil";
+  language: "Telugu" | "Tamil" | "Malayalam";
   nativeLabel: string;
+  languageDescription: string;
+  nativelangAhaImg: StaticImageData | string;
+  nativelangLetterImg: StaticImageData | string;
 }
 const ContentLanguageSelector = (props: IContentLanguageProps) => {
   const {
@@ -15,6 +18,9 @@ const ContentLanguageSelector = (props: IContentLanguageProps) => {
     actorImgSrc,
     language,
     nativeLabel,
+    nativelangAhaImg,
+    nativelangLetterImg,
+    languageDescription,
   } = props;
   return (
     <div
@@ -24,14 +30,23 @@ const ContentLanguageSelector = (props: IContentLanguageProps) => {
       onClick={() => setSelectedLanguage(language)}
       style={{ cursor: "pointer" }}
     >
-      <div className="language-language-info">
-        <div
-          className={`language-check-circle ${
-            props.selectedLanguage === language ? "icon-active" : ""
-          }`}
-        ></div>
-        <span className="language-native-language">{nativeLabel}</span>
-        <span className="language-language-name">{language}</span>
+      <div className="language-left-container">
+        <div className="language-language-info">
+          <div
+            className={`language-check-circle ${
+              props.selectedLanguage === language ? "icon-active" : ""
+            }`}
+          ></div>
+          {/* <span
+          className="language-native-language"
+          style={{ backgroundImage: `${nativelangImg}` }}
+        ></span> */}
+          <Image src={nativelangAhaImg} alt={""} />
+          <span className="language-language-name">{language}</span>
+        </div>
+        <div>
+          <p className="language-content-description">{languageDescription}</p>
+        </div>
       </div>
       <div style={{ height: "100%" }}>
         <Image
@@ -39,6 +54,9 @@ const ContentLanguageSelector = (props: IContentLanguageProps) => {
           alt={`${language} Actor`}
           className="language-actor-image"
         />
+      </div>
+      <div className="language-letter-img">
+        <Image src={nativelangLetterImg} alt={""} />
       </div>
     </div>
   );
