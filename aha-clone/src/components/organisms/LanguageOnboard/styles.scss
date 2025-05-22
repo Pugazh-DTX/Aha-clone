@@ -1,0 +1,85 @@
+.language-onboard__overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  background: rgba(0, 0, 0, 0.5);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 1000;
+
+  .language-onboard__modal {
+    border-radius: 12px;
+    background: #1a1d1e;
+    padding: 3vw;
+    max-width: 80vw;
+    width: 100%;
+    text-align: center;
+    max-height: 95vh;
+    overflow-y: auto;
+    @media (min-width: 1500px) {
+      max-width: 70vw;
+    }
+    @media (max-width: 500px) {
+      max-width: 90vw;
+    }
+
+    .language-onboard__section {
+      display: flex;
+      justify-content: space-around;
+      gap: 40px;
+      @media (max-width: 900px) {
+        flex-direction: column;
+        justify-content: center;
+      }
+      .language-onboard__left-section {
+        width: 50%;
+        @media (max-width: 900px) {
+          width: 100%;
+        }
+      }
+      .language-onboard__right-section {
+        width: 50%;
+        @media (max-width: 900px) {
+          width: 100%;
+        }
+        .language-onboard__proceed {
+          justify-self: flex-end;
+          background: linear-gradient(180deg, #b61a09 -86.4%, #ff6d2e 100%);
+          color: #fff;
+          font-size: 16px;
+          font-style: normal;
+          font-weight: 600;
+          line-height: 16.8px; /* 105% */
+          border-radius: 24px;
+          width: 216px !important;
+          height: 48px !important;
+          margin-top: 28px;
+          padding: 12px;
+          @media (max-width: 900px) {
+            justify-self: center;
+            width: 40% !important;
+            height: auto !important;
+          }
+          @media (max-width: 600px) {
+            justify-self: end;
+          }
+        }
+      }
+    }
+  }
+}
+.language-onboard__heading {
+  text-align: left;
+  margin-bottom: 18px;
+  color: #fff;
+  font-size: 18px;
+  font-style: normal;
+  font-weight: 600;
+  line-height: 18px; /* 100% */
+  .language-onboard__heading-orange {
+    color: #ff6d2e;
+  }
+}

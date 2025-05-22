@@ -82,6 +82,11 @@
   display: none;
 }
 /* Responsive */
+@media (min-width: 1500px) {
+  .language-selection-card {
+    max-width: 70vw;
+  }
+}
 @media (max-width: 900px) {
   .language-selection-card {
     flex-direction: column;

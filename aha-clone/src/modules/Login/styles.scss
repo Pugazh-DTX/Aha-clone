@@ -1,0 +1,265 @@
+.login-parent-body {
+  width: 100%;
+  height: 100vh;
+  min-height: 490px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  .login__back-arrow {
+    position: absolute;
+    top: 65px;
+    left: 5%;
+    @media (max-width: 600px) {
+      top: 65px;
+      left: 1%;
+    }
+    @media (max-width: 480px) {
+      top: 2%;
+      left: 1%;
+    }
+  }
+  .login__card-body {
+    min-height: 490px;
+    width: 550px;
+    position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 12px;
+    border: 1px solid #35393f;
+    background: #1a1d1e;
+    box-shadow: 0px 4px 4px 0px rgba(0, 0, 0, 0.25);
+    padding: 40px 80px;
+    @media (max-width: 600px) {
+      padding: 40px 40px;
+    }
+    @media (max-width: 480px) {
+      width: auto;
+      border: none;
+      background: none;
+      box-shadow: none;
+      padding: 10px;
+    }
+    .login__card-heading {
+      width: 60%;
+      color: #ececec;
+      font-size: 40px;
+      font-style: normal;
+      font-weight: 900;
+      line-height: 34px;
+      @media (max-width: 520px) {
+        width: 80%;
+        font-size: 35px;
+        line-height: 30px;
+      }
+      .login__card-heading-dot {
+        color: #ff6d2e;
+        font-size: 40px;
+        font-style: normal;
+        font-weight: 900;
+        line-height: 32px;
+      }
+    }
+
+    .login__card-mobile-part {
+      display: flex;
+      flex-direction: column;
+      gap: 20px;
+      padding: 30px 0;
+
+      .login__card-mobile-no {
+        color: #fff;
+        font-size: 18px;
+        font-style: normal;
+        font-weight: 600;
+        line-height: 18px;
+      }
+
+      .login__number-input {
+        caret-color: orangered;
+
+        &::-webkit-outer-spin-button,
+        &::-webkit-inner-spin-button {
+          -webkit-appearance: none;
+          margin: 0;
+        }
+
+        -moz-appearance: textfield; // Firefox
+      }
+    }
+
+    .input-divider {
+      width: 1px;
+      height: 30px;
+      background-color: rgba(255, 255, 255, 0.2);
+    }
+
+    .login__proceed-button {
+      background: linear-gradient(180deg, #b61a09 -86.4%, #ff6d2e 100%);
+      border-radius: 24px;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      color: #fff;
+      font-size: 16px;
+      font-style: normal;
+      font-weight: 600;
+      line-height: 16px;
+      padding: 16px;
+      @media (max-width: 480px) {
+        width: 40% !important;
+        align-self: flex-end;
+        padding: 12px;
+      }
+    }
+
+    .login__text--error {
+      color: red;
+      font-size: 14px;
+      font-style: normal;
+      font-weight: 400;
+      line-height: 18px;
+    }
+
+    .login__social-use-options {
+      display: flex;
+      flex-direction: column;
+      gap: 15px;
+
+      .login__use-options {
+        color: #fff;
+        font-size: 14px;
+        font-style: normal;
+        font-weight: 400;
+        line-height: 18px;
+      }
+
+      .login__social-media {
+        height: 46px;
+        width: 105px;
+        padding: 10px;
+        border: 1px solid rgba(255, 255, 255, 0.2);
+        border-radius: 8px;
+        gap: 2px;
+
+        @media (max-width: 520px) {
+          width: fit-content;
+        }
+        .login__social-text {
+          color: #fff;
+          font-size: 12px;
+          font-style: normal;
+          font-weight: 400;
+          line-height: 14px;
+        }
+      }
+    }
+    .login__otp-container {
+      display: flex;
+      flex-direction: column;
+
+      gap: 70px;
+      .login__card-otp-text {
+        color: #ececec;
+        font-size: 18px;
+        font-style: normal;
+        font-weight: 600;
+        line-height: 28px; /* 155.556% */
+      }
+
+      .login__card-otp-mobileno-change {
+        display: flex;
+        justify-content: space-between;
+        .login__card-otp-mobile-no {
+          color: #ececec;
+          opacity: 0.5;
+          font-size: 24px;
+          font-style: normal;
+          font-weight: 300;
+          line-height: 24px; /* 100% */
+          word-break: break-word;
+        }
+      }
+      .login__otp-box {
+        height: 46px;
+        width: 46px;
+        border-radius: 8px;
+        border: 1px solid #fff;
+        background: linear-gradient(
+          140deg,
+          rgba(255, 255, 255, 0.2) 10.38%,
+          rgba(255, 255, 255, 0) 137.67%
+        );
+        box-shadow: 0px 4px 24px -1px rgba(0, 0, 0, 0.2);
+        backdrop-filter: blur(20px);
+        text-align: center;
+        color: #ececec;
+        font-size: 33px;
+        font-style: normal;
+        font-weight: 400;
+        line-height: 52px; /* 157.576% */
+        letter-spacing: -1.65px;
+
+        &:focus {
+          outline: 1px solid #ffffff;
+        }
+      }
+      .login__otp-seconds {
+        color: #fff;
+        font-size: 14px;
+        font-style: normal;
+        font-weight: 600;
+        line-height: 16px; /* 114.286% */
+        opacity: 0.3;
+      }
+      .login__resend-otp {
+        color: #fff;
+        font-size: 16px;
+        font-style: normal;
+        font-weight: 600;
+        line-height: 16px; /* 100% */
+        // letter-spacing: -0.8px;
+      }
+      .login__verify-otp-button {
+        background: linear-gradient(180deg, #b61a09 -86.4%, #ff6d2e 100%);
+        border-radius: 24px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        color: #fff;
+        font-size: 16px;
+        font-style: normal;
+        font-weight: 600;
+        line-height: 16px;
+        padding: 12px 24px;
+        margin-right: 15%;
+        min-width: 160px;
+        @media (max-width: 480px) {
+          padding: 12px 20px;
+        }
+      }
+      .login__policy-text {
+        width: 70%;
+        color: #fff;
+        font-size: 12px;
+        font-style: normal;
+        font-weight: 400;
+        line-height: 17px; /* 141.667% */
+        .login__policy-orange-text {
+          color: #ff6d2e;
+          cursor: pointer;
+        }
+      }
+    }
+  }
+}
+
+.border {
+  border-radius: 5px;
+}
+
+.login-flex-jc-ac {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}

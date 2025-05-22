@@ -67,13 +67,38 @@ const LanguagePage = () => {
     };
   }, [dispatch]);
 
-  useEffect(() => {
-    const acl = selectedLanguage === "Tamil" ? "ta" : "te";
+  // useEffect(() => {
+  //   const acl = selectedLanguage === "Tamil" ? "ta" : "te";
+  //   dispatch(setLanguage(acl));
+  //   dispatch(fetchLanding());
+  //   // Save to localStorage
+  //   localStorage.setItem("selectedLanguage", selectedLanguage);
+  //   // If display language is Tamil or Telugu, update it to match selected language
+  //   if (
+  //     localDisplayLang === "Tamil" ||
+  //     localDisplayLang === "Telugu" ||
+  //     localDisplayLang === "Malayalam"
+  //   ) {
+  //     setLocalDisplayLang(selectedLanguage);
+  //     localStorage.setItem("displayLanguage", selectedLanguage);
+  //     dispatch(setDisplayLanguage(getLanguageCode(selectedLanguage)));
+  //   }
+  //   // console.log(acl, "acl");
+  // }, [selectedLanguage]);
+  // // console.log(localDisplayLang, "-display");
+  // // console.log(selectedLanguage, "-Selecteddisplay");
+
+  const handlelanguageproceed = () => {
+    const acl =
+      selectedLanguage === "Tamil"
+        ? "ta"
+        : selectedLanguage === "Malayalam"
+        ? "ml"
+        : "te";
     dispatch(setLanguage(acl));
     dispatch(fetchLanding());
-    // Save to localStorage
     localStorage.setItem("selectedLanguage", selectedLanguage);
-    // If display language is Tamil or Telugu, update it to match selected language
+
     if (
       localDisplayLang === "Tamil" ||
       localDisplayLang === "Telugu" ||
@@ -82,11 +107,14 @@ const LanguagePage = () => {
       setLocalDisplayLang(selectedLanguage);
       localStorage.setItem("displayLanguage", selectedLanguage);
       dispatch(setDisplayLanguage(getLanguageCode(selectedLanguage)));
+    } else {
+      // setLocalDisplayLang("English");
+      // localStorage.setItem("displayLanguage", "English");
+      // dispatch(setDisplayLanguage(getLanguageCode("English")));
+      handleDisplayLanguageChange("English");
     }
-    // console.log(acl, "acl");
-  }, [selectedLanguage]);
-  // console.log(localDisplayLang, "-display");
-  // console.log(selectedLanguage, "-Selecteddisplay");
+    router.push("/");
+  };
 
   const handleDisplayLanguageChange = (lang: string) => {
     setLocalDisplayLang(lang);
@@ -101,7 +129,7 @@ const LanguagePage = () => {
           <Image
             src={closeIcon}
             alt={""}
-            className="language-close"
+            className="language-close cursor-pointer"
             onClick={() => router.push("/")}
           ></Image>
         </div>
@@ -120,6 +148,7 @@ const LanguagePage = () => {
               nativelangAhaImg={teluguNativeLang}
               nativelangLetterImg={teluguLetter}
               languageDescription={"మీరు ఈ భాషలోని మొత్తం కంటెంట్‌ను చూస్తారు"}
+              nativelangAhaImgAfter={""}
             />
             <ContentLanguageSelector
               selectedLanguage={selectedLanguage}
@@ -132,6 +161,7 @@ const LanguagePage = () => {
               languageDescription={
                 "இந்த மொழியில் எல்லா உள்ளடக்கத்தையும் காண்பீர்கள்"
               }
+              nativelangAhaImgAfter={""}
             />
             <ContentLanguageSelector
               selectedLanguage={selectedLanguage}
@@ -142,6 +172,7 @@ const LanguagePage = () => {
               nativelangAhaImg={tamilNativeLang}
               nativelangLetterImg={malayalamLetter}
               languageDescription={"ഈ ഭാഷയിലെ എല്ലാ ഉള്ളടക്കവും നിങ്ങൾ കാണും"}
+              nativelangAhaImgAfter={""}
             />
           </div>
 
@@ -162,7 +193,7 @@ const LanguagePage = () => {
             />
             <Button
               wrapperClass="language-proceed-btn"
-              onClick={() => router.push("/")}
+              onClick={handlelanguageproceed}
             >
               Proceed
             </Button>

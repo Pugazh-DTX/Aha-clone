@@ -5,11 +5,14 @@ interface IContentLanguageProps {
   selectedLanguage: string;
   setSelectedLanguage: (language: string) => void;
   actorImgSrc: StaticImageData;
-  language: "Telugu" | "Tamil" | "Malayalam";
+  language: "Telugu" | "Tamil" | "Malayalam" | "English";
   nativeLabel: string;
+  isUsedDisplayLangCard?: boolean;
+  nativeLanguageWord?: string;
   languageDescription: string;
   nativelangAhaImg: StaticImageData | string;
   nativelangLetterImg: StaticImageData | string;
+  nativelangAhaImgAfter: StaticImageData | string;
 }
 const ContentLanguageSelector = (props: IContentLanguageProps) => {
   const {
@@ -18,10 +21,14 @@ const ContentLanguageSelector = (props: IContentLanguageProps) => {
     actorImgSrc,
     language,
     nativeLabel,
+    isUsedDisplayLangCard,
+    nativeLanguageWord,
+    languageDescription,
     nativelangAhaImg,
     nativelangLetterImg,
-    languageDescription,
+    nativelangAhaImgAfter,
   } = props;
+
   return (
     <div
       className={`language-language-card cursor-pointer ${
@@ -41,8 +48,20 @@ const ContentLanguageSelector = (props: IContentLanguageProps) => {
           className="language-native-language"
           style={{ backgroundImage: `${nativelangImg}` }}
         ></span> */}
-          <Image src={nativelangAhaImg} alt={""} />
-          <span className="language-language-name">{language}</span>
+          {nativelangAhaImg && <Image src={nativelangAhaImg} alt={""} />}
+          {isUsedDisplayLangCard ? (
+            <span className="language-language-name">{nativeLanguageWord}</span>
+          ) : (
+            <span className="language-language-name">{language}</span>
+          )}
+
+          {nativelangAhaImgAfter && (
+            <Image
+              src={nativelangAhaImgAfter}
+              alt={""}
+              style={{ opacity: "0.15" }}
+            />
+          )}
         </div>
         <div>
           <p className="language-content-description">{languageDescription}</p>

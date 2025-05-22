@@ -3,6 +3,7 @@ import "./globals.css";
 import AppProvider from "@/components/providers/AppProvider";
 
 import ClientLayout from "@/components/clientlayout";
+import LanguageProvider from "@/components/organisms/LanguageProvider";
 export const metadata: Metadata = {
   title: "Watch Movies, Web Series, TV Shows, Live TV Channels - aha",
   description: "Watch Movies, Web Series, TV Shows, Live TV Channels - aha",
@@ -22,7 +23,9 @@ export default function RootLayout({
     <html lang="en">
       <body>
         <AppProvider>
-          <ClientLayout>{children}</ClientLayout>
+          <ClientLayout>
+            <LanguageProvider>{children}</LanguageProvider>
+          </ClientLayout>
         </AppProvider>
       </body>
     </html>
