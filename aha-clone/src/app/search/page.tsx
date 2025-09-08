@@ -1,4 +1,4 @@
-import React from "react";
+import React, { Suspense } from "react";
 import SearchPage from "@/modules/Search";
 import SearchScreen from "../../modules/SampleSearch";
 export const metadata = {
@@ -7,7 +7,11 @@ export const metadata = {
 };
 
 const Search = () => {
-  return <SearchScreen />;
+  return (
+    <Suspense fallback={<div>Loading search...</div>}>
+      <SearchScreen />
+    </Suspense>
+  );
 };
 
 export default Search;

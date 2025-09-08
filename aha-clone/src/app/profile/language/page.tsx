@@ -1,10 +1,12 @@
 import LanguagePage from "@/modules/LanguagePage";
-import React from "react";
+import React, { Suspense } from "react";
 
 const Language = () => {
   return (
     <div>
-      <LanguagePage />
+      <Suspense fallback={<div>Loading language page...</div>}>
+        <LanguagePage />
+      </Suspense>
     </div>
   );
 };

@@ -32,7 +32,7 @@ const MyAhaAddSomething = ({ props }: { props: IMyAhaAddSomething }) => {
             <div
               className="myaha-add-right-container-circle-plus"
               style={{
-                backgroundImage: `url(${props.img.src})`,
+                backgroundImage: `url(${props.img})`,
               }}
             ></div>
           </div>

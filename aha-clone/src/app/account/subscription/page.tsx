@@ -2,7 +2,6 @@
 
 import React, { useState } from 'react'
 import Image from 'next/image'
-import arrow from '../../../../public/Assets/icons/profilemenu/chevron-left.788b17bac00f11f9 (1).svg'
 import './style.scss'
 
 const Subscription = () => {
@@ -25,7 +24,7 @@ const Subscription = () => {
           <section className="sub">
             <div className="sub-head">
               <div className="back-arrow">
-                <Image src={arrow} alt="back-arrow" width={20} height={20} />
+                <Image src="/Assets/icons/profilemenu/chevron-left.788b17bac00f11f9 (1).svg" alt="back-arrow" width={20} height={20} />
               </div>
               <h1>Subscription & Rentals</h1>
             </div>
@@ -56,7 +55,7 @@ const Subscription = () => {
           <div className="header">
             <div className="arrow-icon">
               <Image
-              src={arrow}
+              src="/Assets/icons/profilemenu/chevron-left.788b17bac00f11f9 (1).svg"
               alt='Back-Arrow'
               width={20} 
               height={20} 

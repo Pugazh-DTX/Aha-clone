@@ -24,6 +24,10 @@ const HeroBanner: React.FC<HeroBannerProps> = ({
   const transitionDuration = 600;
 
   useEffect(() => {
+    setCurrentIndex(activeIndex);
+  }, [activeIndex]);
+
+  useEffect(() => {
     const interval = setInterval(() => {
       handleNext();
     }, 5000);
@@ -81,7 +85,7 @@ const HeroBanner: React.FC<HeroBannerProps> = ({
               <p className="description">{activeMovie.description}</p>
             </div>
 
-            <div className="thumbnailCarousel desktopOnly">
+            {/* <div className="thumbnailCarousel desktopOnly">
               <div className="thumbnailArrows-left">
                 <button
                   className="arrow-left"
@@ -141,11 +145,12 @@ const HeroBanner: React.FC<HeroBannerProps> = ({
                   ❯
                 </button>
               </div>
-            </div>
+            </div> */}
+            
           </div>
         </div>
 
-        <div className="heroControls mobileOnly">
+        <div className="heroControls-mobileOnly">
           <div className="dotsNavigation">
             {resources.map((_, index) => (
               <span

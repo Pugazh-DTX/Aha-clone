@@ -22,16 +22,23 @@ import { fetchLanding } from "@/store/slices/landingSlice";
 import { AppDispatch } from "@/store/store";
 
 const LanguagePage = () => {
-  const [selectedLanguage, setSelectedLanguage] = useState(() => {
-    return localStorage.getItem("selectedLanguage") || "Telugu";
-  });
+  const [selectedLanguage, setSelectedLanguage] = useState("Telugu");
   // console.log(selectedLanguage, "selectedLanguage");
-  const [localDisplayLang, setLocalDisplayLang] = useState(() => {
-    return localStorage.getItem("displayLanguage") || "English";
-  });
+  const [localDisplayLang, setLocalDisplayLang] = useState("English");
   // console.log(localDisplayLang, "localDisplayLang");
   const router = useRouter();
   const dispatch = useDispatch<AppDispatch>();
+  
+  // Load values from localStorage after component mounts
+  useEffect(() => {
+    if (typeof window !== 'undefined') {
+      const storedLanguage = localStorage.getItem("selectedLanguage");
+      const storedDisplayLang = localStorage.getItem("displayLanguage");
+      if (storedLanguage) setSelectedLanguage(storedLanguage);
+      if (storedDisplayLang) setLocalDisplayLang(storedDisplayLang);
+    }
+  }, []);
+  
   useEffect(() => {
     const handleResize = () => {
       if (window.innerWidth < 960) {
