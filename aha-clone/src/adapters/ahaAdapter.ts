@@ -133,7 +133,7 @@ export const ResourceAdapter = (
       isPublished: resource.st === "published",
     },
     actions: {
-      clickAction: container?.click_action || "detail",
+      clickAction: container?.actions?.click_action || "detail",
     },
     urn: resource.urn || "",
     year: resource.r,

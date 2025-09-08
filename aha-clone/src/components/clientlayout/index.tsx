@@ -3,6 +3,7 @@
 
 import { Provider, useSelector } from "react-redux";
 import { usePathname } from "next/navigation";
+import { Suspense } from "react";
 import { NAVBAR_HIDE_ROUTES, FOOTER_HIDE_ROUTES } from "@/utils/layoutConstants";
 import { RootState, store } from "@/store/store";
 import Header from "@/components/layout/Header";
@@ -27,7 +28,11 @@ export default function ClientLayoutWrapper({
 
   return (
     <Provider store={store}>
-      {shouldShowHeader && <Header />}
+      {shouldShowHeader && (
+        <Suspense fallback={<div>Loading header...</div>}>
+          <Header />
+        </Suspense>
+      )}
       {children}
       {shouldShowFooter && <Footer />}
     </Provider>

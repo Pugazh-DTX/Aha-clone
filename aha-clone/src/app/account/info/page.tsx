@@ -2,9 +2,6 @@
 
 import React, { useState } from 'react';
 import Image from 'next/image';
-import user from '../../../../public/Assets/icons/user-icon.a6b5f30360c95e43.svg';
-import arrow from '../../../../public/Assets/icons/chevron-left.788b17bac00f11f9.svg';
-import flag from '../../../../public/Assets/icons/Flag_of_India.svg';
 import './styles.scss';
 import DatePickerSimple from '@/components/atoms/Datepicker';
 import GenderSelectSimple from '@/components/atoms/Genderpicker';
@@ -40,7 +37,7 @@ const InfoPage = () => {
           <div className="profile-first-name">
             <div className="profile-avatar">
               <Image
-                src={user}
+                src="/Assets/icons/user-icon.a6b5f30360c95e43.svg"
                 alt="Profile"
                 width={48}
                 height={48}
@@ -73,7 +70,7 @@ const InfoPage = () => {
           <div className="profile-2-header">
             
             <Image
-              src={arrow}
+              src="/Assets/icons/chevron-left.788b17bac00f11f9.svg"
               alt="Back"
               width={20}
               height={20}
@@ -102,7 +99,7 @@ const InfoPage = () => {
                         placeholder="Phone Number"
                         leftIcon={
                           <>
-                            <Image src={flag} alt="Flag" width={24} height={16} />
+                            <Image src="/Assets/icons/Flag_of_India.svg" alt="Flag" width={24} height={16} />
                             <span style={{ marginLeft: '6px', fontSize: '14px', color: 'white' }}>+91</span>
                             <div className="divider" />
                           </>
